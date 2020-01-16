@@ -7,6 +7,7 @@ export class Booking {
   private id: number;
   private version: number;
   private isValidated: boolean;
+  private isCancelled: boolean;
   private totalPrice: number;
 
 
@@ -16,10 +17,11 @@ export class Booking {
   private contacts: Array<Contact>;
 
 
-  constructor(id: number, version: number, isValidated: boolean, totalPrice: number, user: User, accomodation: Accomodation, bookedDays: Array<BookedDay>, contacts: Array<Contact>) {
+  constructor(id: number, version: number, isValidated: boolean, isCancelled: boolean, totalPrice: number, user: User, accomodation: Accomodation, bookedDays: Array<BookedDay>, contacts: Array<Contact>) {
     this.id = id;
     this.version = version;
     this.isValidated = isValidated;
+    this.isCancelled = isCancelled;
     this.totalPrice = totalPrice;
     this.user = user;
     this.accomodation = accomodation;
