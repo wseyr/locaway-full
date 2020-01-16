@@ -13,11 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sopra.LocAway.model.Accomodation;
+import com.sopra.LocAway.model.BookedDay;
+import com.sopra.LocAway.model.Booking;
+import com.sopra.LocAway.model.Bookmark;
+import com.sopra.LocAway.model.Contact;
 import com.sopra.LocAway.model.CustomPriceDay;
 import com.sopra.LocAway.model.EAccomodationType;
 import com.sopra.LocAway.model.Option;
 import com.sopra.LocAway.model.Photo;
 import com.sopra.LocAway.model.PointOfInterest;
+import com.sopra.LocAway.model.Review;
 import com.sopra.LocAway.model.User;
 import com.sopra.LocAway.repository.IAccomodationRepository;
 import com.sopra.LocAway.repository.IBookedDayRepository;
@@ -289,6 +294,8 @@ class DataTestCreation {
 		p7 = photoRepo.save(p7);
 		p8 = photoRepo.save(p8);
 
+		
+		//TODO les dates
 		CustomPriceDay cpd = new CustomPriceDay();
 		cpd.setBasePrice(89.99f);
 		cpd.setPersonPrice(44.49f);
@@ -307,7 +314,94 @@ class DataTestCreation {
 		cpd = customPriceDayRepo.save(cpd);
 		cpd1 = customPriceDayRepo.save(cpd1);
 		cpd2 = customPriceDayRepo.save(cpd2);
+		
+		Bookmark bkm =new Bookmark();
+		bkm.setAccomodation(a);
+		bkm.setUser(u1);
+		
+		Bookmark bkm1 =new Bookmark();
+		bkm1.setAccomodation(a1);
+		bkm1.setUser(u2);
+		
+		Bookmark bkm2 =new Bookmark();
+		bkm2.setAccomodation(a2);
+		bkm2.setUser(u);
+		
+		bkm = bookmarkRepo.save(bkm);
+		bkm1 = bookmarkRepo.save(bkm1);
+		bkm2 = bookmarkRepo.save(bkm2);
+		
+		Review r = new Review();
+		r.setGrade(2);
+		r.setText("C T NUL ^^");
+		r.setAccomodation(a);
+		r.setUser(u2);
 
+		Review r1 = new Review();
+		r1.setGrade(5);
+		r1.setText("Parfait changez rien !!!");
+		r1.setAccomodation(a1);
+		r1.setUser(u);
+
+		Review r2 = new Review();
+		r2.setGrade(3);
+		r2.setText("OK");
+		r2.setAccomodation(a2);
+		r2.setUser(u1);
+
+		r = reviewRepo.save(r);
+		r1 = reviewRepo.save(r1);
+		r2 = reviewRepo.save(r2);
+		
+		Booking b = new Booking();
+		b.setValidated(false);
+		b.setCancelled(false);
+		b.setAccomodation(a);
+		b.setUser(u);
+		
+		Booking b1 = new Booking();
+		b1.setValidated(false);
+		b1.setCancelled(false);
+		b1.setAccomodation(a1);
+		b1.setUser(u1);
+
+		Booking b2 = new Booking();
+		b2.setValidated(false);
+		b2.setCancelled(false);
+		b2.setAccomodation(a2);
+		b2.setUser(u2);
+
+		b = bookingRepo.save(b);
+		b1 = bookingRepo.save(b1);
+		b2 = bookingRepo.save(b2);
+		
+		Contact c0 = new Contact();
+		c0.setEmail("amidea@mail.fr");
+		c0.setBooking(b);
+		Contact c1 = new Contact();
+		c0.setEmail("potedea1@mail.fr");
+		c0.setBooking(b1);
+		Contact c2 = new Contact();
+		c0.setEmail("familledea2@mail.fr");
+		c0.setBooking(b2);
+		
+		c0 = contactRepo.save(c0);
+		c1 = contactRepo.save(c1);
+		c1 = contactRepo.save(c2);
+		
+		//TODO les dates
+		BookedDay bd = new BookedDay();
+		bd.setBooking(b);
+		
+		BookedDay bd1 = new BookedDay();
+		bd1.setBooking(b1);
+		
+		BookedDay bd2 = new BookedDay();
+		bd2.setBooking(b2);
+		
+		bd = bookedDayRepo.save(bd);
+		bd1 = bookedDayRepo.save(bd1);
+		bd2 = bookedDayRepo.save(bd2);
 	}
 
 }

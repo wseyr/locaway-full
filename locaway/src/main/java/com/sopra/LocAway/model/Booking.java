@@ -17,6 +17,7 @@ public class Booking {
 	@Version
 	private int version;
 	boolean isValidated;
+	boolean isCancelled;
 	Float totalPrice;
 
 	@ManyToOne
@@ -60,6 +61,14 @@ public class Booking {
 		return user;
 	}
 
+	public boolean isCancelled() {
+		return isCancelled;
+	}
+
+	public void setCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -87,5 +96,5 @@ public class Booking {
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
-	
+
 }
