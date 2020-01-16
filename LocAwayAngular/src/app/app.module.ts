@@ -11,12 +11,14 @@ import { AccomodationComponent } from './accomodation/accomodation.component';
 import {FormsModule} from '@angular/forms';
 import {AppConfigService} from "./app-config.service";
 import {AccomodationHttpService} from "./accomodation/accomodation-http.service";
+import { AccomodationDetailComponent } from './accomodation-detail/accomodation-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccomodationComponent
+    AccomodationComponent,
+    AccomodationDetailComponent
   ],
   imports: [
     BrowserModule,
