@@ -1,4 +1,7 @@
 import {Review} from './Review';
+import {Accomodation} from "./Accomodation";
+import {Bookmark} from "./Bookmark";
+import {Booking} from "./Booking";
 
 export class User {
 
@@ -16,8 +19,9 @@ export class User {
   private accomodations: Array<Accomodation>;
 
 
-  constructor(isAdmin?: boolean, email?: string, password?: string, phoneNumber?: string, firstName?: string, lastName?: string,
-              reviews?: Array<Review>, bookmarks?: Array<Bookmark>, bookings?: Array<Booking>, accomodations?: Array<Accomodation>) {
+  constructor(id: number, version: number, isAdmin: boolean, email: string, password: string, phoneNumber: string, firstName: string, lastName: string, reviews: Array<Review>, bookmarks: Array<Bookmark>, bookings: Array<Booking>, accomodations: Array<Accomodation>) {
+    this.id = id;
+    this.version = version;
     this.isAdmin = isAdmin;
     this.email = email;
     this.password = password;

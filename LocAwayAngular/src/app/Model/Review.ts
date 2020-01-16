@@ -1,27 +1,25 @@
+import {Accomodation} from "./Accomodation";
+import {User} from "./User";
+
 export class Review {
 
   private id: number;
-  private version: number =0;
-  private isAdmin: boolean;
-  private email: string;
-  private password: string;
-  private phoneNumber: string;
-  private firstName: string;
-  private lastName: string;
+  private version: number;
+  private text: string;
+  private grade: number;
 
-// private Long id;
-// @Version
-// private int version;
-// private String text;
-// private int grade;
-//
-// @ManyToOne
-// private Accomodation accomodation;
-//
-// @ManyToOne
-// private User user;
+  private accomodation: Accomodation;
 
+  private user: User;
+
+
+  constructor(id: number, version: number, text: string, grade: number, accomodation: Accomodation, user: User) {
+    this.id = id;
+    this.version = version;
+    this.text = text;
+    this.grade = grade;
+    this.accomodation = accomodation;
+    this.user = user;
   }
-
 }
 
