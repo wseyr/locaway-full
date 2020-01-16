@@ -26,7 +26,7 @@ export class AccomodationHttpService {
   }
 
   findById(id: number): Observable<Accomodation> {
-    return this.http.get<Accomodation>(this.appConfig.backEnd + 'accomodation' + id);
+    return this.http.get<Accomodation>(this.appConfig.backEnd + 'accomodation/' + id);
   }
 
   save(accomodation: Accomodation) {
@@ -35,10 +35,16 @@ export class AccomodationHttpService {
         this.load();
       }, err => console.log(err));
     } else {
-      this.http.put<Accomodation>(this.appConfig.backEnd + 'accomodation' + accomodation.id, accomodation).subscribe(resp => {
+      this.http.put<Accomodation>(this.appConfig.backEnd + 'accomodation/' + accomodation.id, accomodation).subscribe(resp => {
         this.load();
       }, err => console.log(err));
     }
+  }
+
+  delete(id: number) {
+    this.http.delete<Accomodation>(this.appConfig.backEnd + 'accomodation/' + id).subscribe(resp => {
+      this.load();
+    }, err => console.log(err));
   }
 
 
