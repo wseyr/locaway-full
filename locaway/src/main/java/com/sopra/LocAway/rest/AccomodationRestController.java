@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Accomodation;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IAccomodationRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class AccomodationRestController {
 	private IAccomodationRepository accomodationRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewAccomodation.class)
 	public List<Accomodation> list() {
 		List<Accomodation> accomodations = accomodationRepo.findAll();
 
@@ -34,6 +37,7 @@ public class AccomodationRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewAccomodation.class)
 	public Accomodation find(@PathVariable Long id) {
 		Optional<Accomodation> opt = accomodationRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class AccomodationRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewAccomodation.class)
 	public Accomodation create(@RequestBody Accomodation accomodation) {
 		accomodation = accomodationRepo.save(accomodation);
 
@@ -52,6 +57,7 @@ public class AccomodationRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewAccomodation.class)
 	public Accomodation update(@RequestBody Accomodation accomodation, @PathVariable Long id) {
 		accomodation = accomodationRepo.save(accomodation);
 

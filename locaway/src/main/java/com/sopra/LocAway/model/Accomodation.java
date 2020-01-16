@@ -12,28 +12,47 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Accomodation {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String name;
+	@JsonView(Views.ViewCommon.class)
 	private String number;
+	@JsonView(Views.ViewCommon.class)
 	private String street;
+	@JsonView(Views.ViewCommon.class)
 	private String city;
+	@JsonView(Views.ViewCommon.class)
 	private String postcode;
+	@JsonView(Views.ViewCommon.class)
 	private String country;
+	@JsonView(Views.ViewCommon.class)
 	private Float latitudeDeg;
+	@JsonView(Views.ViewCommon.class)
 	private Float longitudeDeg;
+	@JsonView(Views.ViewCommon.class)
 	private String description;
+	@JsonView(Views.ViewCommon.class)
 	private Integer numberOfRooms;
+	@JsonView(Views.ViewCommon.class)
 	private Integer maxPersons;
+	@JsonView(Views.ViewCommon.class)
 	private boolean isDeleted;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private EAccomodationType accomodationType;
+	@JsonView(Views.ViewCommon.class)
 	private Float defaultBasePrice;
+	@JsonView(Views.ViewCommon.class)
 	private Float defaultPersonPrice;
 
 	@OneToMany(mappedBy = "accomodation")
