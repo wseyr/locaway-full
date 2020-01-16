@@ -13,6 +13,7 @@ import {AppConfigService} from "./app-config.service";
 import {AccomodationHttpService} from "./accomodation/accomodation-http.service";
 import { AccomodationDetailComponent } from './accomodation-detail/accomodation-detail.component';
 import {UserHttpServiceService} from './user/user-http-service.service';
+import {BookmarkHttpService} from './bookmark/bookmark-http-service.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import {UserHttpServiceService} from './user/user-http-service.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService],
+  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
