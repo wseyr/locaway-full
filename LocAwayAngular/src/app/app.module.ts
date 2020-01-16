@@ -9,6 +9,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AccomodationComponent } from './accomodation/accomodation.component';
 import {FormsModule} from '@angular/forms';
+import {AppConfigService} from "./app-config.service";
+import {AccomodationHttpService} from "./accomodation/accomodation-http.service";
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AppConfigService, AccomodationHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
