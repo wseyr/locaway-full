@@ -1,55 +1,134 @@
-<h1>Welcome LocAwayer</h1>
+<body>
+<header >
+  <div class="jumbotron jumbotron-fluid mb-0" style="background-color: #a9c8cf" style="margin: 0px">
+    <div class="container">
+      <h1 class="display-4">LocAway</h1>
+      <p class="lead">Votre site  de location saisonnières</p>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" style="margin: auto;">
+        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+          <a class="nav-link" href="#">Accueil</a>
+        </li>
+        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+          <a class="nav-link" href="#">Que faire ?</a>
+        </li>
+        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+          <a class="nav-link" href="#">Le concept LocAway</a>
+        </li>
+        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+          <a class="nav-link" href="#">Publier</a>
+        </li>
+        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+          <a class="nav-link" href="#">Connexion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-    <button type="button" class="btn btn-secondary">1</button>
-    <button type="button" class="btn btn-secondary">2</button>
-    <button type="button" class="btn btn-secondary">3</button>
-    <button type="button" class="btn btn-secondary">4</button>
+</header>
+<div class="container">
+<div class="container">
+  <h3>Rechercher une location</h3>
+</div>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label class="col form label"></label>
+      <input type="text" class="form-control" placeholder="Destination">
+    </div>
+
+    <div class="form-group col-md-1">
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dates
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="form-group col">
+            <label class="col form label">Du</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="form-group col">
+            <label class="col form label">Au</label>
+            <input type="date" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label class="col form label">Personnes</label>
+        <input type="number" class="form-control">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label class="col form label">Chambres</label>
+        <input type="number" class="form-control">
+    </div>
+    <div class="form-group col-md-2">
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Type de bien
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="form-group col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" >
+                Maison
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" >
+                Appartement
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" >
+                Chambre d'hôte
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-2">
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Règlement intérieur
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="form-group col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" >
+                Animaux
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" >
+                Fumeurs
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="btn-group mr-2" role="group" aria-label="Second group">
-    <button type="button" class="btn btn-secondary">5</button>
-    <button type="button" class="btn btn-secondary">6</button>
-    <button type="button" class="btn btn-secondary">7</button>
-  </div>
-  <div class="btn-group" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-secondary">8</button>
-  </div>
+
+</form>
+
 </div>
 
-<ngb-carousel *ngIf="images">
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[0]" alt="Random first slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[1]" alt="Random second slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[2]" alt="Random third slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </ng-template>
-</ngb-carousel>
-
-<button type="button" class="btn btn-warning">
-  <fa name="undo" inverse="true"></fa>
-</button>
+</body>
 
 <router-outlet></router-outlet>
 
