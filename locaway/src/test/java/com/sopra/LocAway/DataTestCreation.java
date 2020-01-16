@@ -1,12 +1,8 @@
 package com.sopra.LocAway;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -295,21 +291,26 @@ class DataTestCreation {
 		p8 = photoRepo.save(p8);
 
 		
-		//TODO les dates
 		CustomPriceDay cpd = new CustomPriceDay();
 		cpd.setBasePrice(89.99f);
 		cpd.setPersonPrice(44.49f);
 		cpd.setAccomodation(a);
+		Date cpdDate = new GregorianCalendar(2020, Calendar.MARCH, 2).getTime();
+		cpd.setDate(cpdDate);
 
 		CustomPriceDay cpd1 = new CustomPriceDay();
-		cpd.setBasePrice(89.99f);
-		cpd.setPersonPrice(44.49f);
-		cpd.setAccomodation(a1);
+		cpd1.setBasePrice(89.99f);
+		cpd1.setPersonPrice(44.49f);
+		cpd1.setAccomodation(a1);
+		Date cpdDate1 = new GregorianCalendar(2020, Calendar.FEBRUARY, 5).getTime();
+		cpd1.setDate(cpdDate1);
 
 		CustomPriceDay cpd2 = new CustomPriceDay();
-		cpd.setBasePrice(189f);
-		cpd.setPersonPrice(104f);
-		cpd.setAccomodation(a2);
+		cpd2.setBasePrice(189f);
+		cpd2.setPersonPrice(104f);
+		cpd2.setAccomodation(a2);
+		Date cpdDate2 = new GregorianCalendar(2020, Calendar.FEBRUARY, 6).getTime();
+		cpd2.setDate(cpdDate2);
 
 		cpd = customPriceDayRepo.save(cpd);
 		cpd1 = customPriceDayRepo.save(cpd1);
@@ -379,25 +380,30 @@ class DataTestCreation {
 		c0.setEmail("amidea@mail.fr");
 		c0.setBooking(b);
 		Contact c1 = new Contact();
-		c0.setEmail("potedea1@mail.fr");
-		c0.setBooking(b1);
+		c1.setEmail("potedea1@mail.fr");
+		c1.setBooking(b1);
 		Contact c2 = new Contact();
-		c0.setEmail("familledea2@mail.fr");
-		c0.setBooking(b2);
+		c2.setEmail("familledea2@mail.fr");
+		c2.setBooking(b2);
 		
 		c0 = contactRepo.save(c0);
 		c1 = contactRepo.save(c1);
-		c1 = contactRepo.save(c2);
+		c2 = contactRepo.save(c2);
 		
-		//TODO les dates
 		BookedDay bd = new BookedDay();
 		bd.setBooking(b);
-		
+		Date bdDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 11).getTime();
+		bd.setDate(bdDate);
+
 		BookedDay bd1 = new BookedDay();
 		bd1.setBooking(b1);
+		Date bdDate1 = new GregorianCalendar(2020, Calendar.FEBRUARY, 15).getTime();
+		bd1.setDate(bdDate1);
 		
 		BookedDay bd2 = new BookedDay();
 		bd2.setBooking(b2);
+		Date bdDate2 = new GregorianCalendar(2020, Calendar.FEBRUARY, 16).getTime();
+		bd2.setDate(bdDate2);
 		
 		bd = bookedDayRepo.save(bd);
 		bd1 = bookedDayRepo.save(bd1);
