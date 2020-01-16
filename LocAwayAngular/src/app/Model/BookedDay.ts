@@ -1,11 +1,11 @@
 import {Booking} from "./Booking";
 
 export class BookedDay {
-  private id: number;
-  private version: number;
-  private date: Date;
+  public id: number;
+  public version: number;
+  public date: Date;
 
-  private booking: Booking;
+  public booking: Booking;
 
 
   constructor(id: number, version: number, date: Date, booking: Booking) {

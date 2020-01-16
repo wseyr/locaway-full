@@ -2,19 +2,19 @@ import {Accomodation} from "./Accomodation";
 
 export class PointOfInterest {
 
-  private accomodations: Array<Accomodation>;
+  public accomodations: Array<Accomodation>;
 
-  private id: number;
-  private version: number;
-  private name: string;
-  private description: string;
-  private number: string;
-  private street: string;
-  private city: string;
-  private postcode: string;
-  private country: string;
-  private latitudeDeg: number;
-  private longitudeDeg: number;
+  public id: number;
+  public version: number;
+  public name: string;
+  public description: string;
+  public number: string;
+  public street: string;
+  public city: string;
+  public postcode: string;
+  public country: string;
+  public latitudeDeg: number;
+  public longitudeDeg: number;
 
 
   constructor(accomodations: Array<Accomodation>, id: number, version: number, name: string, description: string, number: string, street: string, city: string, postcode: string, country: string, latitudeDeg: number, longitudeDeg: number) {

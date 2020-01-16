@@ -1,12 +1,12 @@
 import {Accomodation} from "./Accomodation";
 
 export class Photo {
-  private id: number;
-  private version: number;
-  private path: string;
-  private isMainPhoto: boolean;
+  public id: number;
+  public version: number;
+  public path: string;
+  public isMainPhoto: boolean;
 
-  private accomodation: Accomodation;
+  public accomodation: Accomodation;
 
 
   constructor(id: number, version: number, path: string, isMainPhoto: boolean, accomodation: Accomodation) {

@@ -5,18 +5,18 @@ import {Booking} from "./Booking";
 
 export class User {
 
-  private id: number;
-  private version: number =0;
-  private isAdmin: boolean;
-  private email: string;
-  private password: string;
-  private phoneNumber: string;
-  private firstName: string;
-  private lastName: string;
-  private reviews: Array<Review>;
-  private bookmarks: Array<Bookmark>;
-  private bookings: Array<Booking>;
-  private accomodations: Array<Accomodation>;
+  public id: number;
+  public version: number =0;
+  public isAdmin: boolean;
+  public email: string;
+  public password: string;
+  public phoneNumber: string;
+  public firstName: string;
+  public lastName: string;
+  public reviews: Array<Review>;
+  public bookmarks: Array<Bookmark>;
+  public bookings: Array<Booking>;
+  public accomodations: Array<Accomodation>;
 
 
   constructor(id: number, version: number, isAdmin: boolean, email: string, password: string, phoneNumber: string, firstName: string, lastName: string, reviews: Array<Review>, bookmarks: Array<Bookmark>, bookings: Array<Booking>, accomodations: Array<Accomodation>) {

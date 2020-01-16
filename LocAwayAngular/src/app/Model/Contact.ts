@@ -1,11 +1,11 @@
 import {Booking} from "./Booking";
 
 export class Contact {
-  private id: number;
-  private version: number;
-  private email: string;
+  public id: number;
+  public version: number;
+  public email: string;
 
-  private booking: Booking;
+  public booking: Booking;
 
 
   constructor(id: number, version: number, email: string, booking: Booking) {

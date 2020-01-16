@@ -4,17 +4,17 @@ import {Contact} from "./Contact";
 import {BookedDay} from "./BookedDay";
 
 export class Booking {
-  private id: number;
-  private version: number;
-  private isValidated: boolean;
-  private isCancelled: boolean;
-  private totalPrice: number;
+  public id: number;
+  public version: number;
+  public isValidated: boolean;
+  public isCancelled: boolean;
+  public totalPrice: number;
 
 
-  private user: User;
-  private accomodation: Accomodation;
-  private bookedDays: Array<BookedDay>;
-  private contacts: Array<Contact>;
+  public user: User;
+  public accomodation: Accomodation;
+  public bookedDays: Array<BookedDay>;
+  public contacts: Array<Contact>;
 
 
   constructor(id: number, version: number, isValidated: boolean, isCancelled: boolean, totalPrice: number, user: User, accomodation: Accomodation, bookedDays: Array<BookedDay>, contacts: Array<Contact>) {

@@ -3,14 +3,14 @@ import {User} from "./User";
 
 export class Review {
 
-  private id: number;
-  private version: number;
-  private text: string;
-  private grade: number;
+  public id: number;
+  public version: number;
+  public text: string;
+  public grade: number;
 
-  private accomodation: Accomodation;
+  public accomodation: Accomodation;
 
-  private user: User;
+  public user: User;
 
 
   constructor(id: number, version: number, text: string, grade: number, accomodation: Accomodation, user: User) {

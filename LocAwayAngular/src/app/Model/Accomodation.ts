@@ -8,40 +8,40 @@ import {PointOfInterest} from "./PointOfInterest";
 import {Bookmark} from "./Bookmark";
 
 export class Accomodation {
-  private id: number;
-  private version: number;
-  private name: string;
-  private number: string;
-  private street: string;
-  private city: string;
-  private postcode: string;
-  private country: string;
-  private latitudeDeg: number;
-  private longitudeDeg: number;
-  private description: string;
-  private numberOfRooms: number;
-  private maxPersons: number;
-  private isDeleted: boolean;
+  public id: number;
+  public version: number;
+  public name: string;
+  public number: string;
+  public street: string;
+  public city: string;
+  public postcode: string;
+  public country: string;
+  public latitudeDeg: number;
+  public longitudeDeg: number;
+  public description: string;
+  public numberOfRooms: number;
+  public maxPersons: number;
+  public isDeleted: boolean;
 
-  private accomodationType: string; //TODO: Gérer l'enum
-  private defaultBasePrice: number;
-  private defaultPersonPrice: number;
+  public accomodationType: string; //TODO: Gérer l'enum
+  public defaultBasePrice: number;
+  public defaultPersonPrice: number;
 
-  private customPriceDays: Array<CustomPriceDay>;
+  public customPriceDays: Array<CustomPriceDay>;
 
-  private bookmarks: Array<Bookmark>;
+  public bookmarks: Array<Bookmark>;
 
-  private reviews: Array<Review>;
+  public reviews: Array<Review>;
 
-  private photos: Array<Photo>;
+  public photos: Array<Photo>;
 
-  private bookings: Array<Booking>;
+  public bookings: Array<Booking>;
 
-  private options: Array<Option>;
+  public options: Array<Option>;
 
-  private pointOfInterests: Array<PointOfInterest>;
+  public pointOfInterests: Array<PointOfInterest>;
 
-  private user: User;
+  public user: User;
 
 
   constructor(id: number, version: number, name: string, number: string, street: string, city: string, postcode: string, country: string, latitudeDeg: number, longitudeDeg: number, description: string, numberOfRooms: number, maxPersons: number, isDeleted: boolean, accomodationType: string, defaultBasePrice: number, defaultPersonPrice: number, customPriceDays: Array<CustomPriceDay>, bookmarks: Array<Bookmark>, reviews: Array<Review>, photos: Array<Photo>, bookings: Array<Booking>, options: Array<Option>, pointOfInterests: Array<PointOfInterest>, user: User) {

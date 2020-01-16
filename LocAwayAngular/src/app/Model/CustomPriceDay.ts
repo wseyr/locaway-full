@@ -2,13 +2,13 @@ import {Accomodation} from "./Accomodation";
 
 export class CustomPriceDay {
 
-  private id: number;
-  private version: number;
-  private basePrice: number;
-  private personPrice: number;
-  private date: Date;
+  public id: number;
+  public version: number;
+  public basePrice: number;
+  public personPrice: number;
+  public date: Date;
 
-  private accomodation: Accomodation;
+  public accomodation: Accomodation;
 
 
   constructor(id: number, version: number, basePrice: number, personPrice: number, date: Date, accomodation: Accomodation) {

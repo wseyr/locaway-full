@@ -2,10 +2,10 @@ import {User} from "./User";
 import {Accomodation} from "./Accomodation";
 
 export class Bookmark{
-  private id: number;
-  private version: number;
-  private user: User;
-  private accomodation: Accomodation;
+  public id: number;
+  public version: number;
+  public user: User;
+  public accomodation: Accomodation;
 
 
   constructor(id: number, version: number, user: User, accomodation: Accomodation) {

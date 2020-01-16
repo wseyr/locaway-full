@@ -26,6 +26,20 @@ export class AccomodationHttpService {
   }
 
   findById(id: number): Observable<Accomodation> {
-    return this.http.get<Accomodation>(this.appConfig.backEnd + 'accomodation/' + id);
+    return this.http.get<Accomodation>(this.appConfig.backEnd + 'accomodation' + id);
   }
+
+  save(accomodation: Accomodation) {
+    if (!accomodation.id) {
+      this.http.post<Accomodation>(this.appConfig.backEnd + 'accomodation', accomodation).subscribe(resp => {
+        this.load();
+      }, err => console.log(err));
+    } else {
+      this.http.put<Accomodation>(this.appConfig.backEnd + 'accomodation' + accomodation.id, accomodation).subscribe(resp => {
+        this.load();
+      }, err => console.log(err));
+    }
+  }
+
+
 }
