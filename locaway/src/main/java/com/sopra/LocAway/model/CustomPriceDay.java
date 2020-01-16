@@ -13,12 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-
-
-
 @Entity
 public class CustomPriceDay {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -27,11 +24,10 @@ public class CustomPriceDay {
 	private Float basePrice;
 	private Float personPrice;
 	private Date date;
-	
+
 	@ManyToOne
 	private Accomodation accomodation;
-	
-	
+
 	public CustomPriceDay() {
 		super();
 	}
@@ -75,10 +71,18 @@ public class CustomPriceDay {
 		this.date = date;
 	}
 
+	public Accomodation getAccomodation() {
+		return accomodation;
+	}
+
+	public void setAccomodation(Accomodation accomodation) {
+		this.accomodation = accomodation;
+	}
+
 	@Override
 	public String toString() {
-		return "CustomPriceDay [id=" + id + ", basePrice=" + basePrice + ", personPrice=" + personPrice + ", date=" + date
-				+ "]";
+		return "CustomPriceDay [id=" + id + ", basePrice=" + basePrice + ", personPrice=" + personPrice + ", date="
+				+ date + "]";
 	}
-	
+
 }

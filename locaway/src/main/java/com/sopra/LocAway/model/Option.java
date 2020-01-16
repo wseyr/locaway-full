@@ -1,5 +1,6 @@
 package com.sopra.LocAway.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Option {
 	private Boolean isRule;
 	
 	@ManyToMany
-	List<Accomodation> accomodations;
+	List<Accomodation> accomodations = new ArrayList<Accomodation>();
 	
 	public Option() {
 		super();

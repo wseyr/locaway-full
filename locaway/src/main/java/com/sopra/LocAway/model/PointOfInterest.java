@@ -1,5 +1,6 @@
 package com.sopra.LocAway.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ public class PointOfInterest {
 
 	@ManyToMany
 	@JoinTable
-	private List<Accomodation> accomodations;
+	private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 
 	@Id
 	@GeneratedValue
