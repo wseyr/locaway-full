@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {AppConfigService} from "./app-config.service";
 import {AccomodationHttpService} from "./accomodation/accomodation-http.service";
 import { AccomodationDetailComponent } from './accomodation-detail/accomodation-detail.component';
+import {UserHttpServiceService} from './user/user-http-service.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { AccomodationDetailComponent } from './accomodation-detail/accomodation-
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppConfigService, AccomodationHttpService],
+  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
