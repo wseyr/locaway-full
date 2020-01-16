@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AccomodationComponent } from './accomodation/accomodation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AccomodationComponent
   ],
   imports: [
     BrowserModule,
