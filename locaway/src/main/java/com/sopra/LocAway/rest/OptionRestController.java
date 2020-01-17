@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Option;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IOptionRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class OptionRestController {
 	private IOptionRepository optionRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewOption.class)
 	public List<Option> list() {
 		List<Option> options = optionRepo.findAll();
 
@@ -34,6 +37,7 @@ public class OptionRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewOption.class)
 	public Option find(@PathVariable Long id) {
 		Optional<Option> opt = optionRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class OptionRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewOption.class)
 	public Option create(@RequestBody Option option) {
 		option = optionRepo.save(option);
 
@@ -52,6 +57,7 @@ public class OptionRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewOption.class)
 	public Option update(@RequestBody Option option, @PathVariable Long id) {
 		option = optionRepo.save(option);
 

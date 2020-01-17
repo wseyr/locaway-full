@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Bookmark;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IBookmarkRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class BookmarkRestController {
 	private IBookmarkRepository bookmarkRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewBookmark.class)
 	public List<Bookmark> list() {
 		List<Bookmark> bookmarks = bookmarkRepo.findAll();
 
@@ -34,6 +37,7 @@ public class BookmarkRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewBookmark.class)
 	public Bookmark find(@PathVariable Long id) {
 		Optional<Bookmark> opt = bookmarkRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class BookmarkRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewBookmark.class)
 	public Bookmark create(@RequestBody Bookmark bookmark) {
 		bookmark = bookmarkRepo.save(bookmark);
 
@@ -52,6 +57,7 @@ public class BookmarkRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewBookmark.class)
 	public Bookmark update(@RequestBody Bookmark bookmark, @PathVariable Long id) {
 		bookmark = bookmarkRepo.save(bookmark);
 

@@ -8,16 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class BookedDay {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private Date date;
 
 	@ManyToOne
+	@JsonView(Views.ViewBookedDay.class)
 	private Booking booking;
 
 	public BookedDay() {

@@ -6,16 +6,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Bookmark {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@ManyToOne
+	@JsonView(Views.ViewBookmark.class)
 	private User user;
 	@ManyToOne
+	@JsonView(Views.ViewBookmark.class)
 	private Accomodation accomodation;
 
 	public Bookmark() {

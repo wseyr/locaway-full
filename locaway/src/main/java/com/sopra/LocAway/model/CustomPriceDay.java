@@ -13,19 +13,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class CustomPriceDay {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private Float basePrice;
+	@JsonView(Views.ViewCommon.class)
 	private Float personPrice;
+	@JsonView(Views.ViewCommon.class)
 	private Date date;
 
 	@ManyToOne
+	@JsonView(Views.ViewCustomPriceDay.class)
 	private Accomodation accomodation;
 
 	public CustomPriceDay() {

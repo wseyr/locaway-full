@@ -9,24 +9,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Booking {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	boolean isValidated;
+	@JsonView(Views.ViewCommon.class)
 	boolean isCancelled;
+	@JsonView(Views.ViewCommon.class)
 	Float totalPrice;
 
 	@ManyToOne
+	@JsonView(Views.ViewBooking.class)
 	User user;
 	@ManyToOne
+	@JsonView(Views.ViewBooking.class)
 	Accomodation accomodation;
 	@OneToMany(mappedBy = "booking")
+	@JsonView(Views.ViewBooking.class)
 	List<BookedDay> bookedDays;
 	@OneToMany(mappedBy = "booking")
+	@JsonView(Views.ViewBooking.class)
 	List<Contact> contacts;
 
 	public Booking() {

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.BookedDay;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IBookedDayRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class BookedDayRestController {
 	private IBookedDayRepository bookedDayRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public List<BookedDay> list() {
 		List<BookedDay> bookedDays = bookedDayRepo.findAll();
 
@@ -34,6 +37,7 @@ public class BookedDayRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public BookedDay find(@PathVariable Long id) {
 		Optional<BookedDay> opt = bookedDayRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class BookedDayRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public BookedDay create(@RequestBody BookedDay bookedDay) {
 		bookedDay = bookedDayRepo.save(bookedDay);
 
@@ -52,6 +57,7 @@ public class BookedDayRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public BookedDay update(@RequestBody BookedDay bookedDay, @PathVariable Long id) {
 		bookedDay = bookedDayRepo.save(bookedDay);
 

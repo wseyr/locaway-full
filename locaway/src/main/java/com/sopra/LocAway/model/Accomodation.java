@@ -56,27 +56,35 @@ public class Accomodation {
 	private Float defaultPersonPrice;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<CustomPriceDay> customPriceDays;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<Bookmark> bookmarks;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<Review> reviews;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<Photo> photos;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<Booking> bookings;
 
 	@ManyToMany(mappedBy = "accomodations")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<Option> options;
 
 	@ManyToMany(mappedBy = "accomodations")
+	@JsonView(Views.ViewAccomodation.class)
 	private List<PointOfInterest> pointOfInterests;
 
 	@ManyToOne
+	@JsonView(Views.ViewAccomodation.class)
 	private User user;
 
 	public Accomodation() {

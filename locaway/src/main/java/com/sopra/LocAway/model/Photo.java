@@ -9,17 +9,24 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Photo {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String path;
+	@JsonView(Views.ViewCommon.class)
 	private boolean isMainPhoto;
 
 	@ManyToOne
+	@JsonView(Views.ViewPhoto.class)
 	@JoinColumn
 	private Accomodation accomodation;
 

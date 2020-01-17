@@ -6,21 +6,29 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Review {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String text;
+	@JsonView(Views.ViewCommon.class)
 	private int grade;
 
 	@ManyToOne
+	@JsonView(Views.ViewReview.class)
 	private Accomodation accomodation;
 
 	@ManyToOne
+	@JsonView(Views.ViewReview.class)
 	private User user;
 
 	public Review() {
