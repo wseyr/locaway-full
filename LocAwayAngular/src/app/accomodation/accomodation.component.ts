@@ -8,16 +8,17 @@ import {AccomodationHttpService} from './accomodation-http.service';
   styleUrls: ['./accomodation.component.css']
 })
 export class AccomodationComponent implements OnInit {
-  @Input() accomodation_id: number = 5;
+  @Input() accomodation_id: number;
   accomodation: Accomodation = null;
 
   constructor(private accomodationService: AccomodationHttpService) {
-    this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
-      this.accomodation = resp;
-    });
+
   }
 
   ngOnInit() {
+    this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
+      this.accomodation = resp;
+    });
   }
 
 }
