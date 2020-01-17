@@ -18,7 +18,10 @@ export class AccomodationDetailComponent implements OnInit {
 
   //TODO: afficher les dates reservées dans le calendrier
   //calendrier (en cours)
-  isDisabled = (date: NgbDate, current: {month: number}) => date.day === 13;
+  bookedDaysArray : Array<NgbDate> = new Array<NgbDate>();
+  isDisabled = (date: NgbDate, current: {month: number}) => {
+    date === this.bookedDaysArray[0];
+  };
 
 
   constructor(private route: ActivatedRoute, private accomodationService: AccomodationHttpService) {
