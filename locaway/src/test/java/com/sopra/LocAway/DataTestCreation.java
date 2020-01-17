@@ -214,46 +214,46 @@ class DataTestCreation {
 		Option o0 = new Option();
 		o0.setIsRule(false);
 		o0.addAccomodation(a);
-		o0.setName("cheminée");
+		o0.setName("Cheminée");
 
 		Option o1 = new Option();
 		o1.setIsRule(false);
-		o1.setName("balcon");
+		o1.setName("Balcon");
 		o1.addAccomodation(a);
 
 		Option o2 = new Option();
 		o2.setIsRule(false);
-		o2.setName("jardin");
+		o2.setName("Jardin");
 		o2.addAccomodation(a);
 
 		Option o3 = new Option();
 		o3.setIsRule(false);
-		o3.setName("piscine");
+		o3.setName("Piscine");
 		o3.addAccomodation(a1);
 
 		Option o4 = new Option();
 		o4.setIsRule(false);
-		o4.setName("fibre");
+		o4.setName("Fibre");
 		o4.addAccomodation(a1);
 
 		Option o5 = new Option();
 		o5.setIsRule(true);
-		o5.setName("no smoking");
+		o5.setName("No smoking");
 		o5.addAccomodation(a1);
 
 		Option o6 = new Option();
 		o6.setIsRule(true);
-		o6.setName("no animals");
+		o6.setName("No animals");
 		o6.addAccomodation(a2);
 
 		Option o7 = new Option();
 		o7.setIsRule(false);
-		o7.setName("amenagement PMR");
+		o7.setName("Amenagement PMR");
 		o7.addAccomodation(a2);
 
 		Option o8 = new Option();
 		o8.setIsRule(false);
-		o8.setName("ascenseur");
+		o8.setName("Ascenseur");
 		o8.addAccomodation(a2);
 
 		o0 = optionRepo.save(o0);
