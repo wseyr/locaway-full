@@ -17,6 +17,7 @@ import {BookmarkHttpService} from './bookmark/bookmark-http-service.service';
 import {BookingHttpService} from './booking/booking-http-service.service';
 import {ContactHttpService} from './contact/contact-http-service.service';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -26,6 +27,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
     AccomodationComponent,
     AccomodationDetailComponent,
     ConnexionComponent,
+    HomeComponent,
 
   ],
   imports: [
