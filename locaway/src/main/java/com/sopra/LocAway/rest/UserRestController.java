@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.User;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IUserRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class UserRestController {
 	private IUserRepository userRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewUser.class)
 	public List<User> list() {
 		List<User> users = userRepo.findAll();
 
@@ -34,6 +37,7 @@ public class UserRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewUser.class)
 	public User find(@PathVariable Long id) {
 		Optional<User> opt = userRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class UserRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewUser.class)
 	public User create(@RequestBody User user) {
 		user = userRepo.save(user);
 
@@ -52,6 +57,7 @@ public class UserRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewUser.class)
 	public User update(@RequestBody User user, @PathVariable Long id) {
 		user = userRepo.save(user);
 

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Review;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IReviewRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class ReviewRestController {
 	private IReviewRepository reviewRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewReview.class)
 	public List<Review> list() {
 		List<Review> reviews = reviewRepo.findAll();
 
@@ -34,6 +37,7 @@ public class ReviewRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewReview.class)
 	public Review find(@PathVariable Long id) {
 		Optional<Review> opt = reviewRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class ReviewRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewReview.class)
 	public Review create(@RequestBody Review review) {
 		review = reviewRepo.save(review);
 
@@ -52,6 +57,7 @@ public class ReviewRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewReview.class)
 	public Review update(@RequestBody Review review, @PathVariable Long id) {
 		review = reviewRepo.save(review);
 

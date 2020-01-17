@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Photo;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IPhotoRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class PhotoRestController {
 	private IPhotoRepository photoRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewPhoto.class)
 	public List<Photo> list() {
 		List<Photo> photos = photoRepo.findAll();
 
@@ -34,6 +37,7 @@ public class PhotoRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewPhoto.class)
 	public Photo find(@PathVariable Long id) {
 		Optional<Photo> opt = photoRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class PhotoRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewPhoto.class)
 	public Photo create(@RequestBody Photo photo) {
 		photo = photoRepo.save(photo);
 
@@ -52,6 +57,7 @@ public class PhotoRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewPhoto.class)
 	public Photo update(@RequestBody Photo photo, @PathVariable Long id) {
 		photo = photoRepo.save(photo);
 

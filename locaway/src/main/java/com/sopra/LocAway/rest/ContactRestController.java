@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Contact;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IContactRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class ContactRestController {
 	private IContactRepository contactRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewContact.class)
 	public List<Contact> list() {
 		List<Contact> contacts = contactRepo.findAll();
 
@@ -34,6 +37,7 @@ public class ContactRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewContact.class)
 	public Contact find(@PathVariable Long id) {
 		Optional<Contact> opt = contactRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class ContactRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewContact.class)
 	public Contact create(@RequestBody Contact contact) {
 		contact = contactRepo.save(contact);
 
@@ -52,6 +57,7 @@ public class ContactRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewContact.class)
 	public Contact update(@RequestBody Contact contact, @PathVariable Long id) {
 		contact = contactRepo.save(contact);
 
@@ -59,6 +65,7 @@ public class ContactRestController {
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewContact.class)
 	public void delete(@PathVariable Long id) {
 		contactRepo.deleteById(id);
 	}

@@ -10,17 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Option {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String name;
+	@JsonView(Views.ViewCommon.class)
 	private Boolean isRule;
 	
 	@ManyToMany
+	@JsonView(Views.ViewOption.class)
 	List<Accomodation> accomodations = new ArrayList<Accomodation>();
 	
 	public Option() {

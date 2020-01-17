@@ -11,27 +11,41 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class PointOfInterest {
 
-	@ManyToMany
-	@JoinTable
-	private List<Accomodation> accomodations = new ArrayList<Accomodation>();
-
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String name;
+	@JsonView(Views.ViewCommon.class)
 	private String description;
+	@JsonView(Views.ViewCommon.class)
 	private String number;
+	@JsonView(Views.ViewCommon.class)
 	private String street;
+	@JsonView(Views.ViewCommon.class)
 	private String city;
+	@JsonView(Views.ViewCommon.class)
 	private String postcode;
+	@JsonView(Views.ViewCommon.class)
 	private String country;
+	@JsonView(Views.ViewCommon.class)
 	private Float latitudeDeg;
+	@JsonView(Views.ViewCommon.class)
 	private Float longitudeDeg;
+
+	@ManyToMany
+	@JsonView(Views.ViewPointOfInterest.class)
+	@JoinTable
+	private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 
 	public PointOfInterest() {
 		super();

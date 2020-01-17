@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.CustomPriceDay;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.ICustomPriceDayRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class CustomPriceDayRestController {
 	private ICustomPriceDayRepository customPriceDayRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewCustomPriceDay.class)
 	public List<CustomPriceDay> list() {
 		List<CustomPriceDay> customPriceDays = customPriceDayRepo.findAll();
 
@@ -34,6 +37,7 @@ public class CustomPriceDayRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewCustomPriceDay.class)
 	public CustomPriceDay find(@PathVariable Long id) {
 		Optional<CustomPriceDay> opt = customPriceDayRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class CustomPriceDayRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCustomPriceDay.class)
 	public CustomPriceDay create(@RequestBody CustomPriceDay customPriceDay) {
 		customPriceDay = customPriceDayRepo.save(customPriceDay);
 
@@ -52,6 +57,7 @@ public class CustomPriceDayRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCustomPriceDay.class)
 	public CustomPriceDay update(@RequestBody CustomPriceDay customPriceDay, @PathVariable Long id) {
 		customPriceDay = customPriceDayRepo.save(customPriceDay);
 

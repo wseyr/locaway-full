@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.Booking;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IBookingRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class BookingRestController {
 	private IBookingRepository bookingRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewBooking.class)
 	public List<Booking> list() {
 		List<Booking> bookings = bookingRepo.findAll();
 
@@ -34,6 +37,7 @@ public class BookingRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewBooking.class)
 	public Booking find(@PathVariable Long id) {
 		Optional<Booking> opt = bookingRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class BookingRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewBooking.class)
 	public Booking create(@RequestBody Booking booking) {
 		booking = bookingRepo.save(booking);
 
@@ -52,6 +57,7 @@ public class BookingRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewBooking.class)
 	public Booking update(@RequestBody Booking booking, @PathVariable Long id) {
 		booking = bookingRepo.save(booking);
 

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
 import com.sopra.LocAway.model.PointOfInterest;
+import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IPointOfInterestRepository;
 
 @RestController
@@ -27,6 +29,7 @@ public class PointOfInterestRestController {
 	private IPointOfInterestRepository pointOfInterestRepo;
 	
 	@GetMapping("")
+	@JsonView(Views.ViewPointOfInterest.class)
 	public List<PointOfInterest> list() {
 		List<PointOfInterest> pointOfInterests = pointOfInterestRepo.findAll();
 
@@ -34,6 +37,7 @@ public class PointOfInterestRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewPointOfInterest.class)
 	public PointOfInterest find(@PathVariable Long id) {
 		Optional<PointOfInterest> opt = pointOfInterestRepo.findById(id);
 
@@ -45,6 +49,7 @@ public class PointOfInterestRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewPointOfInterest.class)
 	public PointOfInterest create(@RequestBody PointOfInterest pointOfInterest) {
 		pointOfInterest = pointOfInterestRepo.save(pointOfInterest);
 
@@ -52,6 +57,7 @@ public class PointOfInterestRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewPointOfInterest.class)
 	public PointOfInterest update(@RequestBody PointOfInterest pointOfInterest, @PathVariable Long id) {
 		pointOfInterest = pointOfInterestRepo.save(pointOfInterest);
 

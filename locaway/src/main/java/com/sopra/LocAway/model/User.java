@@ -10,32 +10,45 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="AppUser")
 public class User {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
-
+	@JsonView(Views.ViewCommon.class)
 	private boolean isAdmin;
+	@JsonView(Views.ViewCommon.class)
 	private String email;
+	@JsonView(Views.ViewCommon.class)
 	private String password;
+	@JsonView(Views.ViewCommon.class)
 	private String phoneNumber;
+	@JsonView(Views.ViewCommon.class)
 	private String firstName;
+	@JsonView(Views.ViewCommon.class)
 	private String lastName;
 
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List<Review> reviews = new ArrayList<Review>();
 
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List<Bookmark> bookmarks = new ArrayList<Bookmark>();
 
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List<Booking> bookings = new ArrayList<Booking>();
 
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 
 	public User() {

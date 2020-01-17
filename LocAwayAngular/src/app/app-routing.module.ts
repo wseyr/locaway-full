@@ -8,7 +8,9 @@ import {ConnexionComponent} from './connexion/connexion.component';
 const routes: Routes = [
   {path: 'accomodation', component: AccomodationComponent},
   {path: 'accomodation-detail', component: AccomodationDetailComponent},
-  {path: 'connexion', component: ConnexionComponent}
+  {path: 'connexion', component: ConnexionComponent},
+  {path: 'accomodation-detail/:id', component: AccomodationDetailComponent},
+
 ];
 
 @NgModule({
