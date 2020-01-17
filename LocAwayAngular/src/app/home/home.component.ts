@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Accomodation} from "../Model/Accomodation";
 import {AccomodationHttpService} from "../accomodation/accomodation-http.service";
+import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
 
 
 @Component({
@@ -10,10 +11,11 @@ import {AccomodationHttpService} from "../accomodation/accomodation-http.service
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-
+  constructor(private accomodationService: AccomodationHttpService) {
   }
-
+  list(){
+    return this.accomodationService.findAll();
+  }
   ngOnInit() {
   }
 
