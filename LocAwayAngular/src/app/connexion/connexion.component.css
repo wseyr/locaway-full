@@ -1,10 +1,14 @@
 .col-8 {
   border-left: 1px solid #333333;
-
 }
-
 .form-control{
   margin: 0 .5em 0 .5em;
   justify-content: left;
 }
-
+button{
+  margin: 0 .5em 0 .5em;
+}
+.negatif{
+  background-color: red;
+  transition: all 1s ease;
+}

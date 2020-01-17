@@ -19,7 +19,7 @@ export class User {
   public accomodations: Array<Accomodation>;
 
 
-  constructor(id: number, version: number, isAdmin: boolean, email: string, password: string, phoneNumber: string, firstName: string, lastName: string, reviews: Array<Review>, bookmarks: Array<Bookmark>, bookings: Array<Booking>, accomodations: Array<Accomodation>) {
+  constructor(id?: number, version?: number, isAdmin?: boolean, email?: string, password?: string, phoneNumber?: string, firstName?: string, lastName?: string, reviews?: Array<Review>, bookmarks?: Array<Bookmark>, bookings?: Array<Booking>, accomodations?: Array<Accomodation>) {
     this.id = id;
     this.version = version;
     this.isAdmin = isAdmin;
