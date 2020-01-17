@@ -4,6 +4,7 @@ import {AccomodationComponent} from './accomodation/accomodation.component';
 import {AccomodationDetailComponent} from './accomodation-detail/accomodation-detail.component';
 import {ConnexionComponent} from './connexion/connexion.component';
 import {HomeComponent} from "./home/home.component";
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'connexion', component: ConnexionComponent},
   {path: 'accomodation-detail/:id', component: AccomodationDetailComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'dashboard', component: DashboardComponent},
 ];
 
 @NgModule({
