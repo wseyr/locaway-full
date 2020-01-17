@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Accomodation} from '../Model/Accomodation';
 import {AccomodationHttpService} from './accomodation-http.service';
 
@@ -8,9 +8,14 @@ import {AccomodationHttpService} from './accomodation-http.service';
   styleUrls: ['./accomodation.component.css']
 })
 export class AccomodationComponent implements OnInit {
-  curentAccomodation: Accomodation=null;
+  @Input() accomodation_id: number = 5;
+  accomodation: Accomodation = null;
 
-  constructor(private accomodationService: AccomodationHttpService) { }
+  constructor(private accomodationService: AccomodationHttpService) {
+    this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
+      this.accomodation = resp;
+    });
+  }
 
   ngOnInit() {
   }
