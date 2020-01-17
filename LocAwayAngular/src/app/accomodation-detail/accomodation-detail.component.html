@@ -1,22 +1,66 @@
 <div class="container">
-  <div class="row">
-    <div class="col" style="background-color: aquamarine">
-      <h1>Chalet des champs</h1>
-      <img src="https://odis.homeaway.com/odis/listing/9dfcf337-7086-4627-883f-2615eb5d6297.f6.jpg">
-      <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
-        Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
+  <div class="row mt-3">
+    <div class="col-8">
+      <div class="row">
+        <h1>{{accomodation?.name}}</h1>
+        <ngb-carousel *ngIf="images" class="text-lg-center">
+          <ng-template ngbSlide>
+            <div>
+              <img [src]="images[0]" alt="Random first slide" class="img-fluid">
+            </div>
+            <div class="carousel-caption">
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div>
+              <img [src]="images[1]" alt="Random second slide" class="img-fluid">
+            </div>
+            <div class="carousel-caption">
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div >
+              <img [src]="images[2]" alt="Random third slide" class="img-fluid">
+            </div>
+            <div class="carousel-caption">
+              <h3>Third slide label</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+      <p>{{accomodation?.description}}</p>
 
+      <div class="row">
+        <div class="col">
+          <p *ngFor="let option of accomodation?.options">{{option.name}}</p>
+        </div>
+        <div class="col">
+          <p *ngFor="let poi of accomodation?.pointOfInterests">{{poi.name}}</p>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      2 of 2
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      1 of 3
-    </div>
-    <div class="col">
-      2 of 3
+
+    <div class="col-4">
+      <div class="row">
+        <div class="ml-3">
+          <h2>Disponibilités</h2>
+          <ngb-datepicker [markDisabled]="isDisabled"></ngb-datepicker>
+        </div>
+      </div>
+      <div class="row">
+        <div class="ml-3">
+          <h2>Tarifs de base</h2>
+          <p>Par jour: {{accomodation.defaultBasePrice | currency:'EUR'}} - Supplément par personne: {{accomodation.defaultPersonPrice | currency:'EUR'}}</p>
+          <h2>Tarifs spéciaux</h2>
+          <p *ngFor="let cpd of accomodation?.customPriceDays">{{cpd.date | date}} - {{cpd.basePrice | currency:'EUR'}} - {{cpd.personPrice | currency:'EUR'}}</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
