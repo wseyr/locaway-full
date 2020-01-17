@@ -11,8 +11,10 @@ export class ConnexionComponent implements OnInit {
   currentUser: User = new User();
   confirmPassword: string;
   verif: boolean = true;
-  coUser : User= new User();
-  connected
+  coUser : User = new User();
+
+  veriftos: boolean = true;
+  termofservice: boolean = false;
 
   constructor(private userService: UserHttpServiceService) { }
 
@@ -20,13 +22,18 @@ export class ConnexionComponent implements OnInit {
 
 
   save(){
-    this.userService.save(this.currentUser);
-    // if(this.confirmPassword==this.currentUser.password) {
-    //   this.userService.save(this.currentUser);
-    //   this.cancel();
-    // }else {
-    //   this.verif = false;
-    // }
+
+    this.verif =true;
+    this.veriftos = true;
+    if(this.confirmPassword==this.currentUser.password && this.termofservice) {
+      this.userService.save(this.currentUser);
+      this.cancel();
+    }else if(this.confirmPassword!=this.currentUser.password) {
+      this.verif = false;
+    }else if (!this.termofservice){
+      this.veriftos = false;
+    }
+
 
   }
   cancel(){
