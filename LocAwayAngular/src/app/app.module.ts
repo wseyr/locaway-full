@@ -14,13 +14,19 @@ import {AccomodationHttpService} from "./accomodation/accomodation-http.service"
 import { AccomodationDetailComponent } from './accomodation-detail/accomodation-detail.component';
 import {UserHttpServiceService} from './user/user-http-service.service';
 import {BookmarkHttpService} from './bookmark/bookmark-http-service.service';
+import {BookingHttpService} from './booking/booking-http-service.service';
+import {ContactHttpService} from './contact/contact-http-service.service';
+import { ConnexionComponent } from './connexion/connexion.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AccomodationComponent,
-    AccomodationDetailComponent
+    AccomodationDetailComponent,
+    ConnexionComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import {BookmarkHttpService} from './bookmark/bookmark-http-service.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService],
+  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, ContactHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
