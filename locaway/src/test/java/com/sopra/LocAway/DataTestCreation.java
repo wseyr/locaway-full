@@ -98,7 +98,14 @@ class DataTestCreation {
 		a.setCountry("France");
 		a.setLatitudeDeg(43.595282f);
 		a.setLongitudeDeg(1.429806f);
-		a.setDescription("quatres murs et un plafond");
+		
+		String sautDeLigne = System.getProperty("line.separator");
+		String description1="Quatres murs et un plafond. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.";
+		String description2="Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.";
+		String descriptionTotale=description1 + sautDeLigne + sautDeLigne + description2;
+		System.out.println(descriptionTotale);
+		
+		a.setDescription(descriptionTotale);
 		a.setNumberOfRooms(12);
 		a.setMaxPersons(30);
 		a.setDeleted(false);
@@ -107,7 +114,7 @@ class DataTestCreation {
 		a.setDefaultPersonPrice(100f);
 
 		Accomodation a1 = new Accomodation();
-		a1.setName("villa des coeurs brises");
+		a1.setName("Villa des coeurs brises");
 		a1.setNumber("69");
 		a1.setStreet("boulevard des airs");
 		a1.setCity("Toulouse");
@@ -124,7 +131,7 @@ class DataTestCreation {
 		a1.setDefaultPersonPrice(31f);
 
 		Accomodation a2 = new Accomodation();
-		a2.setName("mysterieux appartement");
+		a2.setName("Mysterieux appartement");
 		a2.setNumber("221B");
 		a2.setStreet("Baker Street");
 		a2.setCity("Londres");
@@ -132,7 +139,7 @@ class DataTestCreation {
 		a2.setCountry("La perfide albion");
 		a2.setLatitudeDeg(4.5f);
 		a2.setLongitudeDeg(1.5f);
-		a2.setDescription("une desciption a remplir");
+		a2.setDescription("une desciption a remplir. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.");
 		a2.setNumberOfRooms(2);
 		a2.setMaxPersons(8);
 		a2.setDeleted(false);

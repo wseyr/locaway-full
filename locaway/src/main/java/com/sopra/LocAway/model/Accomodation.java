@@ -2,6 +2,7 @@ package com.sopra.LocAway.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -40,6 +41,7 @@ public class Accomodation {
 	@JsonView(Views.ViewCommon.class)
 	private Float longitudeDeg;
 	@JsonView(Views.ViewCommon.class)
+	@Column(length=10000)
 	private String description;
 	@JsonView(Views.ViewCommon.class)
 	private Integer numberOfRooms;
