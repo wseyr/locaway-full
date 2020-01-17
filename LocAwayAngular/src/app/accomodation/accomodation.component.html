@@ -1,1 +1,14 @@
-<p>accomodation works!</p>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="https://idn-locksmith.info/wp-content/uploads/2019/12/003-2-1200x800-1.jpg" class="card-img" style="width: 100%">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><a class="stretched-link" [routerLink]="['/accomodation-detail', accomodation_id]" routerLinkActive="active">{{accomodation?.name}}</a></h5>
+        <p class="card-text">{{accomodation?.description}}</p>
+        <p class="card-text"><small class="text-muted">{{accomodation?.city}} ({{accomodation?.postcode}}), {{accomodation?.country}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
