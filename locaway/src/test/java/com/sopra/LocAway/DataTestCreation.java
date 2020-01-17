@@ -66,7 +66,7 @@ class DataTestCreation {
 		u.setEmail("gmail@gmail.com");
 		u.setPassword("motdepasse");
 		u.setPhoneNumber("0560606060");
-		u.setFirstName("Steve");
+		u.setFirstName("Steven");
 		u.setLastName("Jobs");
 
 		User u1 = new User();
@@ -85,7 +85,7 @@ class DataTestCreation {
 		u2.setFirstName("Jhon");
 		u2.setLastName("Smith");
 
-		u = userRepo.save(u);
+		u= userRepo.save(u);
 		u1 = userRepo.save(u1);
 		u2 = userRepo.save(u2);
 
@@ -98,13 +98,11 @@ class DataTestCreation {
 		a.setCountry("France");
 		a.setLatitudeDeg(43.595282f);
 		a.setLongitudeDeg(1.429806f);
-		
 		String sautDeLigne = System.getProperty("line.separator");
 		String description1="Quatres murs et un plafond. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.";
 		String description2="Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.";
 		String descriptionTotale=description1 + sautDeLigne + sautDeLigne + description2;
 		System.out.println(descriptionTotale);
-		
 		a.setDescription(descriptionTotale);
 		a.setNumberOfRooms(12);
 		a.setMaxPersons(30);
@@ -112,6 +110,7 @@ class DataTestCreation {
 		a.setAccomodationType(EAccomodationType.APPARTMENT);
 		a.setDefaultBasePrice(650f);
 		a.setDefaultPersonPrice(100f);
+		a.setUser(u);
 
 		Accomodation a1 = new Accomodation();
 		a1.setName("Villa des coeurs brises");
@@ -129,6 +128,7 @@ class DataTestCreation {
 		a1.setAccomodationType(EAccomodationType.GUESTHOUSE);
 		a1.setDefaultBasePrice(222f);
 		a1.setDefaultPersonPrice(31f);
+		a1.setUser(u1);
 
 		Accomodation a2 = new Accomodation();
 		a2.setName("Mysterieux appartement");
@@ -146,10 +146,70 @@ class DataTestCreation {
 		a2.setAccomodationType(EAccomodationType.GUESTHOUSE);
 		a2.setDefaultBasePrice(1500f);
 		a2.setDefaultPersonPrice(310f);
+		a2.setUser(u2);
+		
+		
+			
+		Accomodation a3 = new Accomodation();
+		a3.setName("Perdu dans la fôret");
+		a3.setNumber("1");
+		a3.setStreet("rue du chêne");
+		a3.setCity("Camaran");
+		a3.setPostcode("31840");
+		a3.setCountry("France");
+		a3.setLatitudeDeg(43.793282f);
+		a3.setLongitudeDeg(1.429806f);
+		a3.setDescription(descriptionTotale);
+		a3.setNumberOfRooms(3);
+		a3.setMaxPersons(12);
+		a3.setDeleted(false);
+		a3.setAccomodationType(EAccomodationType.APPARTMENT);
+		a3.setDefaultBasePrice(20f);
+		a3.setDefaultPersonPrice(10f);
+		a3.setUser(u);
+		
+		Accomodation a4 = new Accomodation();
+		a4.setName("Sutdio à la campagne");
+		a4.setNumber("27");
+		a4.setStreet("Boulevard du vide");
+		a4.setCity("Aas");
+		a4.setPostcode("64971");
+		a4.setCountry("France");
+		a4.setLatitudeDeg(43.595282f);
+		a4.setLongitudeDeg(1.429806f);
+		a4.setDescription(descriptionTotale);
+		a4.setNumberOfRooms(1);
+		a4.setMaxPersons(2);
+		a4.setDeleted(false);
+		a4.setAccomodationType(EAccomodationType.APPARTMENT);
+		a4.setDefaultBasePrice(650f);
+		a4.setDefaultPersonPrice(100f);
+		a4.setUser(u);
+		
+		Accomodation a5 = new Accomodation();
+		a5.setName("Yourte ");
+		a5.setNumber("25");
+		a5.setStreet("allée de cherbourg");
+		a5.setCity("Toulouse");
+		a5.setPostcode("31000");
+		a5.setCountry("France");
+		a5.setLatitudeDeg(43.595282f);
+		a5.setLongitudeDeg(1.429806f);
+		a5.setDescription(descriptionTotale);
+		a5.setNumberOfRooms(12);
+		a5.setMaxPersons(30);
+		a5.setDeleted(false);
+		a5.setAccomodationType(EAccomodationType.ALTERNATIVE);
+		a5.setDefaultBasePrice(12f);
+		a5.setDefaultPersonPrice(1.50f);
+		a5.setUser(u);
 
 		a = accomodationRepo.save(a);
 		a1 = accomodationRepo.save(a1);
 		a2 = accomodationRepo.save(a2);
+		a3 = accomodationRepo.save(a3);
+		a4 = accomodationRepo.save(a4);
+		a5 = accomodationRepo.save(a5);
 
 		Option o0 = new Option();
 		o0.setIsRule(false);
@@ -251,42 +311,61 @@ class DataTestCreation {
 		Photo p0 = new Photo();
 		p0.setAccomodation(a);
 		p0.setMainPhoto(true);
-		p0.setPath("/chemin/vers/photoPrincipaleResidence.jpg");
+		p0.setPath("https://odis.homeaway.com/odis/listing/9dfcf337-7086-4627-883f-2615eb5d6297.f6.jpg");
 		Photo p1 = new Photo();
 		p1.setAccomodation(a);
 		p1.setMainPhoto(false);
-		p1.setPath("/chemin/vers/photoPieceseResidence.jpg");
+		p1.setPath("https://q-cf.bstatic.com/images/hotel/max1024x768/121/121148855.jpg");
 		Photo p2 = new Photo();
 		p2.setAccomodation(a);
 		p2.setMainPhoto(false);
-		p2.setPath("/chemin/vers/photoCouloirsResidence.jpg");
+		p2.setPath("https://www.wilderkaiser.info/feratel/hotel/large/ellmau-appartment-nina-hanna3.jpg");
 
 		Photo p3 = new Photo();
 		p3.setAccomodation(a1);
 		p3.setMainPhoto(true);
-		p3.setPath("/chemin/vers/photoPrincipaleVilla.jpg");
+		p3.setPath("https://r-cf.bstatic.com/images/hotel/max1024x768/459/45999850.jpg");
 		Photo p4 = new Photo();
 		p4.setAccomodation(a1);
 		p4.setMainPhoto(false);
-		p4.setPath("/chemin/vers/photoPieceseVilla.png");
+		p4.setPath("https://q-cf.bstatic.com/images/hotel/max1024x768/960/96080127.jpg");
 		Photo p5 = new Photo();
 		p5.setAccomodation(a1);
 		p5.setMainPhoto(false);
-		p5.setPath("/chemin/vers/photoCouloirsVilla.jpg");
-
+		p5.setPath("https://www.sintbernardus.be/images/photolib/1000x500c/1163/guesthouse-brouwershuis.jpg");
 		Photo p6 = new Photo();
 		p6.setAccomodation(a1);
 		p6.setMainPhoto(true);
-		p6.setPath("/chemin/vers/photoPrincipaleAppart.png");
+		p6.setPath("https://q-xx.bstatic.com/images/hotel/max1024x768/183/183776257.jpg");
 		Photo p7 = new Photo();
 		p7.setAccomodation(a1);
 		p7.setMainPhoto(false);
-		p7.setPath("/chemin/vers/photoPieceseAppart.png");
+		p7.setPath("https://www.manusurf.com/wp-content/uploads/2017/06/hebergement-surfcamp-guesthouse-le-bernard-936x668.jpg");
 		Photo p8 = new Photo();
 		p8.setAccomodation(a1);
 		p8.setMainPhoto(false);
-		p8.setPath("/chemin/vers/photoCouloirsAppart.jpg");
+		p8.setPath("https://foto.hrsstatic.com/fotos/0/3/1090/700/80/000000/http%3A%2F%2Ffoto-origin.hrsstatic.com%2Ffoto%2F5%2F8%2F1%2F6%2F581683%2F581683_su_9255717.jpg/1ndI7Kf74D1Il1VvYrQoOw%3D%3D/3734,2832/6/Kalipeh_SAP_Guesthouse-Walldorf-Suite-1-581683.jpg");
 
+		Photo p9 = new Photo();
+		p9.setAccomodation(a2);
+		p9.setMainPhoto(true);
+		p9.setPath("https://q-cf.bstatic.com/images/hotel/max1024x768/117/117288599.jpg");
+		
+		Photo p10 = new Photo();
+		p10.setAccomodation(a3);
+		p10.setMainPhoto(true);
+		p10.setPath("https://cdngeneral.rentcafe.com/dmslivecafe/3/654967/TheFLAT_Model_Overall_WEB(1).jpg?crop=(0,0,300,200)&cropxunits=300&cropyunits=200&quality=85&scale=both&");
+		
+		Photo p11 = new Photo();
+		p11.setAccomodation(a4);
+		p11.setMainPhoto(true);
+		p11.setPath("http://www.foyers-bef.fr/images/realizations/BeF-Flat-6_m.jpg");
+		
+		Photo p12 = new Photo();
+		p12.setAccomodation(a5);
+		p12.setMainPhoto(true);
+		p12.setPath("https://consultation.avocat.fr/userfiles/articles/38399-20190530-145249-yourte.jpg");
+		
 		p0 = photoRepo.save(p0);
 		p1 = photoRepo.save(p1);
 		p2 = photoRepo.save(p2);
@@ -296,14 +375,30 @@ class DataTestCreation {
 		p6 = photoRepo.save(p6);
 		p7 = photoRepo.save(p7);
 		p8 = photoRepo.save(p8);
+		p9 = photoRepo.save(p9);
+		p10 = photoRepo.save(p10);
+		p11 = photoRepo.save(p11);
+		p12 = photoRepo.save(p12);
 
 		
-		CustomPriceDay cpd = new CustomPriceDay();
-		cpd.setBasePrice(89.99f);
-		cpd.setPersonPrice(44.49f);
-		cpd.setAccomodation(a);
-		Date cpdDate = new GregorianCalendar(2020, Calendar.MARCH, 2).getTime();
-		cpd.setDate(cpdDate);
+		CustomPriceDay cpda = new CustomPriceDay();
+		cpda.setBasePrice(750.99f);
+		cpda.setPersonPrice(120f);
+		cpda.setAccomodation(a);
+		Date cpdaDate = new GregorianCalendar(2020, Calendar.MARCH, 2).getTime();
+		cpda.setDate(cpdaDate);
+		CustomPriceDay cpd1a = new CustomPriceDay();
+		cpd1a.setBasePrice(750.99f);
+		cpd1a.setPersonPrice(120f);
+		cpd1a.setAccomodation(a);
+		Date cpd1aDate = new GregorianCalendar(2020, Calendar.MARCH, 3).getTime();
+		cpd1a.setDate(cpd1aDate);
+		CustomPriceDay cpd2a = new CustomPriceDay();
+		cpd2a.setBasePrice(750.99f);
+		cpd2a.setPersonPrice(120f);
+		cpd2a.setAccomodation(a);
+		Date cpd2aDate = new GregorianCalendar(2020, Calendar.MARCH, 4).getTime();
+		cpd2a.setDate(cpd2aDate);
 
 		CustomPriceDay cpd1 = new CustomPriceDay();
 		cpd1.setBasePrice(89.99f);
@@ -319,7 +414,9 @@ class DataTestCreation {
 		Date cpdDate2 = new GregorianCalendar(2020, Calendar.FEBRUARY, 6).getTime();
 		cpd2.setDate(cpdDate2);
 
-		cpd = customPriceDayRepo.save(cpd);
+		cpda = customPriceDayRepo.save(cpda);
+		cpd1a = customPriceDayRepo.save(cpd1a);
+		cpd2a = customPriceDayRepo.save(cpd2a);
 		cpd1 = customPriceDayRepo.save(cpd1);
 		cpd2 = customPriceDayRepo.save(cpd2);
 		
@@ -335,9 +432,19 @@ class DataTestCreation {
 		bkm2.setAccomodation(a2);
 		bkm2.setUser(u);
 		
+		Bookmark bkm3 =new Bookmark();
+		bkm2.setAccomodation(a);
+		bkm2.setUser(u2);
+		
+		Bookmark bkm4 =new Bookmark();
+		bkm2.setAccomodation(a2);
+		bkm2.setUser(u2);
+		
 		bkm = bookmarkRepo.save(bkm);
 		bkm1 = bookmarkRepo.save(bkm1);
 		bkm2 = bookmarkRepo.save(bkm2);
+		bkm3 = bookmarkRepo.save(bkm3);
+		bkm4 = bookmarkRepo.save(bkm4);
 		
 		Review r = new Review();
 		r.setGrade(2);
@@ -366,18 +473,21 @@ class DataTestCreation {
 		b.setCancelled(false);
 		b.setAccomodation(a);
 		b.setUser(u);
+		b.setTotalPrice(512.22f);
 		
 		Booking b1 = new Booking();
 		b1.setValidated(false);
 		b1.setCancelled(false);
 		b1.setAccomodation(a1);
 		b1.setUser(u1);
+		b1.setTotalPrice(128f);
 
 		Booking b2 = new Booking();
 		b2.setValidated(false);
 		b2.setCancelled(false);
 		b2.setAccomodation(a2);
 		b2.setUser(u2);
+		b2.setTotalPrice(4875f);
 
 		b = bookingRepo.save(b);
 		b1 = bookingRepo.save(b1);
@@ -386,16 +496,22 @@ class DataTestCreation {
 		Contact c0 = new Contact();
 		c0.setEmail("amidea@mail.fr");
 		c0.setBooking(b);
+		
 		Contact c1 = new Contact();
 		c1.setEmail("potedea1@mail.fr");
 		c1.setBooking(b1);
+		
 		Contact c2 = new Contact();
 		c2.setEmail("familledea2@mail.fr");
 		c2.setBooking(b2);
+		Contact c3 = new Contact();
+		c3.setEmail("smaladea2@mail.fr");
+		c3.setBooking(b2);
 		
 		c0 = contactRepo.save(c0);
 		c1 = contactRepo.save(c1);
 		c2 = contactRepo.save(c2);
+		c3 = contactRepo.save(c3);
 		
 		BookedDay bd = new BookedDay();
 		bd.setBooking(b);
@@ -408,13 +524,19 @@ class DataTestCreation {
 		bd1.setDate(bdDate1);
 		
 		BookedDay bd2 = new BookedDay();
-		bd2.setBooking(b2);
+		bd2.setBooking(b1);
 		Date bdDate2 = new GregorianCalendar(2020, Calendar.FEBRUARY, 16).getTime();
 		bd2.setDate(bdDate2);
+		
+		BookedDay bd3 = new BookedDay();
+		bd3.setBooking(b1);
+		Date bdDate3 = new GregorianCalendar(2020, Calendar.FEBRUARY, 17).getTime();
+		bd3.setDate(bdDate3);
 		
 		bd = bookedDayRepo.save(bd);
 		bd1 = bookedDayRepo.save(bd1);
 		bd2 = bookedDayRepo.save(bd2);
+		bd3 = bookedDayRepo.save(bd3);
 	}
 
 }
