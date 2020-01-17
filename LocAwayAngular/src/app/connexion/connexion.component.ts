@@ -11,7 +11,8 @@ export class ConnexionComponent implements OnInit {
   currentUser: User = new User();
   confirmPassword: string;
   verif: boolean = true;
-
+  veriftos: boolean = true;
+  termofservice: boolean = false;
   constructor(private userService: UserHttpServiceService) { }
 
   ngOnInit() {}
@@ -19,11 +20,14 @@ export class ConnexionComponent implements OnInit {
 
   save(){
     this.verif =true;
-    if(this.confirmPassword==this.currentUser.password) {
+    this.veriftos = true;
+    if(this.confirmPassword==this.currentUser.password && this.termofservice) {
       this.userService.save(this.currentUser);
       this.cancel();
-    }else {
+    }else if(this.confirmPassword!=this.currentUser.password) {
       this.verif = false;
+    }else if (!this.termofservice){
+      this.veriftos = false;
     }
 
   }
