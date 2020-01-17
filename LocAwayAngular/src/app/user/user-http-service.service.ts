@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class UserHttpServiceService {
   users: Array<User>;
+  connected : User;
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
@@ -43,6 +44,14 @@ export class UserHttpServiceService {
     this.http.delete<User>(this.appConfig.backEnd + 'user' +id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
+  }
+
+  connect(user : User) {
+    console.log("Je suis dans le service");
+    console.log(user);
+    localStorage.setItem("this.connected", JSON.stringify(this.connected));
+
+
   }
 }
 

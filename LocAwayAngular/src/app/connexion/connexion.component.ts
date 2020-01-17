@@ -11,6 +11,8 @@ export class ConnexionComponent implements OnInit {
   currentUser: User = new User();
   confirmPassword: string;
   verif: boolean = true;
+  coUser : User= new User();
+  connected
 
   constructor(private userService: UserHttpServiceService) { }
 
@@ -29,5 +31,11 @@ export class ConnexionComponent implements OnInit {
   }
   cancel(){
     this.currentUser = new User();
+  }
+
+  connect() {
+    console.log("je suis dans connexion component");
+    console.log(this.coUser);
+    this.userService.connect(this.coUser);
   }
 }
