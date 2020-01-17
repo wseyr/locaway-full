@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="container">
+  <div>
     <h3>Rechercher une location</h3>
   </div>
   <form>
@@ -91,7 +91,10 @@
       </div>
     </div>
   </form>
-  <div class="container">
-  <accomodation accomodation_id="53" ></accomodation>
+  <div *ngFor="let accomodation of list()">
+    <div>
+      <accomodation [accomodation_id]="accomodation.id"></accomodation>
+    </div>
   </div>
+
 </div>
