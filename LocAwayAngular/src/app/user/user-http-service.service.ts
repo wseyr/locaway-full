@@ -31,8 +31,10 @@ export class UserHttpServiceService {
 
   save(user: User) {
     if(!user.id) {
+      console.log(user);
       this.http.post<User>(this.appConfig.backEnd + 'user', user).subscribe(resp => {
         this.load();
+
       }, err => console.log(err));
     }
   }

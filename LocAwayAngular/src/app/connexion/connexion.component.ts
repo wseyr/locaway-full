@@ -28,6 +28,6 @@ export class ConnexionComponent implements OnInit {
 
   }
   cancel(){
-    this.currentUser = null;
+    this.currentUser = new User();
   }
 }
