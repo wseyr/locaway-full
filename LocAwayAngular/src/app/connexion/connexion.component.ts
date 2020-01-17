@@ -18,13 +18,13 @@ export class ConnexionComponent implements OnInit {
 
 
   save(){
-    this.verif =true;
-    if(this.confirmPassword==this.currentUser.password) {
-      this.userService.save(this.currentUser);
-      this.cancel();
-    }else {
-      this.verif = false;
-    }
+    this.userService.save(this.currentUser);
+    // if(this.confirmPassword==this.currentUser.password) {
+    //   this.userService.save(this.currentUser);
+    //   this.cancel();
+    // }else {
+    //   this.verif = false;
+    // }
 
   }
   cancel(){

@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 })
 export class AccomodationHttpService {
   accomodations: Array<Accomodation>;
+  leanAccomodations: Array<Accomodation>;
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
