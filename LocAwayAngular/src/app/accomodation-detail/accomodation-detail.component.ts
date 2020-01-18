@@ -13,9 +13,6 @@ export class AccomodationDetailComponent implements OnInit {
   accomodation_id: number;
   accomodation: Accomodation = null;
 
-  //TODO: prendre images de la BDD
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
   //TODO: afficher les dates reservées dans le calendrier
   //calendrier (en cours)
   bookedDaysArray : Array<NgbDate> = new Array<NgbDate>();

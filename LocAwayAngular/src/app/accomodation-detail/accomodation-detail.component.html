@@ -3,20 +3,19 @@
     <div class="col-8">
       <div class="row">
         <h1>{{accomodation?.name}}</h1>
-        <ngb-carousel *ngIf="images" class="text-lg-center">
+      </div>
+      <div class="row" style="height: 500px;">
+        <ngb-carousel *ngIf="accomodation?.photos" class="text-lg-center w-100 h-100 d-flex" data-interval="false" style="align-items: center;overflow: hidden;background-color: black;">
           <ng-template ngbSlide *ngFor="let image of accomodation?.photos">
             <div>
-              <img [src]="image.path" alt="Random first slide" class="img-fluid">
-            </div>
-            <div class="carousel-caption">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <img [src]="image.path" class="mw-100">
             </div>
           </ng-template>
         </ngb-carousel>
       </div>
-      <p>{{accomodation?.description}}</p>
-
+      <div class="row">
+        <p>{{accomodation?.description}}</p>
+      </div>
       <div class="row">
         <div class="col">
           <p *ngFor="let option of accomodation?.options">{{option.name}}</p>
@@ -37,7 +36,7 @@
       <div class="row">
         <div class="ml-3">
           <h2>Tarifs de base</h2>
-          <p>Par jour: {{accomodation.defaultBasePrice | currency:'EUR'}} - Supplément par personne: {{accomodation.defaultPersonPrice | currency:'EUR'}}</p>
+          <p>Par jour: {{accomodation?.defaultBasePrice | currency:'EUR'}} - Supplément par personne: {{accomodation?.defaultPersonPrice | currency:'EUR'}}</p>
           <h2>Tarifs spéciaux</h2>
           <p *ngFor="let cpd of accomodation?.customPriceDays">{{cpd.date | date}} - {{cpd.basePrice | currency:'EUR'}} - {{cpd.personPrice | currency:'EUR'}}</p>
         </div>
@@ -46,4 +45,3 @@
     </div>
   </div>
 </div>
-
