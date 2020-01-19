@@ -13,11 +13,19 @@ export class AccomodationDetailComponent implements OnInit {
   accomodation_id: number;
   accomodation: Accomodation = null;
 
-  //TODO: afficher les dates reservées dans le calendrier
-  //calendrier (en cours)
-  bookedDaysArray : Array<NgbDate> = new Array<NgbDate>();
+
+  //calendrier
+  //TODO: les jours réservés ne s'affichent qu'après avoir changé de mois
+  bookedDates : Array<NgbDate> = new Array<NgbDate>();
   isDisabled = (date: NgbDate, current: {month: number}) => {
-    date === this.bookedDaysArray[0];
+    let result: boolean = false;
+    this.bookedDates.forEach( (bookedDate) => {
+      console.log(bookedDate);
+      if(date.equals(bookedDate)){
+         result = true;
+       }
+    });
+    return result;
   };
 
 
@@ -27,9 +35,17 @@ export class AccomodationDetailComponent implements OnInit {
       this.accomodation_id = params['id'];
       this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
         this.accomodation = resp;
-        console.log(resp);
+
+        this.accomodation.bookings.forEach( (booking) => {
+          booking.bookedDays.forEach( (bookedDay) => {
+            //le JSON retourne un string qu'il faut convertir en date
+            let date = new Date(bookedDay.date);
+            this.bookedDates.push(new NgbDate(date.getFullYear(), date.getMonth()+1, date.getDate()));
+          });
+        });
       });
     });
+
   }
 
   ngOnInit() {

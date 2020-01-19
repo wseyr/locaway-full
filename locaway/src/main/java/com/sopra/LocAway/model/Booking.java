@@ -34,7 +34,7 @@ public class Booking {
 	@JsonView(Views.ViewBooking.class)
 	Accomodation accomodation;
 	@OneToMany(mappedBy = "booking")
-	@JsonView(Views.ViewBooking.class)
+	@JsonView(Views.ViewCommon.class)
 	List<BookedDay> bookedDays;
 	@OneToMany(mappedBy = "booking")
 	@JsonView(Views.ViewBooking.class)
