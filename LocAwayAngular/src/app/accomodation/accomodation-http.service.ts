@@ -49,4 +49,12 @@ export class AccomodationHttpService {
   }
 
 
+  findByCity(city: string): Observable<Array<Accomodation>> {
+    return this.http.get<Array<Accomodation>>(this.appConfig.backEnd + 'accomodation/search/' + city);
+  }
+
+
+
+
+
 }
