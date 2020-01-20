@@ -7,7 +7,7 @@
     <div class="form-row">
       <div class="form-group col-md-3">
         <label class="col form label"></label>
-        <input type="text" class="form-control" placeholder="Destination">
+        <input name="name" [(ngModel)]="city" (change)="listByCity(city)" type="text" class="form-control" placeholder="Destination">
       </div>
 
       <div class="form-group col-md-1">
@@ -91,7 +91,7 @@
       </div>
     </div>
   </form>
-  <div *ngFor="let accomodation of list()">
+  <div *ngFor="let accomodation of accomodations" >
     <div class="row">
       <div>
           <accomodation [accomodation_id]="accomodation.id"></accomodation>

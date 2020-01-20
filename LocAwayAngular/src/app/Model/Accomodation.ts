@@ -44,7 +44,7 @@ export class Accomodation {
   public user: User;
 
 
-  constructor(id: number, version: number, name: string, number: string, street: string, city: string, postcode: string, country: string, latitudeDeg: number, longitudeDeg: number, description: string, numberOfRooms: number, maxPersons: number, isDeleted: boolean, accomodationType: string, defaultBasePrice: number, defaultPersonPrice: number, customPriceDays: Array<CustomPriceDay>, bookmarks: Array<Bookmark>, reviews: Array<Review>, photos: Array<Photo>, bookings: Array<Booking>, options: Array<Option>, pointOfInterests: Array<PointOfInterest>, user: User) {
+  constructor(id?: number, version?: number, name?: string, number?: string, street?: string, city?: string, postcode?: string, country?: string, latitudeDeg?: number, longitudeDeg?: number, description?: string, numberOfRooms?: number, maxPersons?: number, isDeleted?: boolean, accomodationType?: string, defaultBasePrice?: number, defaultPersonPrice?: number, customPriceDays?: Array<CustomPriceDay>, bookmarks?: Array<Bookmark>, reviews?: Array<Review>, photos?: Array<Photo>, bookings?: Array<Booking>, options?: Array<Option>, pointOfInterests?: Array<PointOfInterest>, user?: User) {
     this.id = id;
     this.version = version;
     this.name = name;
