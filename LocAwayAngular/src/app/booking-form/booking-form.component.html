@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mt-3">
+    <h1>Réservation</h1>
+    <div>
+      <a class="btn btn-info ml-3 mt-2" [routerLink]="['/accomodation-detail', accomodation_id]" routerLinkActive="active">Retour vers l'annonce</a>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="row">
+
+        <ngb-datepicker #dp *ngIf="asyncDataLoaded" (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"  [markDisabled]="isDisabled" outsideDays="hidden">
+        </ngb-datepicker>
+
+        <ng-template #t let-date let-focused="focused" let-disabled="disabled">
+          <span class="custom-day"
+                [class.text-muted]="disabled"
+                [class.focused]="focused"
+                [class.range]="isRange(date)"
+                [class.faded]="isHovered(date) || isInside(date)"
+                (mouseenter)="hoveredDate = date"
+                (mouseleave)="hoveredDate = null">
+            {{ date.day }}
+          </span>
+        </ng-template>
+      </div>
+      <div class="row mt-3">
+        <p>{{ngbDateToDate(fromDate) | date}}, {{ngbDateToDate(toDate) | date}}</p>
+        <pre>{{fromDate | json}} {{toDate | json}}</pre>
+      </div>
+      <div class="row mt-3">
+        <label for="nbOfPersons">Nombre de personnes</label>
+        <input id="nbOfPersons" type="number"/>
+      </div>
+    </div>
+    <div class="col">
+      <p>Col 2</p>
+      <p>Prix total: {{totalBookingPrice() | currency:'EUR'}}</p>
+      <p>{{datesInBooking() | json}}</p>
+      <div class="row mt-3">
+        <button class="btn btn-primary ml-3">Valider la réservation</button>
+      </div>
+    </div>
+  </div>
+</div>

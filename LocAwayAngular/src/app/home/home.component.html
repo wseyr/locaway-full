@@ -3,101 +3,106 @@
   <div>
     <h3>Rechercher une location</h3>
   </div>
-  <form>
-    <div class="form-row">
-      <div class="form-group col-md-3">
-        <label class="col form label"></label>
-        <input type="text" class="form-control" placeholder="Destination">
-      </div>
 
-      <div class="form-group col-md-1">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dates
+
+  <div class="form-row">
+  <div class="form-group col-3">
+    <label class="col form label"></label>
+    <input name="name" [(ngModel)]="city" (change)="listByCity(city)" type="text" class="form-control" placeholder="Destination">
+  </div>
+  <form class="form-inline">
+    <div class="form-group hidden-col-1">
+      <div class="input-group">
+        <input name="datepicker"
+               class="form-control"
+               ngbDatepicker
+               #datepicker="ngbDatepicker"
+               [autoClose]="'outside'"
+               (dateSelect)="onDateSelection($event)"
+               [displayMonths]="1"
+               [dayTemplate]="t"
+               outsideDays="hidden"
+               [startDate]="fromDate"
+               placeholder="Choisir les dates">
+        <ng-template #t let-date let-focused="focused">
+            <span class="custom-day"
+                  [class.focused]="focused"
+                  [class.range]="isRange(date)"
+                  [class.faded]="isHovered(date) || isInside(date)"
+                  (mouseenter)="hoveredDate = date"
+                  (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+        </ng-template>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+            <fa name="calendar"></fa>
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="form-group col">
-              <label class="col form label">Du</label>
-              <input type="date" class="form-control">
-            </div>
-            <div class="form-group col">
-              <label class="col form label">Au</label>
-              <input type="date" class="form-control">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-md-2">
-        <label class="col form label">Personnes</label>
-        <input type="number" class="form-control">
-      </div>
-
-      <div class="form-group col-md-2">
-        <label class="col form label">Chambres</label>
-        <input type="number" class="form-control">
-      </div>
-      <div class="form-group col-md-2">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Type de bien
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="form-group col">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <label class="form-check-label" >
-                  Maison
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <label class="form-check-label" >
-                  Appartement
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <label class="form-check-label" >
-                  Chambre d'hôte
-                </label>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="form-group col-md-2">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Règlement intérieur
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="form-group col">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <label class="form-check-label" >
-                  Animaux
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="">
-                <label class="form-check-label" >
-                  Fumeurs
-                </label>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </form>
-  <div *ngFor="let accomodation of list()">
-    <div class="row">
-      <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
+  <div class="form-group col-1">
+    <label class="col form label">Personnes</label>
+    <input type="number" class="form-control">
+  </div>
+  <div class="form-group col-1">
+    <label class="col form label">Chambres</label>
+    <input type="number" class="form-control">
+  </div>
+  <div class="form-group col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-secondary" id="dropTDB" ngbDropdownToggle>Type de bien</button>
+      <div ngbDropdownMenu aria-labelledby="dropTDB">
+        <form style="height: auto; width: auto">
+          <div class="form-check">
+            <label class="form-check-label" for="Appartement" ngbButtonLabel>
+              <input class="form-check-input" type="checkbox" id="Appartement" ngbButton> Appartement
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="Maison" ngbButtonLabel>
+              <input class="form-check-input" type="checkbox" id="Maison" ngbButton>Maison
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="ChambreDHote" ngbButtonLabel>
+              <input class="form-check-input" type="checkbox" id="ChambreDHote" ngbButton> Chambre d'hôtes
+            </label>
+          </div>
+        </form>
       </div>
+    </div>
 
+  </div>
+  <div class="form-group col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-secondary" id="dropRI" ngbDropdownToggle>Règlement Interieur</button>
+      <div ngbDropdownMenu aria-labelledby="dropRI">
+        <form style="height: auto; width: auto">
+          <div class="form-check">
+            <label class="form-check-label" for="Fumeur" ngbButtonLabel>
+              <input class="form-check-input" type="checkbox" id="Fumeur" ngbButton> Fumeur
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="Animaux" ngbButtonLabel>
+              <input class="form-check-input" type="checkbox" id="Animaux" ngbButton>Animaux
+            </label>
+          </div>
+        </form>
+
+      </div>
     </div>
   </div>
+</div>
+<div *ngFor="let accomodation of accomodations">
+  <div class="row">
+    <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+    </div>
+
+  </div>
+</div>
 
 </div>
