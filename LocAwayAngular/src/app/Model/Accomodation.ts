@@ -44,7 +44,36 @@ export class Accomodation {
   public user: User;
 
 
+<<<<<<< HEAD
   constructor() {
 
+=======
+  constructor(id?: number, version?: number, name?: string, number?: string, street?: string, city?: string, postcode?: string, country?: string, latitudeDeg?: number, longitudeDeg?: number, description?: string, numberOfRooms?: number, maxPersons?: number, isDeleted?: boolean, accomodationType?: string, defaultBasePrice?: number, defaultPersonPrice?: number, customPriceDays?: Array<CustomPriceDay>, bookmarks?: Array<Bookmark>, reviews?: Array<Review>, photos?: Array<Photo>, bookings?: Array<Booking>, options?: Array<Option>, pointOfInterests?: Array<PointOfInterest>, user?: User) {
+    this.id = id;
+    this.version = version;
+    this.name = name;
+    this.number = number;
+    this.street = street;
+    this.city = city;
+    this.postcode = postcode;
+    this.country = country;
+    this.latitudeDeg = latitudeDeg;
+    this.longitudeDeg = longitudeDeg;
+    this.description = description;
+    this.numberOfRooms = numberOfRooms;
+    this.maxPersons = maxPersons;
+    this.isDeleted = isDeleted;
+    this.accomodationType = accomodationType;
+    this.defaultBasePrice = defaultBasePrice;
+    this.defaultPersonPrice = defaultPersonPrice;
+    this.customPriceDays = customPriceDays;
+    this.bookmarks = bookmarks;
+    this.reviews = reviews;
+    this.photos = photos;
+    this.bookings = bookings;
+    this.options = options;
+    this.pointOfInterests = pointOfInterests;
+    this.user = user;
+>>>>>>> ed49a14d016b2818d7d81fa6c95828c1ba780b4f
   }
 }

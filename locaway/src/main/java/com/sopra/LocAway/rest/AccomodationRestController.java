@@ -69,5 +69,16 @@ public class AccomodationRestController {
 		accomodationRepo.deleteById(id);
 	}
 
+	@GetMapping("/search/{city}")
+	@JsonView(Views.ViewAccomodation.class)
+	public List<Accomodation> searchByCity(@PathVariable String city){
+		
+		List<Accomodation> accomodations = accomodationRepo.findByCity(city);
+		if (accomodations != null) {
+			return accomodations;
+		} else {
+			throw new NotFoundException();
+		}
+	}
 }	
 

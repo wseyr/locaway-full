@@ -4,13 +4,17 @@ import {AccomodationHttpService} from "../accomodation/accomodation-http.service
 import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
 
-
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  accomodations: Array<Accomodation> = new Array<Accomodation>();
+  city: string =null;
+
+
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
@@ -18,10 +22,26 @@ export class HomeComponent implements OnInit {
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
   }
+
   list(){
     return this.accomodationService.findAll();
   }
+
+  listByCity(city: string){
+    if (city!="") {
+      this.accomodationService.findByCity(city).subscribe(resp => {
+        this.accomodations = resp;
+        console.log(this.accomodations)
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      return this.accomodations = this.accomodationService.findAll();
+    }
+  }
+
   ngOnInit() {
   }
 
