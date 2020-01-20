@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Accomodation} from "../Model/Accomodation";
 import {AccomodationHttpService} from "../accomodation/accomodation-http.service";
 import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
+import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'home',
@@ -9,9 +10,19 @@ import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   accomodations: Array<Accomodation> = new Array<Accomodation>();
   city: string =null;
-  constructor(private accomodationService: AccomodationHttpService) {
+
+
+  hoveredDate: NgbDate;
+  fromDate: NgbDate;
+  toDate: NgbDate;
+
+  constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+    this.fromDate = calendar.getToday();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
   }
 
   list(){
@@ -34,4 +45,31 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDateSelection(date: NgbDate) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+  }
+
+  isHovered(date: NgbDate) {
+    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return date.after(this.fromDate) && date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
+  }
+
+  validateInput(currentValue: NgbDate, input: string): NgbDate {
+    const parsed = this.formatter.parse(input);
+    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  }
 }
