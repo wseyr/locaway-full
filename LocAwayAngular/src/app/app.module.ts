@@ -19,11 +19,9 @@ import {ContactHttpService} from './contact/contact-http-service.service';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import { AccomodationFormComponent } from './accomodation-form/accomodation-form.component';
-=======
 import { BookingFormComponent } from './booking-form/booking-form.component';
->>>>>>> ed49a14d016b2818d7d81fa6c95828c1ba780b4f
+
 
 
 
@@ -35,12 +33,8 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     ConnexionComponent,
     HomeComponent,
     DashboardComponent,
-<<<<<<< HEAD
     AccomodationFormComponent,
-=======
-    BookingFormComponent,
->>>>>>> ed49a14d016b2818d7d81fa6c95828c1ba780b4f
-
+    BookingFormComponent
   ],
   imports: [
     BrowserModule,
