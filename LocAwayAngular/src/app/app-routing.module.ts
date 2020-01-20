@@ -5,6 +5,7 @@ import {AccomodationDetailComponent} from './accomodation-detail/accomodation-de
 import {ConnexionComponent} from './connexion/connexion.component';
 import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {BookingFormComponent} from "./booking-form/booking-form.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'accomodation-detail', component: AccomodationDetailComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'accomodation-detail/:id', component: AccomodationDetailComponent},
+  {path: 'booking-form/:acc_id', component: BookingFormComponent},
   {path: 'home', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
 ];

@@ -30,8 +30,11 @@
       <div class="row">
         <div class="ml-3">
           <h2>Disponibilités</h2>
-          <ngb-datepicker *ngIf="asyncDataLoaded" [markDisabled]="isDisabled"></ngb-datepicker>
+          <ngb-datepicker *ngIf="asyncDataLoaded" [markDisabled]="isDisabled" outsideDays="hidden"></ngb-datepicker>
         </div>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary" [routerLink]="['/booking-form', accomodation_id]" routerLinkActive="active">Réserver</a>
       </div>
       <div class="row">
         <div class="ml-3">

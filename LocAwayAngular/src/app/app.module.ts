@@ -19,6 +19,7 @@ import {ContactHttpService} from './contact/contact-http-service.service';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 
 
@@ -30,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ConnexionComponent,
     HomeComponent,
     DashboardComponent,
+    BookingFormComponent,
 
   ],
   imports: [
