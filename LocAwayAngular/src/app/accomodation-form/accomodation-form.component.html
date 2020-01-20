@@ -1,0 +1,62 @@
+<div class="container">
+  <h3>Publier une nouvelle annonce de location</h3>
+  <form>
+    <div class="form-group">
+      <label for="inputName">Titre de l'annonce</label>
+      <input type="text" class="form-control" id="inputName"[(ngModel)]="newAccomodation.name">
+    </div>
+    <div class="form-group">
+      <h6>Adresse du bien</h6>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputNum">Numéro</label>
+          <input type="text" class="form-control" id="inputNum" [(ngModel)]="newAccomodation.number">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputRue">Nom de rue</label>
+          <input type="text" class="form-control" id="inputRue" [(ngModel)]="newAccomodation.street">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputPostCode">Code Postal</label>
+          <input type="text" class="form-control" id="inputPostCode" [(ngModel)]="newAccomodation.postcode">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-7">
+          <label for="inputCity">Ville</label>
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="newAccomodation.city">
+        </div>
+        <div class="form-group col-md-5">
+          <label for="inputState">Pays</label>
+          <input type="text" class="form-control" id="inputState" [(ngModel)]="newAccomodation.country">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h6>Détails du bien</h6>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputNbChambre">Nombre de chambres</label>
+          <input type="number" class="form-control" id="inputNbChambre" [(ngModel)]="newAccomodation.numberOfRooms">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputNbPersMax">Nombre de personnes maximum</label>
+          <input type="number" class="form-control" id="inputNbPersMax" [(ngModel)]="newAccomodation.maxPersons">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription">Description du bien</label>
+        <input type="text" class="form-control" id="inputDescription"[(ngModel)]="newAccomodation.description">
+      </div>
+    </div>
+
+    <div class="form-check" *ngFor="let option of options">
+      <label class="form-check-label" for="checkOptions">{{option.name}}</label>
+      <input class="form-check-input" type="checkbox" value="" id="checkOptions">
+    </div>
+    <button type="button" class="btn btn-success btn-lg" (click)="add()">
+      <fa name="plus"></fa>
+    </button>
+  </form>
+</div>
