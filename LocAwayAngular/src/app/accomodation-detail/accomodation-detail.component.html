@@ -30,7 +30,7 @@
       <div class="row">
         <div class="ml-3">
           <h2>Disponibilités</h2>
-          <ngb-datepicker [markDisabled]="isDisabled"></ngb-datepicker>
+          <ngb-datepicker *ngIf="asyncDataLoaded" [markDisabled]="isDisabled"></ngb-datepicker>
         </div>
       </div>
       <div class="row">

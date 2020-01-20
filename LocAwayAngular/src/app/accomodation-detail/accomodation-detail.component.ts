@@ -15,12 +15,11 @@ export class AccomodationDetailComponent implements OnInit {
 
 
   //calendrier
-  //TODO: les jours réservés ne s'affichent qu'après avoir changé de mois
+  asyncDataLoaded: boolean = false;
   bookedDates : Array<NgbDate> = new Array<NgbDate>();
   isDisabled = (date: NgbDate, current: {month: number}) => {
     let result: boolean = false;
     this.bookedDates.forEach( (bookedDate) => {
-      console.log(bookedDate);
       if(date.equals(bookedDate)){
          result = true;
        }
@@ -31,7 +30,6 @@ export class AccomodationDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private accomodationService: AccomodationHttpService) {
     this.route.params.subscribe(params => {
-      console.log(params);
       this.accomodation_id = params['id'];
       this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
         this.accomodation = resp;
@@ -43,6 +41,7 @@ export class AccomodationDetailComponent implements OnInit {
             this.bookedDates.push(new NgbDate(date.getFullYear(), date.getMonth()+1, date.getDate()));
           });
         });
+        this.asyncDataLoaded = true;
       });
     });
 
