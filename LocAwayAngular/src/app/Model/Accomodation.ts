@@ -43,11 +43,6 @@ export class Accomodation {
 
   public user: User;
 
-
-<<<<<<< HEAD
-  constructor() {
-
-=======
   constructor(id?: number, version?: number, name?: string, number?: string, street?: string, city?: string, postcode?: string, country?: string, latitudeDeg?: number, longitudeDeg?: number, description?: string, numberOfRooms?: number, maxPersons?: number, isDeleted?: boolean, accomodationType?: string, defaultBasePrice?: number, defaultPersonPrice?: number, customPriceDays?: Array<CustomPriceDay>, bookmarks?: Array<Bookmark>, reviews?: Array<Review>, photos?: Array<Photo>, bookings?: Array<Booking>, options?: Array<Option>, pointOfInterests?: Array<PointOfInterest>, user?: User) {
     this.id = id;
     this.version = version;
@@ -74,6 +69,6 @@ export class Accomodation {
     this.options = options;
     this.pointOfInterests = pointOfInterests;
     this.user = user;
->>>>>>> ed49a14d016b2818d7d81fa6c95828c1ba780b4f
+
   }
 }
