@@ -3,10 +3,14 @@ package com.sopra.LocAway.rest;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,6 +31,8 @@ public class UserRestController {
 
 	@Autowired
 	private IUserRepository userRepo;
+	
+	boolean connected = false;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewUser.class)
@@ -55,6 +61,25 @@ public class UserRestController {
 
 		return user;
 	}
+	
+	
+	@GetMapping(value="/login/{email}/password/{password}")
+	@JsonView(Views.ViewUser.class)
+	public User login(User user){
+		
+		System.out.println("je suis dans le rest controller " + user.getEmail());
+		
+		User u = userRepo.findByEmailAndPassword(user.getEmail(), user.getPassword());
+		System.out.println(u);
+		if(u==null) {
+			System.out.println("log not found" + u);
+			
+		} else {
+		System.out.println("log found : " + u.getEmail());}
+		
+		
+		return u;
+	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewUser.class)
@@ -68,6 +93,8 @@ public class UserRestController {
 	public void delete(@PathVariable Long id) {
 		userRepo.deleteById(id);
 	}
+	
+
 
 }	
 

@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'accomodation-detail/:id', component: AccomodationDetailComponent},
   {path: 'home', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
+
 ];
 
 @NgModule({
