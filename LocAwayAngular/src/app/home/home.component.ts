@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.accomodations = this.accomodationService.findAll();
     console.log(this.accomodations)
     console.log(this.accomodationsfiltrees)
