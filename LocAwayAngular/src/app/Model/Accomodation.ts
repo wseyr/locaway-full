@@ -37,7 +37,7 @@ export class Accomodation {
 
   public bookings: Array<Booking>;
 
-  public options: Array<Option>;
+  public options: Array<Option> = new Array<Option>();
 
   public pointOfInterests: Array<PointOfInterest>;
 
