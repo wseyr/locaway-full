@@ -17,11 +17,14 @@ export class HomeComponent implements OnInit {
 
   accomodations: Array<Accomodation> = null;
   city: string ="";
+
+  accomodationsfiltrees: Array<Accomodation> = null;
   person: number = 0;
 
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
+
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -34,6 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   listByCity(city: string){
+    this.person = 0;
+    this.accomodationsfiltrees =null;
     if (city!="") {
       this.accomodationService.findByCity(city).subscribe(resp => {
         this.accomodations = resp;
@@ -43,13 +48,14 @@ export class HomeComponent implements OnInit {
       });
     } else {
       this.accomodations = this.accomodationService.findAll();
-
     }
+
   }
 
   ngOnInit() {
     this.accomodations = this.accomodationService.findAll();
     console.log(this.accomodations)
+    console.log(this.accomodationsfiltrees)
   }
 
   onDateSelection(date: NgbDate) {
@@ -81,6 +87,10 @@ export class HomeComponent implements OnInit {
   }
 
   filtre() {
-    return this.accomodations.filter(p=> p.maxPersons >= this.person);
-  }
+      if(!this.accomodations) {this.accomodationsfiltrees = this.list().filter(p => p.maxPersons >= this.person);}
+      else{
+        this.accomodationsfiltrees = this.accomodations.filter(p => p.maxPersons >= this.person);
+      }
+    }
+
 }

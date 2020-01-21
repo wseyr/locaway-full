@@ -96,8 +96,9 @@
     </div>
   </div>
 </div>
-<div *ngIf="accomodations===undefined">
-  <div *ngFor="let accomodation of list()" >
+
+<div *ngIf="!accomodations && !accomodationsfiltrees">
+  <div *ngFor="let accomodation of list()">
     <div class="row">
       <div>
         <accomodation [accomodation_id]="accomodation.id"></accomodation>
@@ -105,13 +106,32 @@
     </div>
   </div>
 </div>
-  <div *ngIf="accomodations!==undefined">
-    <div *ngFor="let accomodation of accomodations" >
-      <div class="row">
-        <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
-        </div>
+<div *ngIf="accomodationsfiltrees && !accomodations">
+  <div *ngFor="let accomodation of accomodationsfiltrees">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
       </div>
     </div>
   </div>
 </div>
+<div *ngIf="accomodations && !accomodationsfiltrees">
+  <div *ngFor="let accomodation of accomodations">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="accomodationsfiltrees && accomodations">
+  <div *ngFor="let accomodation of accomodationsfiltrees">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
