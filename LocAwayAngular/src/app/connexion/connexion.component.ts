@@ -12,11 +12,14 @@ export class ConnexionComponent implements OnInit {
   confirmPassword: string;
   verif: boolean = true;
   coUser : User = new User();
+  unvalidLogin : boolean=false;
 
   veriftos: boolean = true;
   termofservice: boolean = false;
 
-  constructor(private userService: UserHttpServiceService) { }
+  constructor(private userService: UserHttpServiceService) {
+    this.unvalidLogin = userService.unvalidLogin;
+  }
 
   ngOnInit() {}
 
@@ -41,8 +44,7 @@ export class ConnexionComponent implements OnInit {
   }
 
   connect() {
-    console.log("je suis dans connexion component");
-    console.log(this.coUser);
     this.userService.connect(this.coUser);
+
   }
 }

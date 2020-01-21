@@ -1,4 +1,3 @@
-<p *ngIf="connected">Bienvenue {{connected.firstName}}</p>
 <div class="container">
   <div>
     <h3>Rechercher une location</h3>
@@ -44,11 +43,11 @@
   </form>
   <div class="form-group col-1">
     <label class="col form label">Personnes</label>
-    <input type="number" class="form-control">
+    <input type="number" [(ngModel)]="person" (change)="filtrePerson()" class="form-control">
   </div>
   <div class="form-group col-1">
     <label class="col form label">Chambres</label>
-    <input type="number" class="form-control">
+    <input type="number" [(ngModel)]="rooms" (change)="filtreRoom()" class="form-control">
   </div>
   <div class="form-group col">
     <div ngbDropdown class="d-inline-block">
@@ -95,13 +94,42 @@
     </div>
   </div>
 </div>
-<div *ngFor="let accomodation of accomodations">
-  <div class="row">
-    <div>
-        <accomodation [accomodation_id]="accomodation.id"></accomodation>
-    </div>
 
+<div *ngIf="!accomodations && !accomodationsfiltrees">
+  <div *ngFor="let accomodation of list()">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
   </div>
 </div>
-
+<div *ngIf="accomodationsfiltrees && !accomodations">
+  <div *ngFor="let accomodation of accomodationsfiltrees">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
+  </div>
 </div>
+<div *ngIf="accomodations && !accomodationsfiltrees">
+  <div *ngFor="let accomodation of accomodations">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="accomodationsfiltrees && accomodations">
+  <div *ngFor="let accomodation of accomodationsfiltrees">
+    <div class="row">
+      <div>
+        <accomodation [accomodation_id]="accomodation.id"></accomodation>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

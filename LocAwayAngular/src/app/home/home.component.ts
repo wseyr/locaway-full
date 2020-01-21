@@ -9,18 +9,22 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+
 })
 
 export class HomeComponent implements OnInit {
-  connected :User = JSON.parse(localStorage.getItem("connectedUser"));
-
-  accomodations: Array<Accomodation> = new Array<Accomodation>();
-  city: string =null;
 
 
+  accomodations: Array<Accomodation> = null;
+  city: string ="";
+
+  accomodationsfiltrees: Array<Accomodation> = null;
+  person: number = 1;
+  rooms: number = 1;
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
+
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -33,6 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   listByCity(city: string){
+    this.person = 1;
+    this.accomodationsfiltrees =null;
     if (city!="") {
       this.accomodationService.findByCity(city).subscribe(resp => {
         this.accomodations = resp;
@@ -41,11 +47,16 @@ export class HomeComponent implements OnInit {
         console.log(error);
       });
     } else {
-      return this.accomodations = this.accomodationService.findAll();
+      this.accomodations = this.accomodationService.findAll();
     }
+
   }
 
   ngOnInit() {
+
+    this.accomodations = this.accomodationService.findAll();
+    console.log(this.accomodations)
+    console.log(this.accomodationsfiltrees)
   }
 
   onDateSelection(date: NgbDate) {
@@ -75,4 +86,23 @@ export class HomeComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+
+  filtrePerson() {
+      if(!this.accomodations) {
+        this.accomodationsfiltrees = this.list().filter(p => p.maxPersons >= this.person);
+      }
+      else{
+        this.accomodationsfiltrees = this.accomodations.filter(p => p.maxPersons >= this.person);
+      }
+    }
+    filtreRoom(){
+      if(!this.accomodations) {
+        this.accomodationsfiltrees = this.list().filter(c => c.numberOfRooms >= this.rooms);
+      }
+      else{
+        this.accomodationsfiltrees = this.accomodations.filter(c => c.numberOfRooms >= this.rooms);
+      }
+
+    }
+
 }

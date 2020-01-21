@@ -3,8 +3,9 @@
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Adresse email" id="email-signin" [(ngModel)]="coUser.email">
   </div>
+  <div *ngIf="unvalidLogin==true">Identifiants invalides</div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Mot de passe" id="password-signin" [(ngModel)]="coUser.password">
+    <input type="password" class="form-control" placeholder="Mot de passe" id="password-signin" [(ngModel)]="coUser.password">
   </div>
   <div class="form-group">
     <input type="checkbox" style="margin-left: .5em" id="remember-me"><p style="display: inline; margin: .5em">Rester connecté</p>
@@ -35,7 +36,7 @@
     <button type="button" class="btn btn-primary" (click)="save()">
       <fa name="check"></fa>
     </button>
-    <button type="button" class="btn btn-warning" (click)="cancel()">
+    <button type="validate" class="btn btn-warning" (click)="cancel()">
       <fa name="undo" inverse="true"></fa>
     </button>
   </div>
