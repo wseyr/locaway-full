@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Accomodation} from "../Model/Accomodation";
 import {AccomodationHttpService} from "../accomodation/accomodation-http.service";
 import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
+import {User} from '../Model/User';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -9,7 +10,9 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
+  connected :User = JSON.parse(localStorage.getItem("connectedUser"));
 
   accomodations: Array<Accomodation> = new Array<Accomodation>();
   city: string =null;

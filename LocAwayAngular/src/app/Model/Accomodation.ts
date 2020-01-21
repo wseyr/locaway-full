@@ -43,8 +43,8 @@ export class Accomodation {
 
   public user: User;
 
-  constructor() {
 
+  constructor() {
 
   }
 }
