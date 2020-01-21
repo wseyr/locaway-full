@@ -34,8 +34,8 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     HomeComponent,
     DashboardComponent,
     AccomodationFormComponent,
-    BookingFormComponent
-  ],
+    BookingFormComponent,
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
