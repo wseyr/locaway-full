@@ -5,11 +5,9 @@ import {AccomodationDetailComponent} from './accomodation-detail/accomodation-de
 import {ConnexionComponent} from './connexion/connexion.component';
 import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import {AccomodationFormComponent} from "./accomodation-form/accomodation-form.component";
-=======
 import {BookingFormComponent} from "./booking-form/booking-form.component";
->>>>>>> ed49a14d016b2818d7d81fa6c95828c1ba780b4f
+
 
 
 const routes: Routes = [
@@ -21,6 +19,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'accomodation-form', component: AccomodationFormComponent},
+
 ];
 
 @NgModule({

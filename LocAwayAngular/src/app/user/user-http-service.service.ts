@@ -3,15 +3,17 @@ import {User} from '../Model/User';
 import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from "../app-config.service";
 import {Observable} from 'rxjs';
+import {Router} from "@angular/router"
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserHttpServiceService {
   users: Array<User>;
-  connected : User;
+  currentUser : User=new User();
+  connectedUser: User=new User();
 
-  constructor(private appConfig: AppConfigService, private http: HttpClient) {
+  constructor(private appConfig: AppConfigService, private http: HttpClient, private router: Router) {
     this.load();
   }
 
@@ -46,12 +48,23 @@ export class UserHttpServiceService {
     }, err => console.log(err));
   }
 
-  connect(user : User) {
-    console.log("Je suis dans le service");
-    console.log(user);
-    localStorage.setItem("this.connected", JSON.stringify(this.connected));
+  connect(user : User){
 
+    this.http.get<User>(this.appConfig.backEnd + 'user/login/' + user.email + "/password/" + user.password).subscribe(resp=>{
+      this.connectedUser= resp;
 
+      if (this.connectedUser!=null){
+        localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
+        // localStorage.setItem(key, 'Value');
+        this.router.navigate(["/home"]);
+
+      } else {
+        //TODO Gérer le fail
+        //this.router.navigate(["/connexion"]);
+      }
+    })
+          ;
   }
+
 }
 
