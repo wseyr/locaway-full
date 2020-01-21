@@ -10,7 +10,7 @@ import {UserHttpServiceService} from "../user/user-http-service.service";
 export class DashboardComponent implements OnInit {
   connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
 
-  constructor(userService: UserHttpServiceService) {
+  constructor(private userService: UserHttpServiceService) {
     console.log(this.connectedU);
   }
 
