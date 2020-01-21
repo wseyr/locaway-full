@@ -8,7 +8,7 @@ export class BookedDay {
   public booking: Booking;
 
 
-  constructor(id: number, version: number, date: Date, booking: Booking) {
+  constructor(id?: number, version?: number, date?: Date, booking?: Booking) {
     this.id = id;
     this.version = version;
     this.date = date;

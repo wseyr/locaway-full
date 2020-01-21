@@ -4,6 +4,9 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import {BookingHttpService} from "../booking/booking-http-service.service";
 import {AccomodationHttpService} from "../accomodation/accomodation-http.service";
 import {Accomodation} from "../Model/Accomodation";
+import {Booking} from "../Model/Booking";
+import {BookeddayHttpService} from "../bookedday/bookedday-http.service";
+import {BookedDay} from "../Model/BookedDay";
 
 @Component({
   selector: 'app-booking-form',
@@ -14,25 +17,28 @@ export class BookingFormComponent implements OnInit {
   accomodation_id: number;
   accomodation: Accomodation = null;
 
+  newBooking: Booking = new Booking();
+  numberOfPersons: number = 1;
+
   //Calendrier
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
 
   asyncDataLoaded: boolean = false;
+  //dates déjà réservées
   bookedDates : Array<NgbDate> = new Array<NgbDate>();
   isDisabled = (date: NgbDate, current: {month: number}) => {
     let result: boolean = false;
     this.bookedDates.forEach( (bookedDate) => {
       if(date.equals(bookedDate)){
         result = true;
-        console.log(date);
       }
     });
     return result;
   };
 
-  constructor(private route: ActivatedRoute, private bookingService: BookingHttpService, private accomodationService: AccomodationHttpService, calendar: NgbCalendar) {
+  constructor(private route: ActivatedRoute, private bookingService: BookingHttpService, private bookedDayService: BookeddayHttpService, private accomodationService: AccomodationHttpService, calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -57,23 +63,59 @@ export class BookingFormComponent implements OnInit {
 
   datesInBooking(): Array<Date>{
     let dates = new Array<Date>();
-    let currentDate = this.ngbDateToDate(this.fromDate);
-    console.log(currentDate);
-    let stopDate = this.ngbDateToDate(this.toDate);
-    console.log(stopDate);
-    while (currentDate <= stopDate) {
-      currentDate.setDate(currentDate.getDate() + 1);
+
+    if(!this.toDate){
+      let currentDate = this.ngbDateToDate(this.fromDate);
       dates.push(new Date(currentDate));
+    } else {
+      let currentDate = this.ngbDateToDate(this.fromDate);
+      let stopDate = this.ngbDateToDate(this.toDate);
+      while (currentDate <= stopDate) {
+        dates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
     }
     return dates;
   }
 
-  validateDates(): boolean{
-    return true;
+  validateBookingDates(): boolean{
+    let result: boolean = true;
+    this.datesInBooking().forEach((date) => {
+      this.bookedDates.forEach((ngdate) =>{
+        if(this.ngbDateToDate(ngdate).getTime() === date.getTime()){
+          result = false;
+        }
+        });
+    });
+    return result;
   }
 
   totalBookingPrice() : number {
-    return this.datesInBooking().length * this.accomodation.defaultBasePrice;
+    let price: number = 0;
+    if(this.accomodation){
+      price = this.datesInBooking().length * this.accomodation.defaultBasePrice;
+      price += this.numberOfPersons * this.accomodation.defaultPersonPrice * this.datesInBooking().length;
+    }
+    return price;
+  }
+
+  saveBooking() {
+    //TODO: lier la réservation à l'utilisateur connecté
+    console.log(this.newBooking);
+    this.newBooking.accomodation = this.accomodation;
+    this.newBooking.totalPrice = this.totalBookingPrice();
+    this.bookingService.saveNew(this.newBooking).subscribe((bookingResp) =>{
+      this.newBooking = bookingResp;
+      console.log(this.newBooking);
+
+      this.datesInBooking().forEach((date: Date) =>{
+        let bookedDay = new BookedDay();
+        bookedDay.date = date;
+        bookedDay.booking = this.newBooking;
+        console.log(bookedDay);
+        this.bookedDayService.save(bookedDay);
+      });
+    });
   }
 
   //Fonctions pour calendrier
@@ -108,4 +150,5 @@ export class BookingFormComponent implements OnInit {
       return null;
     }
   }
+
 }

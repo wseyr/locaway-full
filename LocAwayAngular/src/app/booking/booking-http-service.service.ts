@@ -41,6 +41,10 @@ export class BookingHttpService {
     }
   }
 
+  saveNew(booking: Booking): Observable<Booking> {
+    return this.http.post<Booking>(this.appConfig.backEnd + 'booking', booking);
+  }
+
   delete(id: number) {
     this.http.delete<Booking>(this.appConfig.backEnd + 'booking/' + id).subscribe(resp => {
       this.load();
