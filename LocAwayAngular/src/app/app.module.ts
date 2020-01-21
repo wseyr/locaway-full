@@ -24,6 +24,7 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
 import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import {ngfModule} from "angular-file";
 
 
 registerLocaleData(localeFr, 'fr');
@@ -48,7 +49,8 @@ registerLocaleData(localeFr, 'fr');
     AngularFontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ngfModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }, AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
   bootstrap: [AppComponent]
