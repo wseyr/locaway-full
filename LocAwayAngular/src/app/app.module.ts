@@ -35,8 +35,8 @@ import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
     HomeComponent,
     DashboardComponent,
     AccomodationFormComponent,
-    BookingFormComponent
-  ],
+    BookingFormComponent,
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
