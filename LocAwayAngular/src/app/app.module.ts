@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccomodationFormComponent } from './accomodation-form/accomodation-form.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
 
 
 
@@ -44,7 +45,7 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, ContactHttpService],
+  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
