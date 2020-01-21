@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   accomodations: Array<Accomodation> = new Array<Accomodation>();
   city: string =null;
-
+  person: number = 0;
 
   hoveredDate: NgbDate;
   fromDate: NgbDate;
@@ -71,5 +71,9 @@ export class HomeComponent implements OnInit {
   validateInput(currentValue: NgbDate, input: string): NgbDate {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  }
+
+  filtre() {
+    return this.accomodations.filter(p=> p.maxPersons >= this.person);
   }
 }

@@ -44,7 +44,7 @@
   </form>
   <div class="form-group col-1">
     <label class="col form label">Personnes</label>
-    <input type="number" class="form-control">
+    <input type="number" [(ngModel)]="person" (change)="filtre()" class="form-control">
   </div>
   <div class="form-group col-1">
     <label class="col form label">Chambres</label>
