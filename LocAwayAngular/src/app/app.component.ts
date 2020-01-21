@@ -3,6 +3,8 @@ import {User} from './Model/User';
 import {HomeComponent} from './home/home.component';
 import {UserHttpServiceService} from './user/user-http-service.service';
 import {NavigationEnd, Router} from '@angular/router';
+import {Subscription} from "rxjs";
+import {HttpEvent} from "@angular/common/http";
 
 
 @Component({
@@ -15,6 +17,8 @@ import {NavigationEnd, Router} from '@angular/router';
 export class AppComponent {
   connectedU : User;
 
+
+
   constructor(private router: Router, private userHttpServiceService: UserHttpServiceService) {
     router.events.subscribe((val) => {
       // see also
@@ -22,6 +26,7 @@ export class AppComponent {
      console.log(val instanceof NavigationEnd)
     });
   }
+
 
 //   constructor(private userHttpServiceService: UserHttpServiceService) {
 // this.connectedU = JSON.parse(localStorage.getItem("connectedUser"));

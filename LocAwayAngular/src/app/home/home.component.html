@@ -48,6 +48,7 @@
       </div>
     </div>
   </form>
+<<<<<<< HEAD
 
     <!--  Personnes -->
 
@@ -67,7 +68,7 @@
               <label class="form-check-label" for="Appartement" ngbButtonLabel>
                 <div class="form-group col-10">
                   <label class="col form label">Pour</label>
-                  <input type="number" [(ngModel)]="person" [ngModelOptions]="{standalone: true}" (change)="filtrePerson()" class="form-control">
+                  <input type="number" [(ngModel)]="person" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control">
                   <span>et plus</span>
                 </div>
               </label>
@@ -97,7 +98,7 @@
               <label class="form-check-label" for="Appartement" ngbButtonLabel>
                 <div class="form-group col-10">
                   <label class="col form label">A partir de </label>
-                  <input type="number" [(ngModel)]="rooms" [ngModelOptions]="{standalone: true}" (change)="filtreRoom()" class="form-control">
+                  <input type="number" [(ngModel)]="rooms" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control">
                   <span>chambres</span>
                 </div>
               </label>
@@ -110,7 +111,6 @@
 
     <!--  TYPE : TODO Gérer l'énum-->
 
-
   <div class="form-group col">
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-secondary" id="dropTDB" ngbDropdownToggle>Type de bien</button>
@@ -118,17 +118,17 @@
         <form style="height: auto; width: auto">
           <div class="form-check">
             <label class="form-check-label" for="Appartement" ngbButtonLabel>
-              <input class="form-check-input" type="checkbox" id="Appartement" ngbButton> Appartement
+              <input class="form-check-input" name="appart" [(ngModel)]="appartment" (change)="checkbox()" type="checkbox" id="Appartement" ngbButton> Appartement
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label" for="Maison" ngbButtonLabel>
-              <input class="form-check-input" type="checkbox" id="Maison" ngbButton>Maison
+              <input class="form-check-input" name="maison" [(ngModel)]="house" (change)="checkbox()" type="checkbox" id="Maison" ngbButton>Maison
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label" for="ChambreDHote" ngbButtonLabel>
-              <input class="form-check-input" type="checkbox" id="ChambreDHote" ngbButton> Chambre d'hôtes
+              <input class="form-check-input" name="chambredhote" [(ngModel)]="guesthouse" (change)="checkbox()" type="checkbox" id="ChambreDHote" ngbButton> Chambre d'hôtes
             </label>
           </div>
         </form>

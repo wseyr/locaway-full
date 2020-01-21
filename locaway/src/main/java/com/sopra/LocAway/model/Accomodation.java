@@ -1,5 +1,6 @@
 package com.sopra.LocAway.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -77,9 +80,10 @@ public class Accomodation {
 	@JsonView(Views.ViewAccomodation.class)
 	private List<Booking> bookings;
 
-	@ManyToMany(mappedBy = "accomodations")
+	@ManyToMany
+	@JoinTable(name="accomodation_option", joinColumns = @JoinColumn(name="accomodation_id"), inverseJoinColumns = @JoinColumn(name="option_id"))
 	@JsonView(Views.ViewAccomodation.class)
-	private List<Option> options;
+	private List<Option> options = new ArrayList<Option>();
 
 	@ManyToMany(mappedBy = "accomodations")
 	@JsonView(Views.ViewAccomodation.class)
@@ -261,6 +265,10 @@ public class Accomodation {
 		this.bookings = bookings;
 	}
 
+	public void addOption(Option option) {
+		this.options.add(option);
+	}
+	
 	public List<Option> getOptions() {
 		return options;
 	}

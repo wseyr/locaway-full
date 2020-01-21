@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
@@ -25,11 +24,10 @@ public class Option {
 	private String name;
 	@JsonView(Views.ViewCommon.class)
 	private Boolean isRule;
-	
-	@ManyToMany
-	@JsonView(Views.ViewOption.class)
-	List<Accomodation> accomodations = new ArrayList<Accomodation>();
-	
+
+	@ManyToMany(mappedBy = "options")
+	private List<Accomodation> accomodations = new ArrayList<Accomodation>();
+
 	public Option() {
 		super();
 	}
@@ -38,10 +36,6 @@ public class Option {
 		super();
 		this.name = name;
 		this.isRule = isRule;
-	}
-	
-	public void addAccomodation(Accomodation a) {
-		this.accomodations.add(a);
 	}
 
 	public Long getId() {
@@ -55,7 +49,7 @@ public class Option {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -68,11 +62,25 @@ public class Option {
 		this.isRule = isRule;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public List<Accomodation> getAccomodations() {
+		return accomodations;
+	}
+
+	public void setAccomodations(List<Accomodation> accomodations) {
+		this.accomodations = accomodations;
+	}
 
 	@Override
 	public String toString() {
 		return "Option [id=" + id + ", name=" + name + ", isRule=" + isRule + "]";
 	}
-	
-}
 
+}

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccomodationFormComponent } from './accomodation-form/accomodation-form.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import {ngfModule} from "angular-file";
 
+
+registerLocaleData(localeFr, 'fr');
 
 
 
@@ -44,9 +49,10 @@ import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
     AngularFontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ngfModule
   ],
-  providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
+  providers: [{provide: LOCALE_ID, useValue: 'fr' }, AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

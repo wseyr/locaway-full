@@ -35,6 +35,7 @@ public class OptionRestController {
 
 		return options;
 	}
+	
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewOption.class)
