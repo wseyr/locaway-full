@@ -10,8 +10,12 @@ import {Router} from "@angular/router"
 })
 export class UserHttpServiceService {
   users: Array<User>;
-  currentUser : User=new User();
-  connectedUser: User=new User();
+  private _connectedUser: User=new User();
+  public unvalidLogin : boolean=false;
+
+
+
+
 
   constructor(private appConfig: AppConfigService, private http: HttpClient, private router: Router) {
     this.load();
@@ -51,19 +55,27 @@ export class UserHttpServiceService {
   connect(user : User){
 
     this.http.get<User>(this.appConfig.backEnd + 'user/login/' + user.email + "/password/" + user.password).subscribe(resp=>{
-      this.connectedUser= resp;
+      this._connectedUser= resp;
 
-      if (this.connectedUser!=null){
-        localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
-        // localStorage.setItem(key, 'Value');
-        this.router.navigate(["/home"]);
+      if (this._connectedUser!=null){
+        localStorage.setItem('connectedUser', JSON.stringify(this._connectedUser));
+       this.router.navigate(["home"]);
+        location.reload();
 
       } else {
+
         //TODO Gérer le fail
-        //this.router.navigate(["/connexion"]);
+        console.log("je suis dans le else" + this.unvalidLogin);
+        this.unvalidLogin = true;
+        console.log("je suis dans le else" + this.unvalidLogin);
       }
-    })
-          ;
+    });
+
+  }
+
+  logout(){
+    localStorage.removeItem("connectedUser");
+    location.reload();
   }
 
 }

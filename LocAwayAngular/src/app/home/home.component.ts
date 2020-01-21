@@ -12,7 +12,7 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
 })
 
 export class HomeComponent implements OnInit {
-  connected :User = JSON.parse(localStorage.getItem("connectedUser"));
+
 
   accomodations: Array<Accomodation> = new Array<Accomodation>();
   city: string =null;
