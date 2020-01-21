@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   house: boolean = false;
   guesthouse: boolean = false;
   alternative: boolean = false;
+  animal: boolean =false;
+  smoking: boolean = false;
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -48,6 +50,12 @@ export class HomeComponent implements OnInit {
     }
     if (this.alternative){
       this.accotypes.push("ALTERNATIVE");
+    }
+    if(this.animal){
+      this.accotypes.push("No animals");
+    }
+    if(this.smoking){
+      this.accotypes.push("No animals");
     }
     this.filtre();
   }
