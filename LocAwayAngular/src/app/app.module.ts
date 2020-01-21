@@ -22,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccomodationFormComponent } from './accomodation-form/accomodation-form.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
+import {ngfModule} from "angular-file";
 
 
 
@@ -44,7 +45,8 @@ import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
     AngularFontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ngfModule
   ],
   providers: [AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
   bootstrap: [AppComponent]

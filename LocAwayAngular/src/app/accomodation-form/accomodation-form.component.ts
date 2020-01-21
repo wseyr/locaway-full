@@ -5,6 +5,8 @@ import {ActivatedRoute} from "@angular/router";
 import {Option} from "../Model/Option";
 import {OptionHttpService} from "../Option/option.service";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Subscription} from "rxjs";
+import {HttpEvent} from "@angular/common/http";
 
 @Component({
   selector: 'app-accomodation-form',
@@ -16,6 +18,23 @@ export class AccomodationFormComponent implements OnInit {
   option: Option;
   optionId: number;
   options: Array<Option>;
+
+  accept = '*'
+  files:File[] = []
+  progress:number
+  //url = 'https://evening-anchorage-3159.herokuapp.com/api/'
+  url = 'https://jquery-file-upload.appspot.com/'
+  hasBaseDropZoneOver:boolean = false
+  httpEmitter:Subscription
+  httpEvent:HttpEvent<{}>
+  lastFileAt:Date
+  sendableFormData:FormData//populated via ngfFormData directive
+  dragFiles:any
+  validComboDrag:any
+  lastInvalids:any
+  fileDropDisabled:any
+  maxSize:any
+  baseDropValid:any
 
 
   constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService) {
@@ -38,11 +57,11 @@ export class AccomodationFormComponent implements OnInit {
         this.newAccomodation.options.push(option);
       }
     }
-
     this.accomodationService.save(this.newAccomodation);
   }
-
-
+  getDate(){
+    return new Date()
+  }
   ngOnInit() {
 
 
