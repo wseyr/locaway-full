@@ -9,14 +9,15 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+
 })
 
 export class HomeComponent implements OnInit {
 
 
-  accomodations: Array<Accomodation> = new Array<Accomodation>();
-  city: string =null;
-
+  accomodations: Array<Accomodation> = null;
+  city: string ="";
+  person: number = 0;
 
   hoveredDate: NgbDate;
   fromDate: NgbDate;
@@ -41,11 +42,14 @@ export class HomeComponent implements OnInit {
         console.log(error);
       });
     } else {
-      return this.accomodations = this.accomodationService.findAll();
+      this.accomodations = this.accomodationService.findAll();
+
     }
   }
 
   ngOnInit() {
+    this.accomodations = this.accomodationService.findAll();
+    console.log(this.accomodations)
   }
 
   onDateSelection(date: NgbDate) {
@@ -74,5 +78,9 @@ export class HomeComponent implements OnInit {
   validateInput(currentValue: NgbDate, input: string): NgbDate {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  }
+
+  filtre() {
+    return this.accomodations.filter(p=> p.maxPersons >= this.person);
   }
 }
