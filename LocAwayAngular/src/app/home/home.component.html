@@ -1,15 +1,22 @@
-<div class="container">
+<div class="container" >
   <div>
     <h6>Rechercher une location</h6>
   </div>
 
   <!--  RECHERCHE -->
-  <div class="form-row">
-    <div class="form-group col-3">
+
+  <div class="form-row, d-flex align-items-end" style="border-top: darkgray 1px solid">
+
+    <!--  Destination -->
+
+    <div class="form-group col-2">
       <label class="col form label"></label>
       <input name="name" [(ngModel)]="city" (change)="listByCity(city)" type="text" class="form-control" placeholder="Destination">
     </div>
-  <form class="form-inline">
+
+    <!--  Calendar -->
+
+  <form class="form-inline, d-flex align-items-end">
     <div class="form-group hidden-col-1">
       <div class="input-group">
         <input name="datepicker"
@@ -41,14 +48,69 @@
       </div>
     </div>
   </form>
-  <div class="form-group col-1">
-    <label class="col form label">Personnes</label>
-    <input type="number" [(ngModel)]="person" (change)="filtrePerson()" class="form-control">
-  </div>
-  <div class="form-group col-1">
-    <label class="col form label">Chambres</label>
-    <input type="number" [(ngModel)]="rooms" (change)="filtreRoom()" class="form-control">
-  </div>
+
+    <!--  Personnes -->
+
+<!--  <div class="form-group col-1">-->
+<!--    <label class="col form label">Personnes</label>-->
+<!--    <input type="number" [(ngModel)]="person" (change)="filtrePerson()" class="form-control">-->
+<!--  </div>-->
+
+    <!--  Personnes 2 -->
+    <div class="form-group col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-secondary" id="dropPersonnes" ngbDropdownToggle>Personnes</button>
+        <div ngbDropdownMenu aria-labelledby="dropPersonnes">
+          <form style="height: auto; width: auto">
+            <div class="form-check">
+
+              <label class="form-check-label" for="Appartement" ngbButtonLabel>
+                <div class="form-group col-10">
+                  <label class="col form label">Pour</label>
+                  <input type="number" [(ngModel)]="person" [ngModelOptions]="{standalone: true}" (change)="filtrePerson()" class="form-control">
+                  <span>et plus</span>
+                </div>
+              </label>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--  Chambres -->
+
+<!--  <div class="form-group col-1">-->
+<!--    <label class="col form label">Chambres</label>-->
+<!--    <input type="number" [(ngModel)]="rooms" (change)="filtreRoom()" class="form-control">-->
+<!--  </div>-->
+
+    <!--  Chambres 2 -->
+
+    <div class="form-group col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-secondary" id="dropChambres" ngbDropdownToggle>Chambres</button>
+        <div ngbDropdownMenu aria-labelledby="dropChambres">
+          <form style="height: auto; width: auto">
+            <div class="form-check">
+
+              <label class="form-check-label" for="Appartement" ngbButtonLabel>
+                <div class="form-group col-10">
+                  <label class="col form label">A partir de </label>
+                  <input type="number" [(ngModel)]="rooms" [ngModelOptions]="{standalone: true}" (change)="filtreRoom()" class="form-control">
+                  <span>chambres</span>
+                </div>
+              </label>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--  TYPE : TODO Gérer l'énum-->
+
+
   <div class="form-group col">
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-secondary" id="dropTDB" ngbDropdownToggle>Type de bien</button>
@@ -73,26 +135,31 @@
       </div>
     </div>
   </div>
-  <div class="form-group col">
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-secondary" id="dropRI" ngbDropdownToggle>Règlement Interieur</button>
-      <div ngbDropdownMenu aria-labelledby="dropRI">
-        <form style="height: auto; width: auto">
-          <div class="form-check">
-            <label class="form-check-label" for="Fumeur" ngbButtonLabel>
-              <input class="form-check-input" type="checkbox" id="Fumeur" ngbButton> Fumeur
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label" for="Animaux" ngbButtonLabel>
-              <input class="form-check-input" type="checkbox" id="Animaux" ngbButton>Animaux
-            </label>
-          </div>
-        </form>
 
-      </div>
-    </div>
-  </div>
+    <!--  Rules -->
+
+
+<!--  <div class="form-group col">-->
+<!--    <div ngbDropdown class="d-inline-block">-->
+<!--      <button class="btn btn-outline-secondary" id="dropRI" ngbDropdownToggle>Règlement Interieur</button>-->
+<!--      <div ngbDropdownMenu aria-labelledby="dropRI">-->
+<!--        <form style="height: auto; width: auto">-->
+<!--          <div class="form-check">-->
+<!--            <label class="form-check-label" for="Fumeur" ngbButtonLabel>-->
+<!--              <input class="form-check-input" type="checkbox" id="Fumeur" ngbButton> Fumeur-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <label class="form-check-label" for="Animaux" ngbButtonLabel>-->
+<!--              <input class="form-check-input" type="checkbox" id="Animaux" ngbButton>Animaux-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
 </div>
 
   <!--  FIN RECHERCHE -->
