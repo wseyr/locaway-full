@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AccomodationHttpService} from '../accomodation/accomodation-http.service';
 import {Accomodation} from "../Model/Accomodation";
 import {ActivatedRoute} from "@angular/router";
@@ -12,17 +12,35 @@ import {OptionHttpService} from "../Option/option.service";
 })
 export class AccomodationFormComponent implements OnInit {
   newAccomodation: Accomodation;
+  option: Option;
+  optionId: number =175;
   options: Array<Option>;
 
-  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionHttpService: OptionHttpService) {
-  this.optionHttpService.findAll();
+  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService) {
+    this.newAccomodation = new Accomodation();
+
   }
+
   add() {
-  this.newAccomodation = new Accomodation();
+
 
   }
 
+  save(){
+    // this.route.params.subscribe(params => {
+    //   this.optionId = params['id'];
+    //   this.optionHttpService.findById(this.optionId).subscribe(resp => {
+    //     this.option = resp;
+    //   })
+    // })
+  }
+
+  list(){
+    return this.optionService.findAll();
+  }
   ngOnInit() {
+
+
   }
 
 }

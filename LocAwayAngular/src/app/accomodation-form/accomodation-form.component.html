@@ -1,10 +1,11 @@
 <div class="container">
   <h3>Publier une nouvelle annonce de location</h3>
-  <form>
+
     <div class="form-group">
       <label for="inputName">Titre de l'annonce</label>
       <input type="text" class="form-control" id="inputName"[(ngModel)]="newAccomodation.name">
     </div>
+
     <div class="form-group">
       <h6>Adresse du bien</h6>
       <div class="form-row">
@@ -51,12 +52,13 @@
       </div>
     </div>
 
-    <div class="form-check" *ngFor="let option of options">
+
+    <div class="form-check" *ngFor="let option of list()">
       <label class="form-check-label" for="checkOptions">{{option.name}}</label>
-      <input class="form-check-input" type="checkbox" value="" id="checkOptions">
+      <input class="form-check-input" type="checkbox" value="" id="checkOptions" [(ngModel)]="optionId">
     </div>
     <button type="button" class="btn btn-success btn-lg" (click)="add()">
       <fa name="plus"></fa>
     </button>
-  </form>
+
 </div>
