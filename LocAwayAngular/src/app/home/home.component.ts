@@ -9,13 +9,14 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+
 })
 
 export class HomeComponent implements OnInit {
   connected :User = JSON.parse(localStorage.getItem("connectedUser"));
 
-  accomodations: Array<Accomodation> = new Array<Accomodation>();
-  city: string =null;
+  accomodations: Array<Accomodation> = null;
+  city: string ="";
   person: number = 0;
 
   hoveredDate: NgbDate;
@@ -41,11 +42,14 @@ export class HomeComponent implements OnInit {
         console.log(error);
       });
     } else {
-      return this.accomodations = this.accomodationService.findAll();
+      this.accomodations = this.accomodationService.findAll();
+
     }
   }
 
   ngOnInit() {
+    this.accomodations = this.accomodationService.findAll();
+    console.log(this.accomodations)
   }
 
   onDateSelection(date: NgbDate) {
