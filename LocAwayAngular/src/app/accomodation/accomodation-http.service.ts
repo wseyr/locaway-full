@@ -10,6 +10,7 @@ import {Observable} from "rxjs";
 export class AccomodationHttpService {
   accomodations: Array<Accomodation>;
   leanAccomodations: Array<Accomodation>;
+  typesDeBiens: Array<string> = ["HOUSE","APPARTMENT","GUESTHOUSE","ALTERNATIVE"];
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();

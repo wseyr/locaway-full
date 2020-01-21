@@ -21,6 +21,10 @@ export class OptionHttpService {
       err => console.log(err));
   }
 
+  findAllObservable(): Observable<Array<Option>> {
+    return this.http.get<Array<Option>>(this.appConfig.backEnd + 'option');
+  }
+
   findAll(): Array<Option> {
     return this.options;
   }

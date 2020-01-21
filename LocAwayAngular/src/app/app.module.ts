@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AccomodationComponent } from './accomodation/accomodation.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppConfigService} from "./app-config.service";
 import {AccomodationHttpService} from "./accomodation/accomodation-http.service";
 import { AccomodationDetailComponent } from './accomodation-detail/accomodation-detail.component';
@@ -47,7 +47,8 @@ registerLocaleData(localeFr, 'fr');
     NgbModule,
     AngularFontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }, AppConfigService, AccomodationHttpService, UserHttpServiceService, BookmarkHttpService, BookingHttpService, BookeddayHttpService, ContactHttpService],
   bootstrap: [AppComponent]
