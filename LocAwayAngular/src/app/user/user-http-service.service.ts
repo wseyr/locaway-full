@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from "../app-config.service";
 import {Observable} from 'rxjs';
 import {Router} from "@angular/router"
+import {Option} from "../Model/Option";
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,12 @@ export class UserHttpServiceService {
       console.log(user);
       this.http.post<User>(this.appConfig.backEnd + 'user', user).subscribe(resp => {
         this.load();
-
       }, err => console.log(err));
-    }
+    } else {
+      this.http.put<User>(this.appConfig.backEnd + 'user/' + user.id, user).subscribe(resp => {
+      this.load();
+    }, err => console.log(err));
+}
   }
 
   delete(id: number) {
