@@ -102,7 +102,7 @@ class DataTestCreation {
 		a.setLatitudeDeg(43.595282f);
 		a.setLongitudeDeg(1.429806f);
 		
-		a.setDescription("pour 4 personnes\r\n" + 
+		a.setDescription("Pour 4 personnes\r\n" + 
 				"très calme donnant sur une cour intérieure ( pas sur rue)\r\n" + 
 				"terrasse non privative devant le logement\r\n" + 
 				"exposé sud-est avec vue sur montagne\r\n" + 
