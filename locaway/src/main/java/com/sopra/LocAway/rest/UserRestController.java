@@ -67,7 +67,6 @@ public class UserRestController {
 	@JsonView(Views.ViewUser.class)
 	public User login(User user){
 		
-		System.out.println("je suis dans le rest controller " + user.getEmail());
 		
 		User u = userRepo.findByEmailAndPassword(user.getEmail(), user.getPassword());
 		System.out.println(u);

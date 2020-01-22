@@ -74,7 +74,7 @@ class DataTestCreation {
 		u1.setEmail("yaou@yahoo.com");
 		u1.setPassword("topsecret");
 		u1.setPhoneNumber("0567891234");
-		u1.setFirstName("Super");
+		u1.setFirstName("Admin");
 		u1.setLastName("Admin");
 
 		User u2 = new User();
@@ -82,15 +82,18 @@ class DataTestCreation {
 		u2.setEmail("javadev@oracle.com");
 		u2.setPassword("azerty");
 		u2.setPhoneNumber("012345678");
-		u2.setFirstName("Jhon");
+		u2.setFirstName("John");
 		u2.setLastName("Smith");
 
 		u= userRepo.save(u);
 		u1 = userRepo.save(u1);
 		u2 = userRepo.save(u2);
-
+		
+		
+		String sdl = System.getProperty("line.separator");
+		
 		Accomodation a = new Accomodation();
-		a.setName("residence des residents");
+		a.setName("Résidence des hirondelles");
 		a.setNumber("25");
 		a.setStreet("allée de cherbourg");
 		a.setCity("Toulouse");
@@ -98,49 +101,109 @@ class DataTestCreation {
 		a.setCountry("France");
 		a.setLatitudeDeg(43.595282f);
 		a.setLongitudeDeg(1.429806f);
-		String sautDeLigne = System.getProperty("line.separator");
-		String description1="Quatres murs et un plafond. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.";
-		String description2="Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.";
-		String descriptionTotale=description1 + sautDeLigne + sautDeLigne + description2;
-		System.out.println(descriptionTotale);
-		a.setDescription(descriptionTotale);
+		
+		a.setDescription("pour 4 personnes\r\n" + 
+				"très calme donnant sur une cour intérieure ( pas sur rue)\r\n" + 
+				"terrasse non privative devant le logement\r\n" + 
+				"exposé sud-est avec vue sur montagne\r\n" + 
+				"séjour/cuisine\r\n" + 
+				"coin nuit avec\r\n" + 
+				"lit 140 + 1 mezzanine 2 places\r\n" + 
+				"salle de bains avec douche\r\n" + 
+				"chauffage électrique ( à régler en hiver)\r\n" + 
+				"cellier pour rangements divers\r\n" + 
+				"animaux non admis\r\n" + 
+				"proche de l'accès télécabine pour le ski\r\n" + 
+				"très proche des thermes pour cure\r\n" + 
+				"très facile d'accès pour le centre ville et commerces\r\n" + 
+				"JANVIER la semaine du samedi au samedi 190€\r\n" + 
+				"hors vacances scolaires la semaine 190€\r\n" + 
+				"pendant vacances scolaires 220€");
 		a.setNumberOfRooms(12);
 		a.setMaxPersons(30);
 		a.setDeleted(false);
 		a.setAccomodationType(EAccomodationType.APPARTMENT);
-		a.setDefaultBasePrice(650f);
-		a.setDefaultPersonPrice(100f);
+		a.setDefaultBasePrice(65f);
+		a.setDefaultPersonPrice(5f);
 		a.setUser(u);
 
 		Accomodation a1 = new Accomodation();
-		a1.setName("Villa des coeurs brises");
-		a1.setNumber("69");
-		a1.setStreet("boulevard des airs");
+		a1.setName("Villa des calanques");
+		a1.setNumber("67");
+		a1.setStreet("Boulevard des airs");
 		a1.setCity("Toulouse");
 		a1.setPostcode("31000");
 		a1.setCountry("France");
 		a1.setLatitudeDeg(43.5865373f);
 		a1.setLongitudeDeg(1.4385796f);
-		a1.setDescription("une desciption a remplir");
+		a1.setDescription("-Location ouverte d’avril à décembre 2020 - Classé gîte de France.\r\n" + sdl +
+				"-Adhésion Destifrance : maison pouvant accueillir personne à mobilité réduite." +  sdl + 
+				"Piscine en bois semi enterré clôturé, profondeur 1.20m diamètre 5.80m. Le gîte+piscine est entièrement pour les vacanciers. La piscine est ouverte de juin jusqu'à fin septembre selon la météo.\r\n" + sdl +
+				"-Dans le Haut Quercy, cette charmante maison de 120 m² d’habitable avec un jardin clos, vous accueille pour vos vacances dans le Lot.\r\n" + sdl+
+				"Elle est située au calme, sur les hauteurs du village de Condat (450m du bourg) et vous apportera tout le confort pour passer d'agréables moments en famille, entre amis.\r\n" + sdl+
+				"-Rez de chaussée, 1 grande pièce à vivre avec cuisine intégrée+1chambre avec lit 140+1salle de bain+1wc séparé+1cellier.\r\n" + sdl+
+				"-A l'étage: 2 chambres avec lit 140+1grande chambre avec 1 lit 140 et 1 lit de 120+1salle de bain avec wc.\r\n" + sdl+
+				"Le linge de maison n’est pas fourni (drap+taie d’oreiller)\r\n" +sdl+ 
+				"-Equipement: Four, lave vaisselle, lave linge, micro-ondes, cafetière, grille pain, bouilloire, télévision, radio cd, congélateur, barbecue, table+fer à repasser,2 lits parapluies,1 baignoire bébé salon de jardin .\r\n" + 
+				"-Jeux loisirs: table ping-pong, balançoire, trampoline, jeux société, 1 jeu de 8 boules de pétanque, livres enfant.\r\n" + 
+				"-Etant entouré par certains de nos plus beaux villages et sites de FRANCE, Condat est le point idéal de départ pour de nombreuses visites: Rocamadour, le Gouffre de Padirac, Les Cascades d'Autoire, Loubressac, Turenne, Martel, Collonges la Rouge, Curemonte etc..\r\n" + 
+				"-A proximité, pour vos loisirs, vous trouverez: 1 parc aquatique, 1 parc accro branche, 1centre équestre, terrains de golf+tennis, des chemins de randonnée, un casino etc. Faire aussi la descente de la Dordogne en canoë\r\n" + 
+				"-Tous les soirs de la semaine vous pourrez déguster nos produits régionaux dans une bonne ambiance grâce aux marchés de Pays.\r\n" + 
+				"-Nous mettrons à votre disposition toute la documentation concernant les manifestations durant votre séjour.\r\n" + 
+				"-Tous commerces et services à 2 KMS\r\n" + 
+				"\r\n" + 
+				"Maison non fumeur & petits animaux admis\r\n" + 
+				"\r\n" + 
+				"Nos tarifs sont les suivants :\r\n" + 
+				"\r\n" + 
+				"Printemps-automne 2020 :\r\n" + 
+				"La semaine :\r\n" + 
+				"2 pers, 180€ au-delà 20€ par pers supplémentaire\r\n" + 
+				"Le week-end:\r\n" + 
+				"1 nuit 50€ pour 2 pers et 40€ pour 2 pers sup.\r\n" + 
+				"2nuits 80€ pour 2 pers et 70€ pour 2 pers sup.\r\n" + 
+				"1 nuit 120€ pour 6 pers, au-delà 10€ par pers sup.\r\n" + 
+				"2 nuits 160€ pour 6 pers, au-delà 10€ par pers sup.\r\n" + 
+				"\r\n" + 
+				"ETE 2020:\r\n" + 
+				"Du 27-06 au 04-07 : 450€ pour 6 pers au-delàs 20 € par pers sup.\r\n" + 
+				"Juillet à partir du 04-07 : 750€ jusqu’à 6 pers au-delà 25€ par pers sup.\r\n" + 
+				"Août 750€ jusqu’à 6 pers au-delà 25€ par pers sup.\r\n" + 
+				"La location s’effectue du samedi arrivé 16h au samedi départ à 10h.\r\n" + 
+				"\r\n" + 
+				"Contact par téléphone:\r\n" + 
+				"06 45 81 07 85\r\n" + 
+				"Maison secondaire.");
 		a1.setNumberOfRooms(23445);
 		a1.setMaxPersons(876896786);
 		a1.setDeleted(false);
-		a1.setAccomodationType(EAccomodationType.GUESTHOUSE);
-		a1.setDefaultBasePrice(222f);
-		a1.setDefaultPersonPrice(31f);
+		a1.setAccomodationType(EAccomodationType.APPARTMENT);
+		a1.setDefaultBasePrice(150f);
+		a1.setDefaultPersonPrice(5f);
 		a1.setUser(u1);
 
 		Accomodation a2 = new Accomodation();
-		a2.setName("Mysterieux appartement");
+		a2.setName("Maison d'hôte chaleureuse");
 		a2.setNumber("221B");
 		a2.setStreet("Baker Street");
 		a2.setCity("Londres");
 		a2.setPostcode("WC2N 5DU");
-		a2.setCountry("La perfide albion");
+		a2.setCountry("Angleterre");
 		a2.setLatitudeDeg(4.5f);
 		a2.setLongitudeDeg(1.5f);
-		a2.setDescription("une desciption a remplir. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.");
-		a2.setNumberOfRooms(2);
+		a2.setDescription("Situé au Sud-Ouest de Londres à 40mn de l'aéroport international . Isolé en haut d'un côteau avec vue imprenable sur les Pyrénées et situé dans un parc arboré de 1.4 ha. A 3 km du village avec tous commerces.\r\n" + 
+				"\r\n" + 
+				"4 chambres d'hôtes avec salle de douche et WC privatifs, salle commune. Elles sont mitoyennes à 3 gîtes ruraux (3/5 p.et 4/6 p.) d'environ 50m2 chaqu'un, une grande loggiaa réservée aux hôtes.\r\n" + 
+				"\r\n" + 
+				"Table d'Hôtes 23 € /pers. - de 12 ans 12 €.\r\n" + 
+				"\r\n" + 
+				"A 60 km de Toulouse, 35 km de Auch et 40 km de St Gaudens.\r\n" + 
+				"- tourisme de loisirs comme les parcs d'attractions, les stations thermales, les stations de ski, ...\r\n" + 
+				"- tourisme culturel comme les sites archéologiques, les châteaux, les abbayes, les cathédrales Auch et St Bertrand de Comminges, les musées, ...\r\n" + 
+				"- tourisme animalier comme le parc zoologiques de Plaisance du Touche.\r\n" + 
+				"- tourisme sportif comme les sentiers de grande randonnée.\r\n" + 
+				"- tourisme gastronomique comme les spécialités régionales, Canard (Marché de Gimont ou de Samatan), le veau élevé sous la mère ...");
+		a2.setNumberOfRooms(4);
 		a2.setMaxPersons(8);
 		a2.setDeleted(false);
 		a2.setAccomodationType(EAccomodationType.GUESTHOUSE);
@@ -151,15 +214,17 @@ class DataTestCreation {
 		
 			
 		Accomodation a3 = new Accomodation();
-		a3.setName("Perdu dans la fôret");
-		a3.setNumber("1");
+		a3.setName("Chaleureux loft");
+		a3.setNumber("12");
 		a3.setStreet("rue du chêne");
 		a3.setCity("Camaran");
 		a3.setPostcode("31840");
 		a3.setCountry("France");
 		a3.setLatitudeDeg(43.793282f);
 		a3.setLongitudeDeg(1.429806f);
-		a3.setDescription(descriptionTotale);
+		a3.setDescription("Appartement 2 pièces rez de chaussé,avec cuisine intégrée et spacieuse avec un grand four et grand réfrigérateur et congélateur chambre indépendante de la cuisine salle d'eau indépendante des WC , parking privative et ombragé. surface habitable 26 m² + terrasse . Appartement refait a neuf 2019 literie neuve, buanderie gratuite à proximité tarif cure\r\n" + 
+				"540 € mars et novembre\r\n" + 
+				"580€ d'avril à octobre");
 		a3.setNumberOfRooms(3);
 		a3.setMaxPersons(12);
 		a3.setDeleted(false);
@@ -169,21 +234,45 @@ class DataTestCreation {
 		a3.setUser(u);
 		
 		Accomodation a4 = new Accomodation();
-		a4.setName("Sutdio à la campagne");
+		a4.setName("Grand et bel appartement dans Maison Bigourdane");
 		a4.setNumber("27");
-		a4.setStreet("Boulevard du vide");
+		a4.setStreet("Rue de la vallée");
 		a4.setCity("Aas");
 		a4.setPostcode("64971");
 		a4.setCountry("France");
 		a4.setLatitudeDeg(43.595282f);
 		a4.setLongitudeDeg(1.429806f);
-		a4.setDescription(descriptionTotale);
+		a4.setDescription("Semaine 7 soldée à 600 euros au lieu de 750 euros.\r\n" + 
+				"\r\n" + 
+				"Location de Standing.\r\n" + 
+				"Trois Etoiles Meublé de Tourisme.\r\n" + 
+				"5 Diamants Par OT .\r\n" + 
+				"Entrée Barèges à Sers « Quartier de Barzun ».\r\n" + 
+				"----------------------------------\r\n" + 
+				"Dans grande Maison Bigourdane d’époque ( vers 1800 ), en position dominante, au centre d’un domaine de 7 ha, un appartement indépendant de 73 M2 en duplex pour 4 – 5 Personnes refait récemment avec grand goût, classé 3 *** Meublé de Tourisme et 5 diamants par l’ Office du Tourisme Vallées de Gavarnie.\r\n" + 
+				"Située, versant soleil, des vues à 360° s’offrent à vous.\r\n" + 
+				"Sécurité pour enfants assurée. Vous arrivez en voiture devant la porte.\r\n" + 
+				"Grands parkings plats privés de vers : 1000 M2 à l’avant et 700 m2 à l’arrière. Un luxe en montagne. Navette à 100 M l’hiver. Et 80 M pour les Thermes l’été. 15 Minutes à pied du centre de Barèges par le chemin Thermal.\r\n" + 
+				"Cuisine indépendante équipée moderne et très complète de 12 M2 au sol , donnant sur une grande pièce de vie de vers 30 m2 avec WC. Possibilités utilisation du poêle moderne. 60 DM3 de bois offert puis 10 Euros le panier.\r\n" + 
+				"A l’étage, deux chambres de 15 M2 et 9 M2, salle de bain, Cabine douche avec WC.\r\n" + 
+				"Equipements modernes, meubles de qualité, dans un cadre splendide.\r\n" + 
+				"Réception Wifi gratuite.\r\n" + 
+				"Télévisions : écran plat ( 80 cms dans la salle commune ) et LED ( 56 cms dans la grande chambre ) , lecteur CD - DVD.\r\n" + 
+				"Locations Week- end , 2 nuits ou plus possibles en fonction des disponibilités :\r\n" + 
+				"Périodes Creuses : 2 nuits = 200 E + 100 E la nuit pour cours séjour.\r\n" + 
+				"Périodes Rouges, si libre : 150 Euros la nuit, soit 37, 5 E par personne, base 4 personnes.\r\n" + 
+				"Prendre contact pour de plus amples renseignements et visite de notre site.\r\n" + 
+				"Prix Eté : entre 500 à 600 E la semaine suivant périodes.\r\n" + 
+				"Cures de 21 Jours entre 750 à 1000 E.\r\n" + 
+				"Prix Hiver : entre 500 à 750 E la semaine suivant les périodes.\r\n" + 
+				"Réservez hors vacances, c’est moins cher.\r\n" + 
+				"Prix spécial Cure Thermale : Pour 2 personnes. Entre 750 à 1000 Euros les 21 jours suivant les périodes.");
 		a4.setNumberOfRooms(1);
 		a4.setMaxPersons(2);
 		a4.setDeleted(false);
 		a4.setAccomodationType(EAccomodationType.APPARTMENT);
-		a4.setDefaultBasePrice(650f);
-		a4.setDefaultPersonPrice(100f);
+		a4.setDefaultBasePrice(45f);
+		a4.setDefaultPersonPrice(2f);
 		a4.setUser(u);
 		
 		Accomodation a5 = new Accomodation();
@@ -195,13 +284,78 @@ class DataTestCreation {
 		a5.setCountry("France");
 		a5.setLatitudeDeg(43.595282f);
 		a5.setLongitudeDeg(1.429806f);
-		a5.setDescription(descriptionTotale);
-		a5.setNumberOfRooms(12);
-		a5.setMaxPersons(30);
+		a5.setDescription("AU BOIS D'ESCOUMOS\r\n" + 
+				"\r\n" + 
+				"HEBERGEMENT ECO-CITOYEN\r\n" + 
+				"\r\n" + 
+				"Pour plus d'informations et de photos\r\n" + 
+				"rechercher\r\n" + 
+				"au bois d'escoumos\r\n" + 
+				"\r\n" + 
+				"Ouvert depuis le 9 juillet 2011 d’un site\r\n" + 
+				"respectueux de l’environnement.\r\n" + 
+				"\r\n" + 
+				"Situé aux portes du Gers et des\r\n" + 
+				"Hautes-Pyrénées, venez\r\n" + 
+				"découvrir la tranquillité et le\r\n" + 
+				"calme ambiant sous une de nos trois Yourtes\r\n" + 
+				"Mongoles équipées de meubles\r\n" + 
+				"traditionnels et d'un poêle à bois,\r\n" + 
+				"installées dans un bois de plus de 2\r\n" + 
+				"hectares, vous pourrez admirer la chaîne des\r\n" + 
+				"Pyrénées et le coucher du soleil sur\r\n" + 
+				"la vallée des\r\n" + 
+				"Hautes-Pyrénées.\r\n" + 
+				"\r\n" + 
+				"Un vrai bol d’air au plus près de la\r\n" + 
+				"nature.\r\n" + 
+				"\r\n" + 
+				"Possibilité de repas et petit\r\n" + 
+				"déjeuner concoctés par un Chef de cuisine.\r\n" + 
+				"\r\n" + 
+				"DEUX YOURTES DE 27 M² de 1 à 4\r\n" + 
+				"personnes\r\n" + 
+				"TARIF POUR DEUX PERSONNES\r\n" + 
+				"\r\n" + 
+				"vacances scolaires\r\n" + 
+				"67 € la nuit, 402 € la semaine\r\n" + 
+				"hors vacances\r\n" + 
+				"57 € la nuit, 342 € la semaine\r\n" + 
+				"Personne supplémentaire 13 €\r\n" + 
+				"\r\n" + 
+				"UNE YOURTE DE 35 M² de 1 à 6 personnes\r\n" + 
+				"TARIF POUR DEUX PERSONNES\r\n" + 
+				"\r\n" + 
+				"vacances scolaires\r\n" + 
+				"77 € la nuit, 462 € la semaine\r\n" + 
+				"hors vacances\r\n" + 
+				"67 € la nuit, 402 € la semaine\r\n" + 
+				"Personne supplémentaire 13 €\r\n" + 
+				"\r\n" + 
+				"Taxe de séjour : 0€22 par nuit et par\r\n" + 
+				"personne\r\n" + 
+				"repas : 30 € par personne, enfant – de 10 ans\r\n" + 
+				"à 15 €\r\n" + 
+				"Panier petit déjeuner « maison»\r\n" + 
+				"10 €\r\n" + 
+				"location de linge : 10 € lit de 2 pers, 8 € lit de\r\n" + 
+				"1 pers\r\n" + 
+				"\r\n" + 
+				"Possibilité de massage et de Qi Gong sur\r\n" + 
+				"réservation\r\n" + 
+				"\r\n" + 
+				"Accès piscine, espace jeux, poules,\r\n" + 
+				"âne, brebis et chèvre en\r\n" + 
+				"libertés, très gourmands de pain\r\n" + 
+				"dur, n'hésitez pas à en apporter !!\r\n" + 
+				"\r\n" + 
+				"Au plaisir de vous accueillir");
+		a5.setNumberOfRooms(1);
+		a5.setMaxPersons(4);
 		a5.setDeleted(false);
 		a5.setAccomodationType(EAccomodationType.ALTERNATIVE);
-		a5.setDefaultBasePrice(12f);
-		a5.setDefaultPersonPrice(1.50f);
+		a5.setDefaultBasePrice(67f);
+		a5.setDefaultPersonPrice(10f);
 		a5.setUser(u);
 
 		a = accomodationRepo.save(a);
@@ -299,9 +453,9 @@ class DataTestCreation {
 		PointOfInterest poi2 = new PointOfInterest();
 		poi2.setName("Le canal du Midi");
 		poi2.setDescription(
-				"superbe ligne d'eau s'étirant de Toulouse à la Méditerranée, restera à jamais l'ouvrage le plus magnifiquement sculpté dans la terre sang et or du Languedoc..");
+				"Superbe ligne d'eau s'étirant de Toulouse à la Méditerranée, restera à jamais l'ouvrage le plus magnifiquement sculpté dans la terre sang et or du Languedoc..");
 		poi2.setNumber("31");
-		poi2.setStreet("avenue les pieds dans l'eau");
+		poi2.setStreet("avenue du canal");
 		poi2.setCity("Toulouse");
 		poi2.setPostcode("31000");
 		poi2.setCountry("France");

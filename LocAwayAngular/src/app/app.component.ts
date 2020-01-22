@@ -23,7 +23,6 @@ export class AppComponent {
     router.events.subscribe((val) => {
       // see also
       this.connectedU = JSON.parse(localStorage.getItem("connectedUser"));
-     console.log(val instanceof NavigationEnd)
     });
   }
 
