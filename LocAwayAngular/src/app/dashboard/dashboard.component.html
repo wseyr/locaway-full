@@ -33,7 +33,16 @@
     </ngb-tab>
     <ngb-tab title="Mon historique">
       <ng-template ngbTabContent>
-        <p>Historique</p>
+        <div class="mt-3">
+          <div *ngFor="let booking of connectedU.bookings" class="row">
+            <div>
+              <booking [booking_id]="booking.id"></booking>
+            </div>
+          </div>
+        </div>
+
+
+
       </ng-template>
     </ngb-tab>
     <ngb-tab title="Mes annonces">
@@ -59,3 +68,5 @@
     </ngb-tab>
   </ngb-tabset>
 </div>
+
+

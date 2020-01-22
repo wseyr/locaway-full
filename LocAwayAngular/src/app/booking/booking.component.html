@@ -1,0 +1,13 @@
+<div class="card mb-3">
+  <div class="row no-gutters">
+<!--    <div class="col-md-4" style="display: flex; padding: 1%">
+      <img src="{{booking?.accomodation.photos[0].path}}" class="card-img" style="width: 100%; margin: auto">
+    </div>
+    <div class="col-md-8"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{booking?.accomodation.name}}</h5>
+        <p class="card-text"> du {{booking?.bookedDays[0].date | date}} au {{booking?.bookedDays[booking?.bookedDays.length-1].date | date}} pour {{booking?.totalPrice}} €</p>
+      </div>
+    </div>
+  </div>
+

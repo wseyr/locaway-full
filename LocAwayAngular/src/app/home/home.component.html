@@ -15,6 +15,7 @@
     </div>
 
     <!--  Calendar -->
+
     <form class="form-inline, d-flex">
       <div class="form-group hidden">
         <div class="input-group">
@@ -29,6 +30,7 @@
                  outsideDays="hidden"
                  [startDate]="fromDate">
           <ng-template #t let-date let-focused="focused">
+
             <span class="custom-day"
                   [class.focused]="focused"
                   [class.range]="isRange(date)"

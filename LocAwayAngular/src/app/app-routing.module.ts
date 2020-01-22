@@ -10,6 +10,7 @@ import {BookingFormComponent} from "./booking-form/booking-form.component";
 import {ConceptComponent} from "./concept/concept.component";
 
 
+
 const routes: Routes = [
   {path: 'accomodation', component: AccomodationComponent},
   {path: 'accomodation-detail', component: AccomodationDetailComponent},
@@ -20,7 +21,6 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'accomodation-form', component: AccomodationFormComponent},
   {path: 'concept', component: ConceptComponent}
-
 ];
 
 @NgModule({
