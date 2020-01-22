@@ -9,11 +9,14 @@ button{
   margin: 0 .5em 0 .5em;
 }
 .negatif{
-  background-color: red;
+  color: red;
+  border-color: red;
   transition: all 1s ease;
 }
 
-.nothidden{
+
+
+.unvalidLogin{
   color:red;
-  display: flex;
+
 }

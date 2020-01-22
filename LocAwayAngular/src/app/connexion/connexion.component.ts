@@ -72,6 +72,7 @@ export class ConnexionComponent implements OnInit {
 
   connect() {
     console.log("Component Avant le service " + this.unvalidLogin);
+
     if(this.coUser.email && this.coUser.password) {
       this.userService.connect(this.coUser);
       console.log("Component APRES le service " + this.unvalidLogin);
