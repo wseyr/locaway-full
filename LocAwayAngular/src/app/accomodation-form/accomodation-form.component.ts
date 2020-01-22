@@ -7,6 +7,10 @@ import {OptionHttpService} from "../Option/option.service";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {HttpEvent} from "@angular/common/http";
+import {FileHttpService} from "../fileUpload/file-http.service";
+import {PhotoHttpService} from "../photo/photo-http.service";
+import {Photo} from "../Model/Photo";
+import {User} from "../Model/User";
 
 @Component({
   selector: 'app-accomodation-form',
@@ -14,6 +18,8 @@ import {HttpEvent} from "@angular/common/http";
   styleUrls: ['./accomodation-form.component.css']
 })
 export class AccomodationFormComponent implements OnInit {
+  connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
+
   newAccomodation: Accomodation = new Accomodation();
   option: Option;
   optionId: number;
@@ -37,7 +43,7 @@ export class AccomodationFormComponent implements OnInit {
   baseDropValid:any
 
 
-  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService) {
+  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService, private fileService: FileHttpService, private photoService: PhotoHttpService) {
     this.newAccomodation = new Accomodation();
     this.optionService.findAllObservable().subscribe(resp => {
       this.options = resp;
@@ -57,7 +63,17 @@ export class AccomodationFormComponent implements OnInit {
         this.newAccomodation.options.push(option);
       }
     }
-    this.accomodationService.save(this.newAccomodation);
+    this.newAccomodation.user = this.connectedU;
+    this.accomodationService.saveObservable(this.newAccomodation).subscribe((accomResp) =>{
+      this.files.forEach((file) =>{
+        this.fileService.upload(file).subscribe((resp) =>{
+          let newPhoto: Photo = new Photo();
+          newPhoto.accomodation = accomResp;
+          newPhoto.path = resp.fileDownloadUri;
+          this.photoService.save(newPhoto);
+        });
+      });
+    });
   }
   getDate(){
     return new Date()
@@ -66,5 +82,4 @@ export class AccomodationFormComponent implements OnInit {
 
 
   }
-
 }
