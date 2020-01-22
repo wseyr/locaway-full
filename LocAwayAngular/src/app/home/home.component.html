@@ -110,16 +110,17 @@
 
     <!--  Personnes 2 -->
     <div class="form-group col">
-      <div ngbDropdown class="d-inline-block">
+
+      <div ngbDropdown class="d-inline-block" style="">
         <button class="btn btn-outline-secondary" id="dropPersonnes" ngbDropdownToggle>Personnes</button>
         <div ngbDropdownMenu aria-labelledby="dropPersonnes">
           <form style="height: auto; width: auto">
             <div class="form-check">
 
-              <label class="form-check-label" for="Appartement" ngbButtonLabel>
-                <div class="form-group col-10">
+              <label class="form-check-label" for="Appartement" ngbButtonLabel style="margin: 0; padding: 0">
+                <div class="form-group col-10" style="margin: 0; padding: 0">
                   <label class="col form label">Pour</label>
-                  <input type="number" [(ngModel)]="person" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control">
+                  <input type="number" [(ngModel)]="person" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control" style="text-align: center">
                   <span>et plus</span>
                 </div>
               </label>
@@ -143,13 +144,13 @@
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-outline-secondary" id="dropChambres" ngbDropdownToggle>Chambres</button>
         <div ngbDropdownMenu aria-labelledby="dropChambres">
-          <form style="height: auto; width: auto">
+          <form style="height: auto; width: auto; margin: 0; padding: 0">
             <div class="form-check">
 
-              <label class="form-check-label" for="Appartement" ngbButtonLabel>
-                <div class="form-group col-10">
-                  <label class="col form label">A partir de </label>
-                  <input type="number" [(ngModel)]="rooms" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control">
+              <label class="form-check-label" for="Appartement" ngbButtonLabel style="margin: 0; padding: 0">
+                <div class="form-group col-10" style="margin: 0; padding: 0">
+                  <label class="col form label" >A partir de </label>
+                  <input type="number" [(ngModel)]="rooms" [ngModelOptions]="{standalone: true}" (change)="filtre()" class="form-control" style="text-align: center">
                   <span>chambres</span>
                 </div>
               </label>
@@ -165,10 +166,11 @@
     <div class="form-group col">
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-outline-secondary" id="dropTDB" ngbDropdownToggle>Type de bien</button>
-        <div ngbDropdownMenu aria-labelledby="dropTDB">
+        <div ngbDropdownMenu aria-labelledby="dropTDB" style="width: 15em">
           <form style="height: auto; width: auto">
             <div class="form-check">
-              <label class="form-check-label" for="Appartement" ngbButtonLabel>
+
+              <label class="form-check-label" for="Appartement" ngbButtonLabel style="margin: 0" >
                 <input class="form-check-input" name="appart" [(ngModel)]="appartment" (change)="checkbox()" type="checkbox" id="Appartement" ngbButton> Appartement
               </label>
             </div>

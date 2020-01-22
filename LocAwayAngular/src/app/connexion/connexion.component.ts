@@ -39,7 +39,8 @@ export class ConnexionComponent implements OnInit {
     this.verifpwd2 =true;
     this.veriftos = true;
 
-    if(this.confirmPassword==this.currentUser.password && this.termofservice && this.currentUser.password && this.currentUser.email && this.currentUser.firstName && this.currentUser.lastName && this.currentUser.phoneNumber) {
+    if(this.confirmPassword==this.currentUser.password && this.termofservice && this.currentUser.password
+      && this.currentUser.email && this.currentUser.firstName && this.currentUser.lastName && this.currentUser.phoneNumber) {
       this.userService.save(this.currentUser);
       this.cancel();
       this.confirmPassword = null;
