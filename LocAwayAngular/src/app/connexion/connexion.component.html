@@ -8,11 +8,7 @@
     <input type="password" class="form-control" placeholder="Mot de passe" id="password-signin" [(ngModel)]="coUser.password">
   </div>
   <div class="form-group">
-    <input type="checkbox" style="margin-left: .5em" id="remember-me">
-    <label for="remember-me" style="display: inline; margin: .5em">Rester connecté</label>
-  </div>
-  <div class="form-group">
-    <button type="button" class="btn btn-primary" (click)="connect()">
+    <button type="button" class="btn btn-success" (click)="connect()">
       <fa name="check"></fa>
     </button>
     <button type="button" class="btn btn-warning" (click)="cancel()">
@@ -40,7 +36,7 @@
     <label for="terms-of-service" [ngClass]="{'negatif':!veriftos}" style="display: inline; margin: .5em">Accepter les conditions d'utilisation du site</label>
   </div>
   <div class="form-group">
-    <button type="button" class="btn btn-primary" (click)="save()">
+    <button type="button" class="btn btn-success" (click)="save()">
       <fa name="check"></fa>
     </button>
     <button type="validate" class="btn btn-warning" (click)="cancel()">
