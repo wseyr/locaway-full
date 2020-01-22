@@ -39,6 +39,10 @@ export class Accomodation {
 
   public options: Array<Option> = new Array<Option>();
 
+  public optionsE: Array<Option> = new Array<Option>();
+
+  public optionsR: Array<Option> = new Array<Option>();
+
   public pointOfInterests: Array<PointOfInterest>;
 
   public user: User;
