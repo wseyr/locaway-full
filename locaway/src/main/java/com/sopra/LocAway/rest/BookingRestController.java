@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.LocAway.exception.NotFoundException;
+import com.sopra.LocAway.model.Accomodation;
 import com.sopra.LocAway.model.Booking;
 import com.sopra.LocAway.model.Views;
 import com.sopra.LocAway.repository.IBookingRepository;
@@ -68,6 +69,18 @@ public class BookingRestController {
 	public void delete(@PathVariable Long id) {
 		bookingRepo.deleteById(id);
 	}
+	
+//	@GetMapping("/search/{city}")
+//	@JsonView(Views.ViewAccomodation.class)
+//	public List<Accomodation> searchByCity(@PathVariable String city){
+//		
+//		List<Accomodation> accomodations = accomodationRepo.findByCity(city);
+//		if (accomodations != null) {
+//			return accomodations;
+//		} else {
+//			throw new NotFoundException();
+//		}
+//	}
 
 }	
 

@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   accomodations: Array<Accomodation> = null;
   accomodationsfiltrees: Array<Accomodation> = null;
 
+  unjour: NgbDate;
   city: string ="";
   person: number = 1;
   rooms: number = 1;

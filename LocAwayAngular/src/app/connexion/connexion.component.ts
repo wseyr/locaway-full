@@ -36,7 +36,7 @@ export class ConnexionComponent implements OnInit {
     this.verifphone = true;
     this.verifmail = true;
     this.verifpwd = true;
-    this.verifpwd2 =true;
+    this.verifpwd2 = true;
     this.veriftos = true;
 
     if(this.confirmPassword==this.currentUser.password && this.termofservice && this.currentUser.password
@@ -51,7 +51,7 @@ export class ConnexionComponent implements OnInit {
       this.veriffirstname = false;
     }else if (!this.currentUser.email){
       this.verifmail = false;
-    }else if(this.currentUser.phoneNumber){
+    }else if(!this.currentUser.phoneNumber){
       this.verifphone = false;
     }else if (!this.currentUser.password){
       this.verifpwd =false;
