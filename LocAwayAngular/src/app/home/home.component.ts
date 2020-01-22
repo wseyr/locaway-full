@@ -100,6 +100,7 @@ export class HomeComponent implements OnInit {
       this.toDate = null;
       this.fromDate = date;
     }
+    this.filtre();
   }
 
   isHovered(date: NgbDate) {
@@ -126,9 +127,50 @@ export class HomeComponent implements OnInit {
     else{
       this.accomodationsfiltrees = this.accomodations.filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
     }
+
+    let selectedDates: Array<Date> = this.datesInBooking();
+    this.accomodationsfiltrees = this.accomodationsfiltrees.filter(acco => this.checkDates(acco, selectedDates));
+
   }
 
+  checkDates(accomodation: Accomodation, selectedDates: Array<Date>){
+    let result: boolean = true;
+    accomodation.bookings.forEach((booking) => {
+      booking.bookedDays.forEach((bookedDay)=> {
+        selectedDates.forEach((date) => {
+          if(date.getTime() === new Date(bookedDay.date).getTime()){
+            result = false;
+            console.log("FILTRAGE PAR DATE")
+          }
+        });
+      });
+    });
+    return result;
+  }
 
+  ngbDateToDate(date: NgbDate): Date {
+    if(date){
+      return new Date(date.year, date.month - 1, date.day);
+    }else{
+      return null;
+    }
+  }
 
+  datesInBooking(): Array<Date>{
+    let dates = new Array<Date>();
+
+    if(!this.toDate){
+      let currentDate = this.ngbDateToDate(this.fromDate);
+      dates.push(new Date(currentDate));
+    } else {
+      let currentDate = this.ngbDateToDate(this.fromDate);
+      let stopDate = this.ngbDateToDate(this.toDate);
+      while (currentDate <= stopDate) {
+        dates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+    }
+    return dates;
+  }
 
 }
