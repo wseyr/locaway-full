@@ -22,7 +22,7 @@ export class ConnexionComponent implements OnInit {
   verifpwd2: boolean = true;
   veriftos: boolean = true;
   termofservice: boolean = false;
-
+  inscrit: boolean = false;
   constructor(private userService: UserHttpServiceService) {
     this.unvalidLogin = userService.unvalidLogin;
   }
@@ -38,10 +38,12 @@ export class ConnexionComponent implements OnInit {
     this.verifpwd = true;
     this.verifpwd2 =true;
     this.veriftos = true;
-    console.log(this.currentUser.password)
+
     if(this.confirmPassword==this.currentUser.password && this.termofservice && this.currentUser.password && this.currentUser.email && this.currentUser.firstName && this.currentUser.lastName && this.currentUser.phoneNumber) {
       this.userService.save(this.currentUser);
       this.cancel();
+      this.confirmPassword = null;
+      this.inscrit = true;
     }else if(!this.currentUser.lastName){
       this.veriflastname = false;
     }else if(!this.currentUser.firstName){
@@ -62,6 +64,7 @@ export class ConnexionComponent implements OnInit {
   }
   cancel(){
     this.currentUser = new User();
+    this.termofservice = false;
   }
 
   connect() {

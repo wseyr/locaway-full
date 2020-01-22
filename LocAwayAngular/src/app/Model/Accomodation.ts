@@ -46,5 +46,22 @@ export class Accomodation {
 
   constructor() {
 
+
+    }
+  listEquipements(){
+    let Equipements = new Array<Option>();
+    this.options.forEach((option)=>{
+      if(!option.isRule){
+        Equipements.push(option);
+      }
+    });
+  }
+  listRules(){
+    let Equipements = new Array<Option>();
+    this.options.forEach((option)=>{
+      if(option.isRule){
+        Equipements.push(option);
+      }
+    });
   }
 }
