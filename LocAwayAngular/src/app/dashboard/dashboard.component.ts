@@ -9,11 +9,20 @@ import {UserHttpServiceService} from "../user/user-http-service.service";
 })
 export class DashboardComponent implements OnInit {
   connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
-
+  showreservation:boolean = false;
+  showlocation:boolean = false;
   constructor(private userService: UserHttpServiceService) {
     console.log(this.connectedU);
   }
-
+  reservation(){
+    this.showreservation = true;
+    this.showlocation = false;
+  }
+  location(){
+    console.log(this.connectedU.accomodations)
+    this.showlocation = true;
+    this.showreservation = false;
+  }
   save(){
     this.userService.save(this.connectedU);
   }
