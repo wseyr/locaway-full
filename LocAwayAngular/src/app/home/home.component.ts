@@ -37,10 +37,10 @@ export class HomeComponent implements OnInit {
   toDate: NgbDate;
 
   accotypes: Array<string> = new Array<string>("APPARTMENT","HOUSE","GUESTHOUSE","ALTERNATIVE");
-  appartment: boolean = false;
-  house: boolean = false;
-  guesthouse: boolean = false;
-  alternative: boolean = false;
+  appartment: boolean = true;
+  house: boolean = true;
+  guesthouse: boolean = true;
+  alternative: boolean = true;
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -48,22 +48,22 @@ export class HomeComponent implements OnInit {
 
   }
 
-  checkbox(){
-    this.accotypes=[];
-    if (this.appartment) {
-      this.accotypes.push("APPARTMENT");
-    }
-    if (this.house){
-      this.accotypes.push("HOUSE");
-    }
-    if (this.guesthouse){
-      this.accotypes.push("GUESTHOUSE");
-    }
-    if (this.alternative){
-      this.accotypes.push("ALTERNATIVE");
-    }
-    this.filtre();
-  }
+  // checkbox(){
+  //   this.accotypes=[];
+  //   if (this.appartment) {
+  //     this.accotypes.push("APPARTMENT");
+  //   }
+  //   if (this.house){
+  //     this.accotypes.push("HOUSE");
+  //   }
+  //   if (this.guesthouse){
+  //     this.accotypes.push("GUESTHOUSE");
+  //   }
+  //   if (this.alternative){
+  //     this.accotypes.push("ALTERNATIVE");
+  //   }
+  //   this.filtre();
+  // }
 
   list(){
     return this.accomodationService.findAll();
@@ -122,6 +122,20 @@ export class HomeComponent implements OnInit {
   }
 
   filtre() {
+    this.accotypes=[];
+    if (this.appartment) {
+      this.accotypes.push("APPARTMENT");
+    }
+    if (this.house){
+      this.accotypes.push("HOUSE");
+    }
+    if (this.guesthouse){
+      this.accotypes.push("GUESTHOUSE");
+    }
+    if (this.alternative){
+      this.accotypes.push("ALTERNATIVE");
+    }
+
     if(!this.accomodations) {
       this.accomodationsfiltrees = this.list().filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
     }

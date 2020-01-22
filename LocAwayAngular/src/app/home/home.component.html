@@ -171,17 +171,22 @@
           <form style="height: auto; width: auto">
             <div class="form-check">
               <label class="form-check-label" for="Appartement" ngbButtonLabel>
-                <input class="form-check-input" name="appart" [(ngModel)]="appartment" (change)="checkbox()" type="checkbox" id="Appartement" ngbButton> Appartement
+                <input class="form-check-input" name="appart" [(ngModel)]="appartment" (change)="filtre()" type="checkbox" id="Appartement" ngbButton> Appartement
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="Maison" ngbButtonLabel>
-                <input class="form-check-input" name="maison" [(ngModel)]="house" (change)="checkbox()" type="checkbox" id="Maison" ngbButton>Maison
+                <input class="form-check-input" name="maison" [(ngModel)]="house" (change)="filtre()" type="checkbox" id="Maison" ngbButton>Maison
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="ChambreDHote" ngbButtonLabel>
-                <input class="form-check-input" name="chambredhote" [(ngModel)]="guesthouse" (change)="checkbox()" type="checkbox" id="ChambreDHote" ngbButton> Chambre d'hôtes
+                <input class="form-check-input" name="chambredhote" [(ngModel)]="guesthouse" (change)="filtre()" type="checkbox" id="ChambreDHote" ngbButton> Chambre d'hôtes
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="alternatif" ngbButtonLabel>
+                <input class="form-check-input" name="alternatif" [(ngModel)]="alternative" (change)="filtre()" type="checkbox" id="Alternatif" ngbButton> Alternatif
               </label>
             </div>
           </form>
@@ -220,36 +225,32 @@
 
   <div *ngIf="!accomodations && !accomodationsfiltrees">
     <div *ngFor="let accomodation of list()">
-      <div class="row">
-        <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
-        </div>
+      <div class="row w-100">
+
+          <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
+
       </div>
     </div>
   </div>
   <div *ngIf="accomodationsfiltrees && !accomodations">
     <div *ngFor="let accomodation of accomodationsfiltrees">
-      <div class="row">
-        <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
-        </div>
+      <div class="row w-100">
+          <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
       </div>
     </div>
   </div>
   <div *ngIf="accomodations && !accomodationsfiltrees">
     <div *ngFor="let accomodation of accomodations">
-      <div class="row">
-        <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
-        </div>
+      <div class="row w-100">
+          <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
       </div>
     </div>
   </div>
   <div *ngIf="accomodationsfiltrees && accomodations">
     <div *ngFor="let accomodation of accomodationsfiltrees">
-      <div class="row">
+      <div class="row w-100">
         <div>
-          <accomodation [accomodation_id]="accomodation.id"></accomodation>
+          <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
         </div>
       </div>
     </div>
