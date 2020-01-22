@@ -4,6 +4,7 @@ import {AccomodationHttpService} from "../accomodation/accomodation-http.service
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
 import {map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {ActivatedRoute} from "@angular/router";
 
 const states = ['Paris','Marseille','Lyon','Toulouse','Nice','Nantes','Strasbourg','Montpellier','Bordeaux','Lille','Rennes','Reims','Le Havre','Saint-Étienne','Toulon','Grenoble','Dijon','Angers','Villeurbanne','Saint-Denis','Le Mans','Nîmes','Aix-en-Provence','Brest','Clermont-Ferrand','Limoges','Tours','Amiens','Metz','Perpignan','Besançon','Boulogne-Billancourt','Orléans','Rouen','Mulhouse','Caen','Saint-Denis','Nancy','Saint-Paul','Argenteuil','Montreuil','Roubaix','Dunkerque','Tourcoing','Créteil','Avignon','Nanterre','Poitiers','Courbevoie','Fort-de-France','Londres','Aas','Camaran'];
 
@@ -42,9 +43,14 @@ export class HomeComponent implements OnInit {
   guesthouse: boolean = true;
   alternative: boolean = true;
 
-  constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, route:ActivatedRoute) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    route.params.subscribe(val => {
+      this.accomodationService.findAllObservable().subscribe((resp)=>{
+        this.accomodations = resp;
+      });
+    });
 
   }
 

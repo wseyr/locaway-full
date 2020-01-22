@@ -23,6 +23,11 @@ export class AccomodationHttpService {
       err => console.log(err));
   }
 
+  findAllObservable(): Observable<Array<Accomodation>>{
+    return this.http.get<Array<Accomodation>>(this.appConfig.backEnd + 'accomodation');
+
+  }
+
   findAll(): Array<Accomodation> {
     return this.accomodations;
   }
