@@ -20,16 +20,16 @@
 </div>
 <div class="col-8" style="display: inline-flex; flex-direction: column"><h2>Je créé mon compte LocAway :</h2>
   <div class="form-group" style="display: inline-flex; flex-direction: row">
-    <input type="text" class="form-control" placeholder="Nom" id="last-name" [(ngModel)]="currentUser.lastName">
-    <input type="text" class="form-control" placeholder="Prénom" id="first-name" [(ngModel)]="currentUser.firstName">
+    <input type="text" class="form-control" placeholder="Nom" id="last-name" [ngClass]="{'negatif':!veriflastname}" [(ngModel)]="currentUser.lastName">
+    <input type="text" class="form-control" placeholder="Prénom" id="first-name" [ngClass]="{'negatif':!veriffirstname}" [(ngModel)]="currentUser.firstName">
   </div>
   <div class="form-group" style="display: inline-flex; flex-direction: row">
-    <input type="text" class="form-control" placeholder="Adresse email" id="email-signup" [(ngModel)]="currentUser.email">
-    <input type="text" class="form-control" placeholder="Numéro de téléphone" id="phone-number" [(ngModel)]="currentUser.phoneNumber">
+    <input type="text" class="form-control" placeholder="Adresse email" id="email-signup" [ngClass]="{'negatif':!verifmail}" [(ngModel)]="currentUser.email">
+    <input type="text" class="form-control" placeholder="Numéro de téléphone" id="phone-number" [ngClass]="{'negatif':!verifphone}" [(ngModel)]="currentUser.phoneNumber">
   </div>
   <div class="form-group" style="display: inline-flex; flex-direction: row">
-    <input type="text" class="form-control" placeholder="Mot de passe" id="password-signup" [(ngModel)]="currentUser.password">
-    <input type="text" class="form-control" placeholder="Confirmer le mot de passe" id="password-confirm" [ngClass]="{'negatif':!verif}" [(ngModel)]="confirmPassword">
+    <input type="password" class="form-control" placeholder="Mot de passe" id="password-signup" [ngClass]="{'negatif':!verifpwd}" [(ngModel)]="currentUser.password">
+    <input type="password" class="form-control" placeholder="Confirmer le mot de passe" id="password-confirm" [ngClass]="{'negatif':!verifpwd2}" [(ngModel)]="confirmPassword">
   </div>
   <div class="form-group">
     <input type="checkbox" [ngClass]="{'negatif':!veriftos}" style="margin-left: .5em" id="terms-of-service" [(ngModel)]="termofservice"><p [ngClass]="{'negatif':!veriftos}" style="display: inline; margin: .5em">Accepter les conditions d'utilisation du site</p>
