@@ -41,6 +41,10 @@ export class PhotoHttpService {
     }
   }
 
+  saveObservable(photo: Photo): Observable<Photo> {
+    return this.http.post<Photo>(this.appConfig.backEnd + 'photo', photo);
+  }
+
   delete(id: number) {
     this.http.delete<Photo>(this.appConfig.backEnd + 'photo/' + id).subscribe(resp => {
       this.load();

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AccomodationHttpService} from '../accomodation/accomodation-http.service';
 import {Accomodation} from "../Model/Accomodation";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Option} from "../Model/Option";
 import {OptionHttpService} from "../Option/option.service";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Subscription} from "rxjs";
-import {HttpEvent} from "@angular/common/http";
+import {HttpClient, HttpEvent} from "@angular/common/http";
 import {FileHttpService} from "../fileUpload/file-http.service";
 import {PhotoHttpService} from "../photo/photo-http.service";
 import {Photo} from "../Model/Photo";
@@ -43,7 +43,7 @@ export class AccomodationFormComponent implements OnInit {
   baseDropValid:any
 
 
-  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService, private fileService: FileHttpService, private photoService: PhotoHttpService) {
+  constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService, private fileService: FileHttpService, private photoService: PhotoHttpService, private router: Router) {
     this.newAccomodation = new Accomodation();
     this.optionService.findAllObservable().subscribe(resp => {
       this.options = resp;
@@ -63,14 +63,24 @@ export class AccomodationFormComponent implements OnInit {
         this.newAccomodation.options.push(option);
       }
     }
+
+
     this.newAccomodation.user = this.connectedU;
     this.accomodationService.saveObservable(this.newAccomodation).subscribe((accomResp) =>{
+      //variable pour rediriger après l'upload de la dernière photo
+      let nbPhoto: number = 0;
       this.files.forEach((file) =>{
         this.fileService.upload(file).subscribe((resp) =>{
           let newPhoto: Photo = new Photo();
           newPhoto.accomodation = accomResp;
           newPhoto.path = resp.fileDownloadUri;
-          this.photoService.save(newPhoto);
+          this.photoService.saveObservable(newPhoto).subscribe((resp) =>{
+            nbPhoto++;
+            if(nbPhoto == this.files.length){
+              this.router.navigate(["accomodation-detail", accomResp.id]);
+            }
+          });
+
         });
       });
     });
@@ -80,6 +90,19 @@ export class AccomodationFormComponent implements OnInit {
   }
   ngOnInit() {
 
+  }
 
+  textForAccomtype(typedebien: string): string{
+    if(typedebien == "HOUSE"){
+      return "Maison";
+    } else if(typedebien == "APPARTMENT"){
+      return "Appartement";
+    }else if(typedebien == "GUESTHOUSE"){
+      return "Maison d'hôtes";
+    }else if(typedebien == "ALTERNATIVE"){
+      return "Alternatif";
+    }else{
+      return "défaut";
+    }
   }
 }

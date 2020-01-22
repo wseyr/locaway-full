@@ -9,7 +9,7 @@
     <div class="form-group col">
       <label for="typeDeBien">Type de bien</label>
       <select class="form-control" id="typeDeBien" [(ngModel)]="newAccomodation.accomodationType">
-        <option value="{{tdb}}" *ngFor="let tdb of typesDeBiens()">{{tdb}}</option>
+        <option value="{{tdb}}" *ngFor="let tdb of typesDeBiens()">{{textForAccomtype(tdb)}}</option>
       </select>
     </div>
   </div>
