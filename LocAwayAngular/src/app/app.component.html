@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col">
               <div ngbDropdown class="d-inline-block" >
-                <div *ngIf="connectedU"> <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Bienvenue {{connectedU.firstName}}</button></div>
+                <div *ngIf="connectedU"> <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>{{connectedU.firstName}}</button></div>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <button ngbDropdownItem [routerLink]= "['/dashboard']">Mon tableau de bord </button>
                   <button ngbDropdownItem (click)="userHttpServiceService.logout()"> Déconnexion</button>
