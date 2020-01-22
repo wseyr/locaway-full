@@ -25,10 +25,7 @@ import {BookeddayHttpService} from "./bookedday/bookedday-http.service";
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {ngfModule} from "angular-file";
-
-import { ReservationsComponent } from './reservations/reservations.component';
 import { BookingComponent } from './booking/booking.component';
-
 import { ConceptComponent } from './concept/concept.component';
 
 
@@ -47,10 +44,7 @@ registerLocaleData(localeFr, 'fr');
     DashboardComponent,
     AccomodationFormComponent,
     BookingFormComponent,
-
-    ReservationsComponent,
     BookingComponent,
-
     ConceptComponent,
 
 ],
