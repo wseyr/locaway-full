@@ -12,7 +12,9 @@ export class ConnexionComponent implements OnInit {
   confirmPassword: string;
 
   coUser : User = new User();
-  unvalidLogin : boolean=false;
+  verifCoUserEmail:boolean = true;
+  verifCoUserPassword:boolean = true;
+  unvalidLogin : boolean=this.userService.unvalidLogin;
 
   veriffirstname:boolean = true;
   veriflastname: boolean = true;
@@ -24,7 +26,7 @@ export class ConnexionComponent implements OnInit {
   termofservice: boolean = false;
   inscrit: boolean = false;
   constructor(private userService: UserHttpServiceService) {
-    this.unvalidLogin = userService.unvalidLogin;
+
   }
 
   ngOnInit() {}
@@ -69,7 +71,15 @@ export class ConnexionComponent implements OnInit {
   }
 
   connect() {
-    this.userService.connect(this.coUser);
+    console.log("Component Avant le service " + this.unvalidLogin);
+    if(this.coUser.email && this.coUser.password) {
+      this.userService.connect(this.coUser);
+      console.log("Component APRES le service " + this.unvalidLogin);
+    } else if  (!this.coUser.email){
+      this.verifCoUserEmail=false;
+    } else if  (!this.coUser.password){
+      this.verifCoUserPassword=false;
+    }
 
   }
 }

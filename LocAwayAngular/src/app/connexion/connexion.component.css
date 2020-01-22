@@ -12,3 +12,8 @@ button{
   background-color: red;
   transition: all 1s ease;
 }
+
+.nothidden{
+  color:red;
+  display: flex;
+}

@@ -64,17 +64,9 @@ export class UserHttpServiceService {
       if (this._connectedUser!=null){
         localStorage.setItem('connectedUser', JSON.stringify(this._connectedUser));
         this.router.navigate(["home"]);
-        //location.reload();
-
-
-
-      } else {
-
-        //TODO Gérer le fail
-        console.log("je suis dans le else" + this.unvalidLogin);
-        this.unvalidLogin = true;
-        console.log("je suis dans le else" + this.unvalidLogin);
-      }
+        } else {
+          this.unvalidLogin = true;
+          }
     });
 
   }

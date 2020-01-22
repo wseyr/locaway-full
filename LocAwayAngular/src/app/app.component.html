@@ -26,10 +26,10 @@
           <a class="nav-link" [routerLink]="['/concept']">Le concept LocAway</a>
         </li>
         <li class="nav-item" style="margin: 0em 2em 0em 2em">
-          <a class="nav-link" [routerLink]= "['/accomodation-form']">Publier</a>
+          <a class="nav-link" [routerLink]= "['/accomodation-form']" *ngIf="connectedU">Publier</a>
         </li>
         <li *ngIf="!connectedU" class="nav-item" style="margin: 0em 2em 0em 2em">
-          <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active">Connexion</a>
+          <a class="nav-link" style="font-weight: 900; color: black" [routerLink]="['/connexion']" routerLinkActive="active">Connexion</a>
         </li>
         <li class="nav-item" style="margin: 0em 2em 0em 2em">
           <div class="row">

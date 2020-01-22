@@ -27,6 +27,7 @@ import localeFr from '@angular/common/locales/fr';
 import {ngfModule} from "angular-file";
 import { BookingComponent } from './booking/booking.component';
 import { ConceptComponent } from './concept/concept.component';
+import { PointOfInterestComponent } from './point-of-interest/point-of-interest.component';
 
 
 
@@ -46,6 +47,7 @@ registerLocaleData(localeFr, 'fr');
     BookingFormComponent,
     BookingComponent,
     ConceptComponent,
+    PointOfInterestComponent,
 
 ],
   imports: [
