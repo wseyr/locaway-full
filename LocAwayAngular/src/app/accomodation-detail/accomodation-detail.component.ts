@@ -38,7 +38,13 @@ export class AccomodationDetailComponent implements OnInit {
         this.accomodation.optionsE = new Array <Option>();
         this.accomodation.options.forEach((option)=>{
           if(!option.isRule){
-            this.accomodation.options.push(option);
+            this.accomodation.optionsE.push(option);
+          }
+        });
+        this.accomodation.optionsR = new Array <Option>();
+        this.accomodation.options.forEach((option)=>{
+          if(option.isRule){
+            this.accomodation.optionsR.push(option);
           }
         });
 
