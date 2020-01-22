@@ -7,7 +7,10 @@ import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AccomodationFormComponent} from "./accomodation-form/accomodation-form.component";
 import {BookingFormComponent} from "./booking-form/booking-form.component";
+
 import {ReservationsComponent} from './reservations/reservations.component';
+
+import {ConceptComponent} from "./concept/concept.component";
 
 
 
@@ -20,7 +23,12 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'accomodation-form', component: AccomodationFormComponent},
-  {path: 'reservations', component: ReservationsComponent}
+
+  {path: 'reservations', component: ReservationsComponent},
+
+  {path: 'concept', component: ConceptComponent}
+
+
 ];
 
 @NgModule({

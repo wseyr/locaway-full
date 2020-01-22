@@ -39,6 +39,10 @@ export class Accomodation {
 
   public options: Array<Option> = new Array<Option>();
 
+  public optionsE: Array<Option> = new Array<Option>();
+
+  public optionsR: Array<Option> = new Array<Option>();
+
   public pointOfInterests: Array<PointOfInterest>;
 
   public user: User;
@@ -46,5 +50,22 @@ export class Accomodation {
 
   constructor() {
 
+
+    }
+  listEquipements(){
+    let Equipements = new Array<Option>();
+    this.options.forEach((option)=>{
+      if(!option.isRule){
+        Equipements.push(option);
+      }
+    });
+  }
+  listRules(){
+    let Equipements = new Array<Option>();
+    this.options.forEach((option)=>{
+      if(option.isRule){
+        Equipements.push(option);
+      }
+    });
   }
 }

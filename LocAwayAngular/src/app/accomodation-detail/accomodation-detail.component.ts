@@ -3,6 +3,7 @@ import {AccomodationHttpService} from '../accomodation/accomodation-http.service
 import {Accomodation} from '../Model/Accomodation';
 import {ActivatedRoute} from "@angular/router";
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
+import {Option} from "../Model/Option";
 
 @Component({
   selector: 'app-accomodation-detail',
@@ -33,6 +34,19 @@ export class AccomodationDetailComponent implements OnInit {
       this.accomodation_id = params['id'];
       this.accomodationService.findById(this.accomodation_id).subscribe(resp => {
         this.accomodation = resp;
+
+        this.accomodation.optionsE = new Array <Option>();
+        this.accomodation.options.forEach((option)=>{
+          if(!option.isRule){
+            this.accomodation.optionsE.push(option);
+          }
+        });
+        this.accomodation.optionsR = new Array <Option>();
+        this.accomodation.options.forEach((option)=>{
+          if(option.isRule){
+            this.accomodation.optionsR.push(option);
+          }
+        });
 
         this.accomodation.bookings.forEach( (booking) => {
           booking.bookedDays.forEach( (bookedDay) => {

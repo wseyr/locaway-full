@@ -9,7 +9,7 @@ export class Photo {
   public accomodation: Accomodation;
 
 
-  constructor(id: number, version: number, path: string, isMainPhoto: boolean, accomodation: Accomodation) {
+  constructor(id?: number, version?: number, path?: string, isMainPhoto?: boolean, accomodation?: Accomodation) {
     this.id = id;
     this.version = version;
     this.path = path;

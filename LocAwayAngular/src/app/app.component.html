@@ -23,12 +23,12 @@
           <a class="nav-link" href="#">Que faire ?</a>
         </li>
         <li class="nav-item" style="margin: 0em 2em 0em 2em">
-          <a class="nav-link" href="#">Le concept LocAway</a>
+          <a class="nav-link" [routerLink]="['/concept']">Le concept LocAway</a>
         </li>
         <li class="nav-item" style="margin: 0em 2em 0em 2em">
           <a class="nav-link" [routerLink]= "['/accomodation-form']">Publier</a>
         </li>
-        <li class="nav-item" style="margin: 0em 2em 0em 2em">
+        <li *ngIf="!connectedU" class="nav-item" style="margin: 0em 2em 0em 2em">
           <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active">Connexion</a>
         </li>
         <li class="nav-item" style="margin: 0em 2em 0em 2em">
@@ -37,9 +37,7 @@
               <div ngbDropdown class="d-inline-block" >
                 <div *ngIf="connectedU"> <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Bienvenue {{connectedU.firstName}}</button></div>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem>Mes infos</button>
-                  <button ngbDropdownItem>Mon tableau de bord</button>
-                  <button ngbDropdownItem>Mes annonces</button>
+                  <button ngbDropdownItem [routerLink]= "['/dashboard']">Mon tableau de bord </button>
                   <button ngbDropdownItem (click)="userHttpServiceService.logout()"> Déconnexion</button>
                 </div>
               </div>

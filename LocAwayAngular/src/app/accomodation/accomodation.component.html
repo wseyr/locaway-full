@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title"><a class="stretched-link" [routerLink]="['/accomodation-detail', accomodation_id]" routerLinkActive="active">{{accomodation?.name}}</a></h5>
-          <p class="card-text">{{accomodation?.description}}</p>
+          <p class="card-text" class="angular-with-newlines, giveMeEllipsis">{{accomodation?.description}}</p>
           <p class="card-text"><small class="text-muted">{{accomodation?.city}} ({{accomodation?.postcode}}), {{accomodation?.country}}</small></p>
         </div>
       </div>

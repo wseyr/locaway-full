@@ -43,6 +43,10 @@ export class AccomodationHttpService {
     }
   }
 
+  saveObservable(accomodation: Accomodation): Observable<Accomodation> {
+      return this.http.post<Accomodation>(this.appConfig.backEnd + 'accomodation', accomodation);
+  }
+
   delete(id: number) {
     this.http.delete<Accomodation>(this.appConfig.backEnd + 'accomodation/' + id).subscribe(resp => {
       this.load();
