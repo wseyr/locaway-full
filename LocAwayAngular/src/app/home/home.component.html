@@ -10,8 +10,8 @@
     <!--  Destination -->
 
     <div class="form-group col-2">
-      <label class="col form label"></label>
-      <input name="name" [(ngModel)]="city" (change)="listByCity(city)" type="text" class="form-control" placeholder="Destination">
+      <label for="typeahead-basic" class="col form label"></label>
+      <input id="typeahead-basic" name="name" [(ngModel)]="city" (change)="listByCity(city)" [ngbTypeahead]="search" type="text" class="form-control" placeholder="Destination">
     </div>
 
     <!--  Calendar -->
@@ -48,10 +48,7 @@
       </div>
     </div>
   </form>
-<<<<<<< HEAD
 
-=======
->>>>>>> a46b6807676c07fec97a66ac37a84483efa534b1
 
     <!--  Personnes -->
 
