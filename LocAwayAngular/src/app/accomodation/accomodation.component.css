@@ -3,7 +3,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 10; /* number of lines to show */
+  -webkit-line-clamp: 6; /* number of lines to show */
 }
 
 .angular-with-newlines {

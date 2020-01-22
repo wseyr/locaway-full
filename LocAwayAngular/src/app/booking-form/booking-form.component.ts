@@ -19,6 +19,7 @@ export class BookingFormComponent implements OnInit {
 
   newBooking: Booking = new Booking();
   numberOfPersons: number = 1;
+  bookingOK: boolean = false;
 
   //Calendrier
   hoveredDate: NgbDate;
@@ -40,7 +41,7 @@ export class BookingFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private bookingService: BookingHttpService, private bookedDayService: BookeddayHttpService, private accomodationService: AccomodationHttpService, calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
   ngOnInit() {
@@ -107,6 +108,7 @@ export class BookingFormComponent implements OnInit {
     this.bookingService.saveNew(this.newBooking).subscribe((bookingResp) =>{
       this.newBooking = bookingResp;
       console.log(this.newBooking);
+      this.bookingOK=true;
 
       this.datesInBooking().forEach((date: Date) =>{
         let bookedDay = new BookedDay();

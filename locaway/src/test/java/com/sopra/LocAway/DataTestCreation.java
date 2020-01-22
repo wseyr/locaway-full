@@ -63,7 +63,7 @@ class DataTestCreation {
 
 		User u = new User();
 		u.setAdmin(false);
-		u.setEmail("gmail@gmail.com");
+		u.setEmail("steven@gmail.com");
 		u.setPassword("motdepasse");
 		u.setPhoneNumber("0560606060");
 		u.setFirstName("Steven");
@@ -71,7 +71,7 @@ class DataTestCreation {
 
 		User u1 = new User();
 		u1.setAdmin(true);
-		u1.setEmail("yaou@yahoo.com");
+		u1.setEmail("adminlocaway@yahoo.com");
 		u1.setPassword("topsecret");
 		u1.setPhoneNumber("0567891234");
 		u1.setFirstName("Admin");
@@ -84,10 +84,19 @@ class DataTestCreation {
 		u2.setPhoneNumber("012345678");
 		u2.setFirstName("John");
 		u2.setLastName("Smith");
+		
+		User u3 = new User();
+		u3.setAdmin(false);
+		u3.setEmail("a");
+		u3.setPassword("a");
+		u3.setPhoneNumber("0613315267");
+		u3.setFirstName("Thierry");
+		u3.setLastName("Dupont");
 
 		u= userRepo.save(u);
 		u1 = userRepo.save(u1);
 		u2 = userRepo.save(u2);
+		u3 = userRepo.save(u3);
 		
 		
 		String sdl = System.getProperty("line.separator");
@@ -387,15 +396,15 @@ class DataTestCreation {
 
 		Option o5 = new Option();
 		o5.setIsRule(true);
-		o5.setName("No smoking");
+		o5.setName("Non fumeur");
 
 		Option o6 = new Option();
 		o6.setIsRule(true);
-		o6.setName("No animals");
+		o6.setName("Animaux non acceptés");
 
 		Option o7 = new Option();
 		o7.setIsRule(false);
-		o7.setName("Amenagement PMR");
+		o7.setName("Aménagement PMR");
 
 		Option o8 = new Option();
 		o8.setIsRule(false);
@@ -635,11 +644,14 @@ class DataTestCreation {
 		b.setTotalPrice(512.22f);
 		
 		Booking b1 = new Booking();
-		b1.setValidated(false);
+		b1.setValidated(true);
 		b1.setCancelled(false);
 		b1.setAccomodation(a1);
 		b1.setUser(u1);
 		b1.setTotalPrice(128f);
+		
+		
+		
 
 		Booking b2 = new Booking();
 		b2.setValidated(false);
