@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Accomodation} from "../Model/Accomodation";
 import {AccomodationHttpService} from "../accomodation/accomodation-http.service";
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
+import {map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+
+const states = ['Paris','Marseille','Lyon','Toulouse','Nice','Nantes','Strasbourg','Montpellier','Bordeaux','Lille','Rennes','Reims','Le Havre','Saint-Étienne','Toulon','Grenoble','Dijon','Angers','Villeurbanne','Saint-Denis','Le Mans','Nîmes','Aix-en-Provence','Brest','Clermont-Ferrand','Limoges','Tours','Amiens','Metz','Perpignan','Besançon','Boulogne-Billancourt','Orléans','Rouen','Mulhouse','Caen','Saint-Denis','Nancy','Saint-Paul','Argenteuil','Montreuil','Roubaix','Dunkerque','Tourcoing','Créteil','Avignon','Nanterre','Poitiers','Courbevoie','Fort-de-France','Londres','Aas','Camaran'];
 
 @Component({
   selector: 'home',
@@ -11,6 +15,14 @@ import {NgbCalendar, NgbDate, NgbDateParserFormatter} from "@ng-bootstrap/ng-boo
 })
 
 export class HomeComponent implements OnInit {
+
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
 
   accomodations: Array<Accomodation> = null;
   accomodationsfiltrees: Array<Accomodation> = null;
@@ -28,8 +40,6 @@ export class HomeComponent implements OnInit {
   house: boolean = false;
   guesthouse: boolean = false;
   alternative: boolean = false;
-  animal: boolean =false;
-  smoking: boolean = false;
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -50,12 +60,6 @@ export class HomeComponent implements OnInit {
     }
     if (this.alternative){
       this.accotypes.push("ALTERNATIVE");
-    }
-    if(this.animal){
-      this.accotypes.push("No animals");
-    }
-    if(this.smoking){
-      this.accotypes.push("No animals");
     }
     this.filtre();
   }
@@ -116,12 +120,12 @@ export class HomeComponent implements OnInit {
   }
 
   filtre() {
-      if(!this.accomodations) {
-        this.accomodationsfiltrees = this.list().filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
-      }
-      else{
-        this.accomodationsfiltrees = this.accomodations.filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
-      }
+    if(!this.accomodations) {
+      this.accomodationsfiltrees = this.list().filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
+    }
+    else{
+      this.accomodationsfiltrees = this.accomodations.filter(p => (p.maxPersons >= this.person && p.numberOfRooms >= this.rooms && this.accotypes.includes(p.accomodationType)));
+    }
   }
 
 
