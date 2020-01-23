@@ -1,13 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css?family=Lobster|Muli&display=swap');
+
 h1{
   font-family: 'Lobster', cursive;
   font-size: 80px;
 }
+
 h2, h3,h4,h5,h6{
   font-weight: bold;
-
 }
+
 *{
   font-family: 'Muli', sans-serif;
 }
