@@ -73,6 +73,7 @@ export class AccomodationFormComponent implements OnInit {
   verifnbchambre: boolean=true;
   verifnbpersmax: boolean=true;
   verifprix: boolean=true;
+  verifphoto: boolean=true;
   save() {
     this.valide = false;
     this.verifname = true;
@@ -85,7 +86,8 @@ export class AccomodationFormComponent implements OnInit {
     this.verifnbchambre= true;
     this.verifnbpersmax= true;
     this.verifprix= true;
-    if (this.newAccomodation.name && this.newAccomodation.number && this.newAccomodation.accomodationType && this.newAccomodation.street && this.newAccomodation.city && this.newAccomodation.country && this.newAccomodation.numberOfRooms>=0 && this.newAccomodation.maxPersons>=0 && this.newAccomodation.defaultBasePrice>=0) {
+    this.verifphoto = true;
+    if (this.newAccomodation.photos && this.newAccomodation.name && this.newAccomodation.number && this.newAccomodation.accomodationType && this.newAccomodation.street && this.newAccomodation.city && this.newAccomodation.country && this.newAccomodation.numberOfRooms>=0 && this.newAccomodation.maxPersons>=0 && this.newAccomodation.defaultBasePrice>=0) {
       for (let option of this.options) {
         if (option.checked) {
           this.newAccomodation.options.push(option);
@@ -154,6 +156,9 @@ export class AccomodationFormComponent implements OnInit {
       console.log(this.newAccomodation.defaultBasePrice)
       this.verifprix = false;
       this.valide =true;
+    }else if(!this.newAccomodation.photos){
+      this.verifphoto =false;
+      this.valide = true;
     }
 
   }

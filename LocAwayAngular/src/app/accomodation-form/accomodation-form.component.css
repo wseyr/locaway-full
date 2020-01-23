@@ -2,3 +2,8 @@
   color:red;
 
 }
+.negatif{
+  color: red;
+  border-color: red;
+  transition: all 1s ease;
+}
