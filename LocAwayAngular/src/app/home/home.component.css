@@ -27,3 +27,8 @@
   border-color: red;
   transition: all 1s ease;
 }
+
+  .front{
+    z-index: +10;
+  }
+

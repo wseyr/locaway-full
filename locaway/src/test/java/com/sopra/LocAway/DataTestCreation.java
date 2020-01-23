@@ -102,7 +102,7 @@ class DataTestCreation {
 		String sdl = System.getProperty("line.separator");
 		
 		Accomodation a = new Accomodation();
-		a.setName("Résidence des hirondelles");
+		a.setName("Chalet des hirondelles");
 		a.setNumber("25");
 		a.setStreet("allée de cherbourg");
 		a.setCity("Toulouse");
@@ -131,7 +131,7 @@ class DataTestCreation {
 		a.setNumberOfRooms(1);
 		a.setMaxPersons(4);
 		a.setDeleted(false);
-		a.setAccomodationType(EAccomodationType.APPARTMENT);
+		a.setAccomodationType(EAccomodationType.CHALET);
 		a.setDefaultBasePrice(65f);
 		a.setDefaultPersonPrice(5f);
 		a.setUser(u);
@@ -573,7 +573,7 @@ class DataTestCreation {
 		b.setValidated(false);
 		b.setCancelled(false);
 		b.setAccomodation(a);
-		b.setUser(u);
+		b.setUser(u3);
 		b.setTotalPrice(512.22f);
 		
 		Booking b1 = new Booking();

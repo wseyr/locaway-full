@@ -37,11 +37,12 @@ export class HomeComponent implements OnInit {
   fromDate: NgbDate;
   toDate: NgbDate;
 
-  accotypes: Array<string> = new Array<string>("APPARTMENT","HOUSE","GUESTHOUSE","ALTERNATIVE");
+  accotypes: Array<string> = new Array<string>("APPARTMENT","HOUSE","GUESTHOUSE","ALTERNATIVE", "CHALET");
   appartment: boolean = true;
   house: boolean = true;
   guesthouse: boolean = true;
   alternative: boolean = true;
+  chalet: boolean = true;
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, route:ActivatedRoute) {
     this.fromDate = calendar.getToday();
@@ -140,6 +141,9 @@ export class HomeComponent implements OnInit {
     }
     if (this.alternative){
       this.accotypes.push("ALTERNATIVE");
+    }
+    if (this.chalet){
+      this.accotypes.push("CHALET");
     }
 
     if(!this.accomodations) {
