@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private accomodationService: AccomodationHttpService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, route:ActivatedRoute) {
     this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 0);
     route.params.subscribe(val => {
       this.accomodationService.findAllObservable().subscribe((resp)=>{
         this.accomodations = resp;
