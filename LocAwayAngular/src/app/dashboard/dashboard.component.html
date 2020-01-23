@@ -80,10 +80,10 @@
     <ngb-tab title="Mes annonces">
       <ng-template ngbTabContent>
         <div class="mt-3">
-          <div *ngFor="let accomodation of connectedU.accomodations" class="row">
-            <div>
-              <accomodation [accomodation_id]="accomodation.id"></accomodation>
-            </div>
+          <div *ngFor="let accomodation of userFromDatabase.accomodations" class="row w-100">
+
+              <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
+            
           </div>
         </div>
       </ng-template>
