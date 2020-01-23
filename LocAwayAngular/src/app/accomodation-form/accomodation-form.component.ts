@@ -21,6 +21,7 @@ export class AccomodationFormComponent implements OnInit {
   connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
 
   newAccomodation: Accomodation = new Accomodation();
+
   option: Option;
   optionId: number;
   options: Array<Option>;
@@ -45,6 +46,8 @@ export class AccomodationFormComponent implements OnInit {
 
   constructor(private accomodationService: AccomodationHttpService, private route: ActivatedRoute, private optionService: OptionHttpService, private fileService: FileHttpService, private photoService: PhotoHttpService, private router: Router) {
     this.newAccomodation = new Accomodation();
+    this.newAccomodation.defaultPersonPrice = 0;
+    this.newAccomodation.defaultBasePrice = 0;
     this.optionService.findAllObservable().subscribe(resp => {
       this.options = resp;
 
