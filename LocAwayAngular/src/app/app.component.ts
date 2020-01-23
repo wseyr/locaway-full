@@ -5,6 +5,7 @@ import {UserHttpServiceService} from './user/user-http-service.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {Subscription} from "rxjs";
 import {HttpEvent} from "@angular/common/http";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class AppComponent {
 
 
 
-  constructor(private router: Router, private userHttpServiceService: UserHttpServiceService) {
+  constructor(private router: Router, private userHttpServiceService: UserHttpServiceService, private titleService: Title ) {
+    this.titleService.setTitle("LocAway");
     router.events.subscribe((val) => {
       // see also
       this.connectedU = JSON.parse(localStorage.getItem("connectedUser"));
