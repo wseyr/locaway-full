@@ -65,11 +65,11 @@
   <h5>Tarifs de location</h5>
   <div class="form-row">
     <div class="form-group col">
-      <label for="inputPrixBase">Prix de base de la location</label>
+      <label for="inputPrixBase">Prix journalier de la location (€)</label>
       <input type="number" min="0" class="form-control" id="inputPrixBase" [ngClass]="{'is-invalid':!verifprix}" [(ngModel)]="newAccomodation.defaultBasePrice">
     </div>
     <div class="form-group col">
-      <label for="inputPrixPersonne">Prix supplémentaire par personne</label>
+      <label for="inputPrixPersonne">Prix journalier supplémentaire par personne (€)</label>
       <input type="number"  min="0" class="form-control" id="inputPrixPersonne" [(ngModel)]="newAccomodation.defaultPersonPrice">
     </div>
   </div>
