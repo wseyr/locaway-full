@@ -44,7 +44,7 @@ export class BookingFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private bookingService: BookingHttpService, private bookedDayService: BookeddayHttpService, private accomodationService: AccomodationHttpService, calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
-    // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+     this.toDate = calendar.getNext(calendar.getToday(), 'd', 0);
   }
 
   ngOnInit() {
