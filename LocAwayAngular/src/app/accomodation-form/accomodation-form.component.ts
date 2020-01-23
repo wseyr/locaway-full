@@ -48,6 +48,9 @@ export class AccomodationFormComponent implements OnInit {
     this.newAccomodation = new Accomodation();
     this.newAccomodation.defaultPersonPrice = 0;
     this.newAccomodation.defaultBasePrice = 0;
+    this.newAccomodation.numberOfRooms = 0;
+    this.newAccomodation.maxPersons = 0;
+    this.newAccomodation.accomodationType = this.accomodationService.typesDeBiens[0];
     this.optionService.findAllObservable().subscribe(resp => {
       this.options = resp;
 
@@ -82,7 +85,7 @@ export class AccomodationFormComponent implements OnInit {
     this.verifnbchambre= true;
     this.verifnbpersmax= true;
     this.verifprix= true;
-    if (this.newAccomodation.name && this.newAccomodation.number && this.newAccomodation.accomodationType && this.newAccomodation.street && this.newAccomodation.city && this.newAccomodation.country && this.newAccomodation.numberOfRooms && this.newAccomodation.maxPersons && this.newAccomodation.defaultBasePrice) {
+    if (this.newAccomodation.name && this.newAccomodation.number && this.newAccomodation.accomodationType && this.newAccomodation.street && this.newAccomodation.city && this.newAccomodation.country && this.newAccomodation.numberOfRooms>=0 && this.newAccomodation.maxPersons>=0 && this.newAccomodation.defaultBasePrice>=0) {
       for (let option of this.options) {
         if (option.checked) {
           this.newAccomodation.options.push(option);
@@ -139,15 +142,16 @@ export class AccomodationFormComponent implements OnInit {
       this.verifpays = false;
       this.valide =true;
 
-    }else if(!this.newAccomodation.numberOfRooms){
+    }else if(this.newAccomodation.numberOfRooms<0){
       this.verifnbchambre = false;
       this.valide =true;
 
-    }else if(!this.newAccomodation.maxPersons){
+    }else if(this.newAccomodation.maxPersons<0){
       this.verifnbpersmax = false;
       this.valide =true;
 
-    }else if(!this.newAccomodation.defaultBasePrice){
+    }else if(this.newAccomodation.defaultBasePrice<0){
+      console.log(this.newAccomodation.defaultBasePrice)
       this.verifprix = false;
       this.valide =true;
 
