@@ -1,17 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css?family=Lobster|Muli&display=swap');
+
 h1{
   font-family: 'Lobster', cursive;
   font-size: 80px;
 }
+
 h2, h3,h4,h5,h6{
   font-weight: bold;
-
 }
+
 *{
   font-family: 'Muli', sans-serif;
 }
-
 
 #page-container {
   position: relative;
@@ -19,14 +19,14 @@ h2, h3,h4,h5,h6{
 }
 
 #content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
+  padding-bottom: 2.5rem;
 }
 
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem; /* Footer height */
+  height: 2.5rem;
 
 }
 
