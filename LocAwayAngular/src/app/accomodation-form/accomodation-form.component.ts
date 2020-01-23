@@ -55,35 +55,94 @@ export class AccomodationFormComponent implements OnInit {
   typesDeBiens(){
     return this.accomodationService.typesDeBiens;
   }
-
+  valide:boolean;
+  verifname: boolean =true;
+  veriftype: boolean=true;
+  verifnum: boolean=true;
+  verifrue: boolean=true;
+  verifpostcode: boolean=true;
+  verifville: boolean=true;
+  verifpays: boolean=true;
+  verifnbchambre: boolean=true;
+  verifnbpersmax: boolean=true;
+  verifprix: boolean=true;
   save() {
-
-    for(let option of this.options) {
-      if(option.checked) {
-        this.newAccomodation.options.push(option);
+    this.verifname = true;
+    this.veriftype= true;
+    this.verifnum= true;
+    this.verifrue= true;
+    this.verifpostcode= true;
+    this.verifville= true;
+    this.verifpays= true;
+    this.verifnbchambre= true;
+    this.verifnbpersmax= true;
+    this.verifprix= true;
+    if (this.newAccomodation.name && this.newAccomodation.number && this.newAccomodation.accomodationType && this.newAccomodation.street && this.newAccomodation.city && this.newAccomodation.country && this.newAccomodation.numberOfRooms && this.newAccomodation.maxPersons && this.newAccomodation.defaultBasePrice) {
+      for (let option of this.options) {
+        if (option.checked) {
+          this.newAccomodation.options.push(option);
+        }
       }
-    }
+      this.newAccomodation.user = this.connectedU;
+      this.accomodationService.saveObservable(this.newAccomodation).subscribe((accomResp) => {
+        //variable pour rediriger après l'upload de la dernière photo
+        let nbPhoto: number = 0;
+        this.files.forEach((file) => {
+          this.fileService.upload(file).subscribe((resp) => {
+            let newPhoto: Photo = new Photo();
+            newPhoto.accomodation = accomResp;
+            newPhoto.path = resp.fileDownloadUri;
+            this.photoService.saveObservable(newPhoto).subscribe((resp) => {
+              nbPhoto++;
+              if (nbPhoto == this.files.length) {
+                this.router.navigate(["accomodation-detail", accomResp.id]);
+              }
+            });
 
-
-    this.newAccomodation.user = this.connectedU;
-    this.accomodationService.saveObservable(this.newAccomodation).subscribe((accomResp) =>{
-      //variable pour rediriger après l'upload de la dernière photo
-      let nbPhoto: number = 0;
-      this.files.forEach((file) =>{
-        this.fileService.upload(file).subscribe((resp) =>{
-          let newPhoto: Photo = new Photo();
-          newPhoto.accomodation = accomResp;
-          newPhoto.path = resp.fileDownloadUri;
-          this.photoService.saveObservable(newPhoto).subscribe((resp) =>{
-            nbPhoto++;
-            if(nbPhoto == this.files.length){
-              this.router.navigate(["accomodation-detail", accomResp.id]);
-            }
           });
-
         });
       });
-    });
+    }else if (!this.newAccomodation.name){
+      this.verifname =false;
+      this.valide =true;
+    }else if(!this.newAccomodation.accomodationType){
+      this.veriftype = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.number){
+      this.verifnum = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.street){
+      this.verifrue = false;
+      this.valide =true;
+
+    }else if (!this.newAccomodation.postcode) {
+      this.verifpostcode = false;
+
+      this.valide =true;
+
+    }else if(!this.newAccomodation.city){
+      this.verifville = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.country){
+      this.verifpays = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.numberOfRooms){
+      this.verifnbchambre = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.maxPersons){
+      this.verifnbpersmax = false;
+      this.valide =true;
+
+    }else if(!this.newAccomodation.defaultBasePrice){
+      this.verifprix = false;
+      this.valide =true;
+
+    }
   }
   getDate(){
     return new Date()
