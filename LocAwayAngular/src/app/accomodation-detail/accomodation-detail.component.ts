@@ -4,6 +4,7 @@ import {Accomodation} from '../Model/Accomodation';
 import {ActivatedRoute} from "@angular/router";
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 import {Option} from "../Model/Option";
+import {UserHttpServiceService} from '../user/user-http-service.service';
 
 @Component({
   selector: 'app-accomodation-detail',
@@ -13,6 +14,8 @@ import {Option} from "../Model/Option";
 export class AccomodationDetailComponent implements OnInit {
   accomodation_id: number;
   accomodation: Accomodation = null;
+
+  connectedU = JSON.parse(localStorage.getItem("connectedUser"));
 
 
   //calendrier

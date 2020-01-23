@@ -22,6 +22,7 @@ export class BookingFormComponent implements OnInit {
   newBooking: Booking = new Booking();
   numberOfPersons: number = 1;
   bookingOK: boolean = false;
+  notBookingOK : boolean=false;
 
   //Calendrier
   hoveredDate: NgbDate;
@@ -110,6 +111,25 @@ export class BookingFormComponent implements OnInit {
       this.newBooking = bookingResp;
       console.log(this.newBooking);
       this.bookingOK=true;
+
+      this.datesInBooking().forEach((date: Date) =>{
+        let bookedDay = new BookedDay();
+        bookedDay.date = date;
+        bookedDay.booking = this.newBooking;
+        console.log(bookedDay);
+        this.bookedDayService.save(bookedDay);
+      });
+    });
+  }
+
+  saveNotBooking() {
+    this.newBooking.accomodation = this.accomodation;
+    this.newBooking.totalPrice = 0;
+    this.newBooking.user = this.connectedU;
+    this.bookingService.saveNew(this.newBooking).subscribe((bookingResp) =>{
+      this.newBooking = bookingResp;
+      console.log(this.newBooking);
+      this.notBookingOK=true;
 
       this.datesInBooking().forEach((date: Date) =>{
         let bookedDay = new BookedDay();

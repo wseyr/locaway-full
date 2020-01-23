@@ -63,7 +63,7 @@
           </div>
         </div>
         <div *ngIf="selectedBookings == 2" clas="mt-3">
-          <h2>Mes locations</h2>
+          <h2>Réservations sur mes annonces</h2>
 
             <div *ngFor="let accomodation of accomodationsOfUser">
               <div *ngFor="let booking of accomodation.bookings">
@@ -83,7 +83,7 @@
           <div *ngFor="let accomodation of userFromDatabase.accomodations" class="row w-100">
 
               <accomodation [accomodation_id]="accomodation.id" class="w-100"></accomodation>
-            
+
           </div>
         </div>
       </ng-template>
