@@ -56,10 +56,10 @@
         </div>
         <div *ngIf="selectedBookings == 1" class="mt-3">
           <h2>Mes réservations</h2>
-          <div *ngFor="let booking of userFromDatabase.bookings" class="row">
-            <div>
+          <div *ngFor="let booking of userFromDatabase.bookings">
+
               <booking [booking_id]="booking.id"></booking>
-            </div>
+
           </div>
         </div>
         <div *ngIf="selectedBookings == 2" clas="mt-3">
