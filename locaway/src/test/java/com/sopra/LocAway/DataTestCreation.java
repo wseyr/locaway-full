@@ -128,8 +128,8 @@ class DataTestCreation {
 				"JANVIER la semaine du samedi au samedi 190€\r\n" + 
 				"hors vacances scolaires la semaine 190€\r\n" + 
 				"pendant vacances scolaires 220€");
-		a.setNumberOfRooms(12);
-		a.setMaxPersons(30);
+		a.setNumberOfRooms(1);
+		a.setMaxPersons(4);
 		a.setDeleted(false);
 		a.setAccomodationType(EAccomodationType.APPARTMENT);
 		a.setDefaultBasePrice(65f);
@@ -163,32 +163,13 @@ class DataTestCreation {
 				"\r\n" + 
 				"Maison non fumeur & petits animaux admis\r\n" + 
 				"\r\n" + 
-				"Nos tarifs sont les suivants :\r\n" + 
-				"\r\n" + 
-				"Printemps-automne 2020 :\r\n" + 
-				"La semaine :\r\n" + 
-				"2 pers, 180€ au-delà 20€ par pers supplémentaire\r\n" + 
-				"Le week-end:\r\n" + 
-				"1 nuit 50€ pour 2 pers et 40€ pour 2 pers sup.\r\n" + 
-				"2nuits 80€ pour 2 pers et 70€ pour 2 pers sup.\r\n" + 
-				"1 nuit 120€ pour 6 pers, au-delà 10€ par pers sup.\r\n" + 
-				"2 nuits 160€ pour 6 pers, au-delà 10€ par pers sup.\r\n" + 
-				"\r\n" + 
-				"ETE 2020:\r\n" + 
-				"Du 27-06 au 04-07 : 450€ pour 6 pers au-delàs 20 € par pers sup.\r\n" + 
-				"Juillet à partir du 04-07 : 750€ jusqu’à 6 pers au-delà 25€ par pers sup.\r\n" + 
-				"Août 750€ jusqu’à 6 pers au-delà 25€ par pers sup.\r\n" + 
-				"La location s’effectue du samedi arrivé 16h au samedi départ à 10h.\r\n" + 
-				"\r\n" + 
-				"Contact par téléphone:\r\n" + 
-				"06 45 81 07 85\r\n" + 
 				"Maison secondaire.");
-		a1.setNumberOfRooms(23445);
-		a1.setMaxPersons(876896786);
+		a1.setNumberOfRooms(4);
+		a1.setMaxPersons(12);
 		a1.setDeleted(false);
 		a1.setAccomodationType(EAccomodationType.APPARTMENT);
-		a1.setDefaultBasePrice(150f);
-		a1.setDefaultPersonPrice(5f);
+		a1.setDefaultBasePrice(180f);
+		a1.setDefaultPersonPrice(20f);
 		a1.setUser(u1);
 
 		Accomodation a2 = new Accomodation();
@@ -200,9 +181,9 @@ class DataTestCreation {
 		a2.setCountry("Angleterre");
 		a2.setLatitudeDeg(4.5f);
 		a2.setLongitudeDeg(1.5f);
-		a2.setDescription("Situé au Sud-Ouest de Londres à 40mn de l'aéroport international . Isolé en haut d'un côteau avec vue imprenable sur les Pyrénées et situé dans un parc arboré de 1.4 ha. A 3 km du village avec tous commerces.\r\n" + 
+		a2.setDescription("Situé au Sud-Ouest de Londres à 40mn de l'aéroport international . Isolé en haut d'un côteau avec vue imprenable  et situé dans un parc arboré de 1.4 ha. Tous commerces.\r\n" + 
 				"\r\n" + 
-				"4 chambres d'hôtes avec salle de douche et WC privatifs, salle commune. Elles sont mitoyennes à 3 gîtes ruraux (3/5 p.et 4/6 p.) d'environ 50m2 chaqu'un, une grande loggiaa réservée aux hôtes.\r\n" + 
+				"4 chambres d'hôtes avec salle de douche et WC privatifs, salle commune. Elles sont mitoyennes à 3 gîtes ruraux (3/5 p.et 4/6 p.) d'environ 50m2 chacun, une grande loggiaa réservée aux hôtes.\r\n" + 
 				"\r\n" + 
 				"Table d'Hôtes 23 € /pers. - de 12 ans 12 €.\r\n" + 
 				"\r\n" + 
@@ -212,12 +193,12 @@ class DataTestCreation {
 				"- tourisme animalier comme le parc zoologiques de Plaisance du Touche.\r\n" + 
 				"- tourisme sportif comme les sentiers de grande randonnée.\r\n" + 
 				"- tourisme gastronomique comme les spécialités régionales, Canard (Marché de Gimont ou de Samatan), le veau élevé sous la mère ...");
-		a2.setNumberOfRooms(4);
-		a2.setMaxPersons(8);
+		a2.setNumberOfRooms(7);
+		a2.setMaxPersons(23);
 		a2.setDeleted(false);
 		a2.setAccomodationType(EAccomodationType.GUESTHOUSE);
-		a2.setDefaultBasePrice(1500f);
-		a2.setDefaultPersonPrice(310f);
+		a2.setDefaultBasePrice(110f);
+		a2.setDefaultPersonPrice(0f);
 		a2.setUser(u2);
 		
 		
@@ -231,14 +212,12 @@ class DataTestCreation {
 		a3.setCountry("France");
 		a3.setLatitudeDeg(43.793282f);
 		a3.setLongitudeDeg(1.429806f);
-		a3.setDescription("Appartement 2 pièces rez de chaussé,avec cuisine intégrée et spacieuse avec un grand four et grand réfrigérateur et congélateur chambre indépendante de la cuisine salle d'eau indépendante des WC , parking privative et ombragé. surface habitable 26 m² + terrasse . Appartement refait a neuf 2019 literie neuve, buanderie gratuite à proximité tarif cure\r\n" + 
-				"540 € mars et novembre\r\n" + 
-				"580€ d'avril à octobre");
-		a3.setNumberOfRooms(3);
-		a3.setMaxPersons(12);
+		a3.setDescription("Appartement 2 pièces rez de chaussé,avec cuisine intégrée et spacieuse avec un grand four et grand réfrigérateur et congélateur chambre indépendante de la cuisine salle d'eau indépendante des WC , parking privative et ombragé. surface habitable 26 m² + terrasse . Appartement refait a neuf 2019 literie neuve, buanderie gratuite à proximité tarif cure\r\n"); 
+		a3.setNumberOfRooms(1);
+		a3.setMaxPersons(4);
 		a3.setDeleted(false);
 		a3.setAccomodationType(EAccomodationType.APPARTMENT);
-		a3.setDefaultBasePrice(20f);
+		a3.setDefaultBasePrice(40f);
 		a3.setDefaultPersonPrice(10f);
 		a3.setUser(u);
 		
@@ -251,9 +230,7 @@ class DataTestCreation {
 		a4.setCountry("France");
 		a4.setLatitudeDeg(43.595282f);
 		a4.setLongitudeDeg(1.429806f);
-		a4.setDescription("Semaine 7 soldée à 600 euros au lieu de 750 euros.\r\n" + 
-				"\r\n" + 
-				"Location de Standing.\r\n" + 
+		a4.setDescription("Location de Standing.\r\n" + 
 				"Trois Etoiles Meublé de Tourisme.\r\n" + 
 				"5 Diamants Par OT .\r\n" + 
 				"Entrée Barèges à Sers « Quartier de Barzun ».\r\n" + 
@@ -266,22 +243,13 @@ class DataTestCreation {
 				"A l’étage, deux chambres de 15 M2 et 9 M2, salle de bain, Cabine douche avec WC.\r\n" + 
 				"Equipements modernes, meubles de qualité, dans un cadre splendide.\r\n" + 
 				"Réception Wifi gratuite.\r\n" + 
-				"Télévisions : écran plat ( 80 cms dans la salle commune ) et LED ( 56 cms dans la grande chambre ) , lecteur CD - DVD.\r\n" + 
-				"Locations Week- end , 2 nuits ou plus possibles en fonction des disponibilités :\r\n" + 
-				"Périodes Creuses : 2 nuits = 200 E + 100 E la nuit pour cours séjour.\r\n" + 
-				"Périodes Rouges, si libre : 150 Euros la nuit, soit 37, 5 E par personne, base 4 personnes.\r\n" + 
-				"Prendre contact pour de plus amples renseignements et visite de notre site.\r\n" + 
-				"Prix Eté : entre 500 à 600 E la semaine suivant périodes.\r\n" + 
-				"Cures de 21 Jours entre 750 à 1000 E.\r\n" + 
-				"Prix Hiver : entre 500 à 750 E la semaine suivant les périodes.\r\n" + 
-				"Réservez hors vacances, c’est moins cher.\r\n" + 
-				"Prix spécial Cure Thermale : Pour 2 personnes. Entre 750 à 1000 Euros les 21 jours suivant les périodes.");
-		a4.setNumberOfRooms(1);
-		a4.setMaxPersons(2);
+				"Télévisions : écran plat ( 80 cms dans la salle commune ) et LED ( 56 cms dans la grande chambre ) , lecteur CD - DVD.\r\n");
+		a4.setNumberOfRooms(2);
+		a4.setMaxPersons(8);
 		a4.setDeleted(false);
 		a4.setAccomodationType(EAccomodationType.APPARTMENT);
 		a4.setDefaultBasePrice(45f);
-		a4.setDefaultPersonPrice(2f);
+		a4.setDefaultPersonPrice(5f);
 		a4.setUser(u);
 		
 		Accomodation a5 = new Accomodation();
@@ -323,42 +291,7 @@ class DataTestCreation {
 				"déjeuner concoctés par un Chef de cuisine.\r\n" + 
 				"\r\n" + 
 				"DEUX YOURTES DE 27 M² de 1 à 4\r\n" + 
-				"personnes\r\n" + 
-				"TARIF POUR DEUX PERSONNES\r\n" + 
-				"\r\n" + 
-				"vacances scolaires\r\n" + 
-				"67 € la nuit, 402 € la semaine\r\n" + 
-				"hors vacances\r\n" + 
-				"57 € la nuit, 342 € la semaine\r\n" + 
-				"Personne supplémentaire 13 €\r\n" + 
-				"\r\n" + 
-				"UNE YOURTE DE 35 M² de 1 à 6 personnes\r\n" + 
-				"TARIF POUR DEUX PERSONNES\r\n" + 
-				"\r\n" + 
-				"vacances scolaires\r\n" + 
-				"77 € la nuit, 462 € la semaine\r\n" + 
-				"hors vacances\r\n" + 
-				"67 € la nuit, 402 € la semaine\r\n" + 
-				"Personne supplémentaire 13 €\r\n" + 
-				"\r\n" + 
-				"Taxe de séjour : 0€22 par nuit et par\r\n" + 
-				"personne\r\n" + 
-				"repas : 30 € par personne, enfant – de 10 ans\r\n" + 
-				"à 15 €\r\n" + 
-				"Panier petit déjeuner « maison»\r\n" + 
-				"10 €\r\n" + 
-				"location de linge : 10 € lit de 2 pers, 8 € lit de\r\n" + 
-				"1 pers\r\n" + 
-				"\r\n" + 
-				"Possibilité de massage et de Qi Gong sur\r\n" + 
-				"réservation\r\n" + 
-				"\r\n" + 
-				"Accès piscine, espace jeux, poules,\r\n" + 
-				"âne, brebis et chèvre en\r\n" + 
-				"libertés, très gourmands de pain\r\n" + 
-				"dur, n'hésitez pas à en apporter !!\r\n" + 
-				"\r\n" + 
-				"Au plaisir de vous accueillir");
+				"personnes\r\n");
 		a5.setNumberOfRooms(1);
 		a5.setMaxPersons(4);
 		a5.setDeleted(false);
