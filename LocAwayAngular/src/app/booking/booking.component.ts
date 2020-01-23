@@ -20,6 +20,9 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
     this.bookingService.findById(this.booking_id).subscribe(resp =>{
       this.booking = resp;
+
+      this.booking.bookedDays.sort((bd1,bd2)=>new Date(bd1.date).getTime() - new Date(bd2.date).getTime());
+      console.log(this.booking.bookedDays);
     });
 
 
