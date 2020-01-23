@@ -20,8 +20,9 @@ export class AppComponent {
 
 
 
-  constructor(private router: Router, private userHttpServiceService: UserHttpServiceService, private titleService: Title ) {
+  constructor(private router: Router, private userHttpServiceService: UserHttpServiceService, private titleService: Title) {
     this.titleService.setTitle("LocAway");
+
     router.events.subscribe((val) => {
       // see also
       this.connectedU = JSON.parse(localStorage.getItem("connectedUser"));
