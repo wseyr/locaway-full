@@ -58,6 +58,7 @@ export class AccomodationFormComponent implements OnInit {
   typesDeBiens(){
     return this.accomodationService.typesDeBiens;
   }
+
   valide:boolean;
   verifname: boolean =true;
   veriftype: boolean=true;
@@ -70,6 +71,7 @@ export class AccomodationFormComponent implements OnInit {
   verifnbpersmax: boolean=true;
   verifprix: boolean=true;
   save() {
+    this.valide = false;
     this.verifname = true;
     this.veriftype= true;
     this.verifnum= true;
@@ -88,8 +90,12 @@ export class AccomodationFormComponent implements OnInit {
       }
       this.newAccomodation.user = this.connectedU;
       this.accomodationService.saveObservable(this.newAccomodation).subscribe((accomResp) => {
+
         //variable pour rediriger après l'upload de la dernière photo
         let nbPhoto: number = 0;
+        if(this.files.length == 0){
+          this.router.navigate(["accomodation-detail", accomResp.id]);;
+        }
         this.files.forEach((file) => {
           this.fileService.upload(file).subscribe((resp) => {
             let newPhoto: Photo = new Photo();

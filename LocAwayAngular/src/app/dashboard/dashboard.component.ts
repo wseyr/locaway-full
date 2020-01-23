@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
 
   save(){
     this.userService.save(this.connectedU);
+    console.log(this.connectedU)
   }
   ngOnInit() {
 
