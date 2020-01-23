@@ -173,6 +173,8 @@ export class AccomodationFormComponent implements OnInit {
       return "Maison d'hôtes";
     }else if(typedebien == "ALTERNATIVE"){
       return "Alternatif";
+    }else if(typedebien == "CHALET"){
+      return "Chalet";
     }else{
       return "défaut";
     }

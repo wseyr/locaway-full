@@ -32,31 +32,33 @@
       </div>
     </div>
     <div class="col">
-      <div class="row">
-        <h3>Détails</h3>
-      </div>
-      <div class="row">
-        <div class="form-group">
-          <label for="nbOfPersons">Nombre de personnes: </label>
-          <input id="nbOfPersons" class="form-control" type="number" min="1" [max]="accomodation?.maxPersons" [(ngModel)]="numberOfPersons"/>
+     
+      <div *ngIf="accomodation?.user.id!==connectedU?.id">
+        <div class="row">
+          <h3>Détails</h3>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="nbOfPersons">Nombre de personnes: </label>
+            <input id="nbOfPersons" class="form-control" type="number" min="1" [max]="accomodation?.maxPersons" [(ngModel)]="numberOfPersons"/>
+          </div>
+        </div>
+        <div class="row">
+          <p>Réservation du {{ngbDateToDate(fromDate) | date}} <span *ngIf="toDate">au {{ngbDateToDate(toDate) | date}}</span></p>
+        </div>
+        <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
+          <p>Prix total: {{totalBookingPrice() | currency:'EUR'}}</p>
+        </div>
+        <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
+          <button style="margin-bottom: 2em" [disabled]="!validateBookingDates()" class="btn btn-primary ml-3 btn-lg"
+                  (click)="saveBooking()">Valider la réservation
+          </button>
+        </div>
+
+        <div class="alert alert-success" role="alert" style=" margin-top: 10px" *ngIf="bookingOK">
+          Réservation enregistrée !
         </div>
       </div>
-      <div class="row">
-        <p>Réservation du {{ngbDateToDate(fromDate) | date}} <span *ngIf="toDate">au {{ngbDateToDate(toDate) | date}}</span></p>
-      </div>
-      <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
-        <p>Prix total: {{totalBookingPrice() | currency:'EUR'}}</p>
-      </div>
-      <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
-        <button style="margin-bottom: 2em" [disabled]="!validateBookingDates()" class="btn btn-primary ml-3 btn-lg"
-                (click)="saveBooking()">Valider la réservation
-        </button>
-      </div>
-
-      <div class="alert alert-success" role="alert" style=" margin-top: 10px" *ngIf="bookingOK">
-        Réservation enregistrée !
-      </div>
-
       <div class="row" *ngIf="accomodation?.user.id==connectedU?.id">
         <button [disabled]="!validateBookingDates()" class="btn btn-warning ml-3 btn-lg"
                 (click)="saveNotBooking()">Rendre indisponible
