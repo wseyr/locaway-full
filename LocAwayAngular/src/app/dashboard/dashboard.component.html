@@ -5,7 +5,7 @@
   <ngb-tabset>
     <ngb-tab title="Mes informations personnelles">
       <ng-template ngbTabContent>
-        <h5>Mes informations</h5>
+        <h5 class="mt-3">Mes informations</h5>
         <div class="form-row">
           <div class="form-group col">
             <label for="Prenom">Prénom</label>
@@ -31,31 +31,41 @@
       </button>
       </ng-template>
     </ngb-tab>
-    <ngb-tab title="Mon historique">
+    <ngb-tab title="Réservations">
       <ng-template ngbTabContent>
-        <div class="row">
-          <div class="col text-right">
-            <div ngbDropdown  class="d-inline-block">
+        <div class="row mt-3">
+
+          <div class="col-4">
+            <div class="form-group">
+              <select id="bookingsSelector" class="form-control" [(ngModel)]="selectedBookings">
+                <option value="1">Mes réservations</option>
+                <option value="2">Réservations sur mes annonces</option>
+              </select>
+            </div>
+            <!--<div ngbDropdown  class="d-inline-block">
               <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Mes réservations et locations</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button (click)="location()" ngbDropdownItem>Mes locations</button>
                 <button (click)="reservation()" ngbDropdownItem>Mes réservations</button>
               </div>
-            </div>
+            </div>-->
           </div>
         </div>
-        <div *ngIf="showreservation" class="mt-3">
+        <div class="col-8">
+
+        </div>
+        <div *ngIf="selectedBookings == 1" class="mt-3">
           <h2>Mes réservations</h2>
-          <div *ngFor="let booking of connectedU.bookings" class="row">
+          <div *ngFor="let booking of userFromDatabase.bookings" class="row">
             <div>
               <booking [booking_id]="booking.id"></booking>
             </div>
           </div>
         </div>
-        <div *ngIf="showlocation" clas="mt-3">
+        <div *ngIf="selectedBookings == 2" clas="mt-3">
           <h2>Mes locations</h2>
 
-            <div *ngFor="let accomodation of listUserAcco()">
+            <div *ngFor="let accomodation of accomodationsOfUser">
               <div *ngFor="let booking of accomodation.bookings">
 
                 <booking [booking_id]="booking.id"></booking>
@@ -78,7 +88,7 @@
         </div>
       </ng-template>
     </ngb-tab>
-    <ngb-tab title="Avis laissés">
+    <!--<ngb-tab title="Avis laissés">
       <ng-template ngbTabContent>
         <p>Avis laissés</p>
       </ng-template>
@@ -87,7 +97,7 @@
       <ng-template ngbTabContent>
         <p>Avis reçus</p>
       </ng-template>
-    </ngb-tab>
+    </ngb-tab>-->
   </ngb-tabset>
 
 </div>

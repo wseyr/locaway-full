@@ -12,57 +12,27 @@ import {Booking} from '../Model/Booking';
 })
 export class DashboardComponent implements OnInit {
   connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
-  showreservation:boolean = false;
-  showlocation:boolean = false;
-  accomodations: Array<Accomodation> = new Array<Accomodation>();
+  userFromDatabase: User;
+  selectedBookings: number = 1;
 
-  locations: Array<Accomodation> = new Array<Accomodation>();
+  accomodationsOfUser: Array<Accomodation> = new Array<Accomodation>();
 
   constructor(private userService: UserHttpServiceService, private accomodationService: AccomodationHttpService) {
     console.log(this.connectedU);
-  }
-
-  logements: Array<Accomodation> = new Array<Accomodation>();
-  bookings: Array<Booking> = new Array<Booking>();
-
-  listAll(){
-    return this.accomodationService.findAll();
+    this.listUserAcco();
   }
 
   listUserAcco(){
-    this.connectedU.accomodations.forEach((accomodation) =>{
-
-        this.accomodationService.findById(accomodation.id).subscribe((fullAcco) =>{
-          this.locations.push(fullAcco);
-        });
+    this.userService.findById(this.connectedU.id).subscribe((resp)=>{
+      this.userFromDatabase = resp;
+      this.connectedU.accomodations.forEach((accomodation) =>{
+          this.accomodationService.findById(accomodation.id).subscribe((fullAcco) =>{
+            this.accomodationsOfUser.push(fullAcco);
+          });
       });
+    });
+  }
 
-    // for(let i=0;i  < this.listAll().length; i++)
-    //   if(this.listAll().includes(user.accomodations[i])){
-    //     this.logements.push(user.accomodations[i])
-    //   }
-    // return this.logements;
-  }
-/*  listUserAccoBooking(){
-    for(let logement of this.logements){
-      this.bookings = logement.bookings;
-    }
-  }*/
-
-/*  listedesbookings(user: User){
-    for(let accomodation of this.listUserAcco(user)){
-      result:Array<Booking> = accomodation.bookings;
-    }
-  }*/
-  reservation(){
-    this.showreservation = true;
-    this.showlocation = false;
-  }
-  location(){
-    console.log(this.connectedU.accomodations)
-    this.showlocation = true;
-    this.showreservation = false;
-  }
   save(){
     this.userService.save(this.connectedU);
   }
