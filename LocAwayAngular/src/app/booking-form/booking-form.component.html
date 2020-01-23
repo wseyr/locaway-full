@@ -44,7 +44,7 @@
       <div class="row">
         <p>Réservation du {{ngbDateToDate(fromDate) | date}} <span *ngIf="toDate">au {{ngbDateToDate(toDate) | date}}</span></p>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
         <p>Prix total: {{totalBookingPrice() | currency:'EUR'}}</p>
       </div>
       <div class="row" *ngIf="accomodation?.user.id!==connectedU?.id">
