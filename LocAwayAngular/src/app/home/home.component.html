@@ -4,7 +4,7 @@
   </div>
 
   <!--  RECHERCHE -->
-
+<div class="front">
   <div class="form-row, d-flex align-items-end" style="border-top: darkgray 1px solid">
 
     <!--  Destination -->
@@ -68,49 +68,7 @@
       </div>
     </form>
 
-    <!--  ex Calendar -->
-<!--    <form class="form-inline, d-flex align-items-end">
-      <div class="form-group hidden-col-1">
-        <div class="input-group">
-          <input name="datepicker"
-                 class="form-control"
-                 ngbDatepicker
-                 #datepicker="ngbDatepicker"
-                 [autoClose]="'outside'"
-                 (dateSelect)="onDateSelection($event)"
-                 [displayMonths]="1"
-                 [dayTemplate]="t"
-                 outsideDays="hidden"
-                 [startDate]="fromDate"
-                 placeholder="Choisir les dates">
-          <ng-template #t let-date let-focused="focused">
-            <span class="custom-day"
-                  [class.focused]="focused"
-                  [class.range]="isRange(date)"
-                  [class.faded]="isHovered(date) || isInside(date)"
-                  (mouseenter)="hoveredDate = date"
-                  (mouseleave)="hoveredDate = null">
-              {{ date.day }}
-            </span>
-          </ng-template>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
-              <fa name="calendar"></fa>
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>-->
-
-
-    <!--  Personnes -->
-
-    <!--  <div class="form-group col-1">-->
-    <!--    <label class="col form label">Personnes</label>-->
-    <!--    <input type="number" [(ngModel)]="person" (change)="filtrePerson()" class="form-control">-->
-    <!--  </div>-->
-
-    <!--  Personnes 2 -->
+    <!--  Personnes  -->
     <div class="form-group col">
 
       <div ngbDropdown class="d-inline-block" style="">
@@ -133,14 +91,7 @@
       </div>
     </div>
 
-    <!--  Chambres -->
-
-    <!--  <div class="form-group col-1">-->
-    <!--    <label class="col form label">Chambres</label>-->
-    <!--    <input type="number" [(ngModel)]="rooms" (change)="filtreRoom()" class="form-control">-->
-    <!--  </div>-->
-
-    <!--  Chambres 2 -->
+    <!--  Chambres  -->
 
     <div class="form-group col">
       <div ngbDropdown class="d-inline-block">
@@ -192,6 +143,11 @@
                 <input class="form-check-input" name="alternatif" [(ngModel)]="alternative" (change)="filtre()" type="checkbox" id="Alternatif" ngbButton> Alternatif
               </label>
             </div>
+            <div class="form-check">
+              <label class="form-check-label" for="chalet" ngbButtonLabel>
+                <input class="form-check-input" name="chalet" [(ngModel)]="chalet" (change)="filtre()" type="checkbox" id="chalet" ngbButton> Chalet
+              </label>
+            </div>
           </form>
         </div>
       </div>
@@ -223,7 +179,7 @@
 
 
   </div>
-
+</div>
   <!--  FIN RECHERCHE -->
 
   <div *ngIf="!accomodations && !accomodationsfiltrees">
