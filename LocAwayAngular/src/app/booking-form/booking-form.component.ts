@@ -7,6 +7,7 @@ import {Accomodation} from "../Model/Accomodation";
 import {Booking} from "../Model/Booking";
 import {BookeddayHttpService} from "../bookedday/bookedday-http.service";
 import {BookedDay} from "../Model/BookedDay";
+import {User} from "../Model/User";
 
 @Component({
   selector: 'app-booking-form',
@@ -14,6 +15,7 @@ import {BookedDay} from "../Model/BookedDay";
   styleUrls: ['./booking-form.component.css']
 })
 export class BookingFormComponent implements OnInit {
+  connectedU : User = JSON.parse(localStorage.getItem("connectedUser"));
   accomodation_id: number;
   accomodation: Accomodation = null;
 
@@ -101,10 +103,9 @@ export class BookingFormComponent implements OnInit {
   }
 
   saveBooking() {
-    //TODO: lier la réservation à l'utilisateur connecté
-    console.log(this.newBooking);
     this.newBooking.accomodation = this.accomodation;
     this.newBooking.totalPrice = this.totalBookingPrice();
+    this.newBooking.user = this.connectedU;
     this.bookingService.saveNew(this.newBooking).subscribe((bookingResp) =>{
       this.newBooking = bookingResp;
       console.log(this.newBooking);
