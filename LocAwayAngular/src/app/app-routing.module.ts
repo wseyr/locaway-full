@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'accomodation-detail/:id', component: AccomodationDetailComponent},
   {path: 'booking-form/:acc_id', component: BookingFormComponent},
   {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'accomodation-form', component: AccomodationFormComponent},
   {path: 'concept', component: ConceptComponent},
