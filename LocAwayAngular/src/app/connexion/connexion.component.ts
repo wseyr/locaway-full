@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../Model/User';
 import {UserHttpServiceService} from '../user/user-http-service.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'connexion',
@@ -25,8 +26,13 @@ export class ConnexionComponent implements OnInit {
   veriftos: boolean = true;
   termofservice: boolean = false;
   inscrit: boolean = false;
-  constructor(private userService: UserHttpServiceService) {
-
+  constructor(private userService: UserHttpServiceService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.verifCoUserEmail = true;
+      this.verifCoUserPassword = true;
+      this.userService.unvalidLogin = false;
+      this.unvalidLogin = this.userService.unvalidLogin;
+    });
   }
 
   ngOnInit() {}
@@ -81,6 +87,8 @@ export class ConnexionComponent implements OnInit {
     } else if  (!this.coUser.password){
       this.verifCoUserPassword=false;
     }
+
+
 
   }
 }

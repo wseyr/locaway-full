@@ -18,6 +18,7 @@ export class UserHttpServiceService {
 
 
 
+
   constructor(private appConfig: AppConfigService, private http: HttpClient, private router: Router) {
     this.load();
   }
@@ -74,6 +75,7 @@ export class UserHttpServiceService {
   logout(){
     localStorage.removeItem("connectedUser");
     this.router.navigate([""]);
+
   }
 
 }
