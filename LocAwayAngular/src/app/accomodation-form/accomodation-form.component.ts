@@ -154,8 +154,8 @@ export class AccomodationFormComponent implements OnInit {
       console.log(this.newAccomodation.defaultBasePrice)
       this.verifprix = false;
       this.valide =true;
-
     }
+
   }
   getDate(){
     return new Date()
