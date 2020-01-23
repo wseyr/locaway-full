@@ -73,7 +73,7 @@ export class UserHttpServiceService {
 
   logout(){
     localStorage.removeItem("connectedUser");
-    location.reload();
+    this.router.navigate(["home"]);
   }
 
 }
