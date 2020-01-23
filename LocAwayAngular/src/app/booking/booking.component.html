@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-8"> -->
       <div class="card-body">
-        <h5 class="card-title">{{booking?.accomodation.name}}</h5>
+        <h5 class="card-title">{{booking?.accomodation.name}} réservé par {{booking?.user?.firstName}} {{booking?.user?.lastName}}</h5>
         <p class="card-text"> du {{booking?.bookedDays[0].date | date}} au {{booking?.bookedDays[booking?.bookedDays.length-1].date | date}} pour {{booking?.totalPrice}} €</p>
       </div>
     </div>

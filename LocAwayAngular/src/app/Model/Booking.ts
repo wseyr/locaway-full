@@ -9,8 +9,6 @@ export class Booking {
   public isValidated: boolean;
   public isCancelled: boolean;
   public totalPrice: number;
-
-
   public user: User;
   public accomodation: Accomodation;
   public bookedDays: Array<BookedDay>;

@@ -139,6 +139,6 @@
   <button type="button" class="btn btn-success btn-lg" (click)="save()">
     <i class="fa fa-check"></i>
   </button>
-  <div *ngIf="valide" style="display: inline-flex; margin-left: 50px"> ATTENTION  Vérifier que tous les champs nécessaires sont remplis</div>
+  <div class="alert alert-danger" *ngIf="valide" style="display: inline-flex; margin-left: 50px"> Veuillez vérifier que tous les champs nécessaires sont remplis</div>
 
 </div>
