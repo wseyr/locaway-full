@@ -48,8 +48,8 @@ export class AccomodationFormComponent implements OnInit {
     this.newAccomodation = new Accomodation();
     this.newAccomodation.defaultPersonPrice = 0;
     this.newAccomodation.defaultBasePrice = 0;
-    this.newAccomodation.numberOfRooms = 0;
-    this.newAccomodation.maxPersons = 0;
+    this.newAccomodation.numberOfRooms = 1;
+    this.newAccomodation.maxPersons = 1;
     this.newAccomodation.accomodationType = this.accomodationService.typesDeBiens[0];
     this.optionService.findAllObservable().subscribe(resp => {
       this.options = resp;

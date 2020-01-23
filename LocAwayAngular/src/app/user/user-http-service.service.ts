@@ -45,9 +45,9 @@ export class UserHttpServiceService {
       }, err => console.log(err));
     } else {
       this.http.put<User>(this.appConfig.backEnd + 'user/' + user.id, user).subscribe(resp => {
-      this.load();
-    }, err => console.log(err));
-}
+        this.load();
+      }, err => console.log(err));
+    }
   }
 
   delete(id: number) {
